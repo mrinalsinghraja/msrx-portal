@@ -12,7 +12,6 @@ const macApps = [
     external: true,
     storeLabel: "Visit Site",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
   {
     name: "OrionSeek",
@@ -24,7 +23,6 @@ const macApps = [
     external: true,
     storeLabel: "Mac App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
   {
     name: "OrionPulseNet",
@@ -35,8 +33,8 @@ const macApps = [
     href: "https://pulsenet.msrx.co.in",
     external: true,
     storeLabel: "Open Web App",
+    appStoreHref: "https://apps.apple.com/us/app/orionpulsenet/id6766838207?mt=12",
     highlight: true,
-    appStoreHref: "https://apps.apple.com/us/app/orionpulsenet/id6766838207?mt=12" as string | undefined,
   },
   {
     name: "OrionShield",
@@ -48,7 +46,6 @@ const macApps = [
     external: true,
     storeLabel: "Mac App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
   {
     name: "Orion Process Explorer",
@@ -60,7 +57,6 @@ const macApps = [
     external: true,
     storeLabel: "Mac App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
   {
     name: "OrionClean",
@@ -72,7 +68,6 @@ const macApps = [
     external: true,
     storeLabel: "Mac App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
 ];
 
@@ -87,7 +82,6 @@ const iosApps = [
     external: true,
     storeLabel: "App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
   {
     name: "Numly — AI Calculator",
@@ -99,7 +93,6 @@ const iosApps = [
     external: true,
     storeLabel: "App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
   {
     name: "PDF Compressor",
@@ -111,7 +104,6 @@ const iosApps = [
     external: true,
     storeLabel: "App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
   {
     name: "PassportFast",
@@ -123,7 +115,6 @@ const iosApps = [
     external: true,
     storeLabel: "App Store",
     highlight: false,
-    appStoreHref: undefined as string | undefined,
   },
 ];
 
@@ -165,13 +156,7 @@ function MSRXLogo({ size = 32 }: { size?: number }) {
 }
 
 function AppCard({ app }: { app: App }) {
-  const cardClass = `group bg-white rounded-2xl p-6 card-hover border ${
-    app.highlight
-      ? "border-violet-200 ring-1 ring-violet-100"
-      : "border-[var(--border)]"
-  }`;
-
-  const innerContent = (
+  const iconAndText = (
     <>
       <div className="flex items-start justify-between mb-4">
         <div
@@ -197,14 +182,21 @@ function AppCard({ app }: { app: App }) {
 
   if (app.appStoreHref) {
     return (
-      <div className={cardClass} style={{ boxShadow: "var(--shadow-card)" }}>
-        {innerContent}
-        <div className="flex flex-col gap-2">
+      <div
+        className={`bg-white rounded-2xl p-6 card-hover border ${
+          app.highlight
+            ? "border-violet-200 ring-1 ring-violet-100"
+            : "border-[var(--border)]"
+        }`}
+        style={{ boxShadow: "var(--shadow-card)" }}
+      >
+        {iconAndText}
+        <div className="flex items-center gap-4 flex-wrap">
           <a
             href={app.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-[13px] font-medium hover:opacity-75 transition-opacity"
+            className="flex items-center gap-1 text-[13px] font-medium hover:opacity-70 transition-opacity"
             style={{ color: app.fg }}
           >
             {app.storeLabel}
@@ -214,10 +206,11 @@ function AppCard({ app }: { app: App }) {
             href={app.appStoreHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-[12px] font-medium text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors w-fit"
+            className="flex items-center gap-1 text-[13px] font-medium hover:opacity-70 transition-opacity"
+            style={{ color: app.fg }}
           >
             Mac App Store
-            <ArrowUpRight size={11} className="opacity-60" />
+            <ArrowUpRight size={13} className="opacity-60" />
           </a>
         </div>
       </div>
@@ -229,10 +222,14 @@ function AppCard({ app }: { app: App }) {
       href={app.href}
       target={app.external ? "_blank" : undefined}
       rel={app.external ? "noopener noreferrer" : undefined}
-      className={`block ${cardClass}`}
+      className={`group block bg-white rounded-2xl p-6 card-hover border ${
+        app.highlight
+          ? "border-violet-200 ring-1 ring-violet-100"
+          : "border-[var(--border)]"
+      }`}
       style={{ boxShadow: "var(--shadow-card)" }}
     >
-      {innerContent}
+      {iconAndText}
       <div
         className="flex items-center gap-1 text-[13px] font-medium"
         style={{ color: app.fg }}
