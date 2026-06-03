@@ -236,11 +236,11 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="max-w-6xl mx-auto px-6 pt-28 pb-24 text-center">
+        <section className="max-w-6xl mx-auto px-6 pt-16 sm:pt-28 pb-16 sm:pb-24 text-center">
           <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-[var(--text-tertiary)] mb-8">
             Future. Intelligence. Impact.
           </p>
-          <h1 className="text-[48px] sm:text-[62px] font-bold leading-[1.08] tracking-tight text-[var(--text-primary)] mb-6">
+          <h1 className="text-[36px] sm:text-[48px] lg:text-[62px] font-bold leading-[1.08] tracking-tight text-[var(--text-primary)] mb-6">
             Premium apps for
             <br />
             <span className="msrx-gradient-text">everyday people.</span>
@@ -260,7 +260,7 @@ export default function Home() {
         </div>
 
         {/* Apps */}
-        <section id="apps" className="max-w-6xl mx-auto px-6 py-20">
+        <section id="apps" className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-20">
           {/* macOS */}
           <div className="mb-16">
             <div className="flex items-center gap-2 mb-8">
