@@ -12,6 +12,7 @@ const macApps = [
     external: true,
     storeLabel: "Visit Site",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
   {
     name: "OrionSeek",
@@ -19,10 +20,11 @@ const macApps = [
     initials: "OS",
     bg: "#F0FDF4",
     fg: "#16A34A",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/orionseek/id6770491595?mt=12",
+    external: true,
     storeLabel: "Mac App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
   {
     name: "OrionPulseNet",
@@ -34,6 +36,7 @@ const macApps = [
     external: true,
     storeLabel: "Open Web App",
     highlight: true,
+    appStoreHref: "https://apps.apple.com/us/app/orionpulsenet/id6766838207?mt=12" as string | undefined,
   },
   {
     name: "OrionShield",
@@ -41,10 +44,11 @@ const macApps = [
     initials: "OR",
     bg: "#FFF7ED",
     fg: "#EA580C",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/orionshield/id6764576967?mt=12",
+    external: true,
     storeLabel: "Mac App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
   {
     name: "Orion Process Explorer",
@@ -52,10 +56,11 @@ const macApps = [
     initials: "PE",
     bg: "#FFF1F2",
     fg: "#BE123C",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/orionprocessexplorer/id6762134959?mt=12",
+    external: true,
     storeLabel: "Mac App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
   {
     name: "OrionClean",
@@ -63,10 +68,11 @@ const macApps = [
     initials: "OC",
     bg: "#F0FDFA",
     fg: "#0F766E",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/orionclean/id6761111012?mt=12",
+    external: true,
     storeLabel: "Mac App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
 ];
 
@@ -77,10 +83,11 @@ const iosApps = [
     initials: "GT",
     bg: "#EEF2FF",
     fg: "#4338CA",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/guardtrack-pro/id6774895956",
+    external: true,
     storeLabel: "App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
   {
     name: "Numly — AI Calculator",
@@ -88,10 +95,11 @@ const iosApps = [
     initials: "NM",
     bg: "#FFFBEB",
     fg: "#D97706",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/numly-ai-smart-calculator/id6759639887",
+    external: true,
     storeLabel: "App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
   {
     name: "PDF Compressor",
@@ -99,10 +107,11 @@ const iosApps = [
     initials: "PC",
     bg: "#FFF1F2",
     fg: "#E11D48",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/pdfcompressor-shrink-pdf/id6759563556",
+    external: true,
     storeLabel: "App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
   {
     name: "PassportFast",
@@ -110,10 +119,11 @@ const iosApps = [
     initials: "PF",
     bg: "#F0FDF4",
     fg: "#15803D",
-    href: "#",
-    external: false,
+    href: "https://apps.apple.com/us/app/passportfast/id6759985939",
+    external: true,
     storeLabel: "App Store",
     highlight: false,
+    appStoreHref: undefined as string | undefined,
   },
 ];
 
@@ -127,6 +137,7 @@ type App = {
   external: boolean;
   storeLabel: string;
   highlight: boolean;
+  appStoreHref?: string;
 };
 
 function MSRXLogo({ size = 32 }: { size?: number }) {
@@ -154,18 +165,14 @@ function MSRXLogo({ size = 32 }: { size?: number }) {
 }
 
 function AppCard({ app }: { app: App }) {
-  return (
-    <a
-      href={app.href}
-      target={app.external ? "_blank" : undefined}
-      rel={app.external ? "noopener noreferrer" : undefined}
-      className={`group block bg-white rounded-2xl p-6 card-hover border ${
-        app.highlight
-          ? "border-violet-200 ring-1 ring-violet-100"
-          : "border-[var(--border)]"
-      }`}
-      style={{ boxShadow: "var(--shadow-card)" }}
-    >
+  const cardClass = `group bg-white rounded-2xl p-6 card-hover border ${
+    app.highlight
+      ? "border-violet-200 ring-1 ring-violet-100"
+      : "border-[var(--border)]"
+  }`;
+
+  const innerContent = (
+    <>
       <div className="flex items-start justify-between mb-4">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center text-[13px] font-semibold tracking-wide"
@@ -185,6 +192,47 @@ function AppCard({ app }: { app: App }) {
       <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed mb-4">
         {app.description}
       </p>
+    </>
+  );
+
+  if (app.appStoreHref) {
+    return (
+      <div className={cardClass} style={{ boxShadow: "var(--shadow-card)" }}>
+        {innerContent}
+        <div className="flex flex-col gap-2">
+          <a
+            href={app.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-[13px] font-medium hover:opacity-75 transition-opacity"
+            style={{ color: app.fg }}
+          >
+            {app.storeLabel}
+            <ArrowUpRight size={13} className="opacity-60" />
+          </a>
+          <a
+            href={app.appStoreHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-[12px] font-medium text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors w-fit"
+          >
+            Mac App Store
+            <ArrowUpRight size={11} className="opacity-60" />
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <a
+      href={app.href}
+      target={app.external ? "_blank" : undefined}
+      rel={app.external ? "noopener noreferrer" : undefined}
+      className={`block ${cardClass}`}
+      style={{ boxShadow: "var(--shadow-card)" }}
+    >
+      {innerContent}
       <div
         className="flex items-center gap-1 text-[13px] font-medium"
         style={{ color: app.fg }}
