@@ -232,6 +232,77 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Ideas / Contact CTA ──────────────────────────────────────────── */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-10 sm:pb-20">
+          <div
+            className="rounded-3xl overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, #f0f8ff 0%, #f0ebff 100%)",
+              border: "1px solid rgba(139,92,246,0.12)",
+              boxShadow: "0 4px 40px rgba(0,196,223,0.06), 0 4px 40px rgba(139,92,246,0.06)",
+            }}
+          >
+            <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12 p-8 sm:p-12">
+
+              {/* Illustration */}
+              <div className="flex-shrink-0 w-36 h-36 sm:w-44 sm:h-44">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                  <defs>
+                    <linearGradient id="idea-bg" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#dff6ff" /><stop offset="100%" stopColor="#ede9ff" />
+                    </linearGradient>
+                    <linearGradient id="idea-bulb" x1="100" y1="50" x2="100" y2="145" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#00c4df" /><stop offset="100%" stopColor="#8b5cf6" />
+                    </linearGradient>
+                    <linearGradient id="idea-star" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+                      <stop offset="0%" stopColor="#00c4df" /><stop offset="100%" stopColor="#8b5cf6" />
+                    </linearGradient>
+                  </defs>
+                  {/* Background circle */}
+                  <circle cx="100" cy="100" r="90" fill="url(#idea-bg)" />
+                  {/* Lightbulb body */}
+                  <path d="M 100 52 C 76 52, 60 69, 60 89 C 60 107, 72 122, 83 130 L 83 142 L 117 142 L 117 130 C 128 122, 140 107, 140 89 C 140 69, 124 52, 100 52 Z" fill="url(#idea-bulb)" />
+                  {/* Glass shine */}
+                  <ellipse cx="87" cy="76" rx="9" ry="13" fill="rgba(255,255,255,0.32)" transform="rotate(-18 87 76)" />
+                  {/* Filament base */}
+                  <rect x="83" y="142" width="34" height="7" rx="3" fill="rgba(139,92,246,0.45)" />
+                  <rect x="86" y="151" width="28" height="6" rx="3" fill="rgba(139,92,246,0.3)" />
+                  {/* Sparkle stars */}
+                  <path d="M 34 42 L 36.2 49 L 43 51 L 36.2 53 L 34 60 L 31.8 53 L 25 51 L 31.8 49 Z" fill="#00c4df" />
+                  <path d="M 163 58 L 165 64 L 171 66 L 165 68 L 163 74 L 161 68 L 155 66 L 161 64 Z" fill="#8b5cf6" />
+                  <path d="M 46 155 L 47.5 160 L 53 161 L 47.5 162.5 L 46 167 L 44.5 162.5 L 39 161 L 44.5 160 Z" fill="#00c4df" opacity="0.8" />
+                  {/* Floating dots */}
+                  <circle cx="155" cy="138" r="4.5" fill="#8b5cf6" opacity="0.45" />
+                  <circle cx="42" cy="98" r="3.5" fill="#00c4df" opacity="0.5" />
+                  <circle cx="170" cy="108" r="3" fill="#8b5cf6" opacity="0.35" />
+                  <circle cx="35" cy="130" r="2.5" fill="#00c4df" opacity="0.4" />
+                </svg>
+              </div>
+
+              {/* Text */}
+              <div className="flex-1 text-center sm:text-left">
+                <p className="text-[11px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color: "var(--accent-cyan)" }}>
+                  Your Ideas Matter
+                </p>
+                <h2 className="text-[24px] sm:text-[28px] font-bold text-[var(--text-primary)] leading-tight mb-4">
+                  Looking for an app<br className="hidden sm:block" /> that doesn&apos;t exist yet?
+                </h2>
+                <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6 max-w-lg">
+                  We&apos;re always exploring ideas for tools that make work and life a little smoother. If there&apos;s something you&apos;ve been wishing existed — a productivity app, a utility, anything useful — we&apos;d genuinely love to hear from you.
+                </p>
+                <a
+                  href="mailto:mrinalsinghraja@gmail.com?subject=App Idea for MSRX&body=Hi MSRX team,%0A%0AI have an idea for an app:%0A%0A"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-white font-semibold text-[14px] msrx-gradient transition-opacity hover:opacity-88 select-none"
+                  style={{ boxShadow: "0 4px 20px rgba(139,92,246,0.25)" }}
+                >
+                  Share Your Idea
+                  <ArrowUpRight size={15} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Brand Signature ──────────────────────────────────────────────── */}
         <section style={{ background: "linear-gradient(135deg, #f0f8ff 0%, #f5f0ff 100%)", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
           <div className="max-w-6xl mx-auto px-6 py-16 text-center">
