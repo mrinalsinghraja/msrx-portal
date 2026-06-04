@@ -68,14 +68,11 @@ function MSRXLogo({ size = 32, glow = false }: { size?: number; glow?: boolean }
 
 // ── App card ──────────────────────────────────────────────────────────────────
 function AppCard({ app }: { app: App }) {
-  return (
-    <a
-      href={app.href}
-      target={app.external ? "_blank" : undefined}
-      rel={app.external ? "noopener noreferrer" : undefined}
-      className={`group block bg-white rounded-2xl p-6 card-hover border ${app.highlight ? "border-violet-200 ring-1 ring-violet-100" : "border-[var(--border)]"}`}
-      style={{ boxShadow: "var(--shadow-card)" }}
-    >
+  const cardCls = `bg-white rounded-2xl p-6 card-hover border ${app.highlight ? "border-violet-200 ring-1 ring-violet-100" : "border-[var(--border)]"}`;
+  const cardStyle = { boxShadow: "var(--shadow-card)" };
+
+  const header = (
+    <>
       <div className="flex items-start justify-between mb-4">
         <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[13px] font-semibold tracking-wide" style={{ background: app.bg, color: app.fg }}>
           {app.initials}
@@ -84,6 +81,38 @@ function AppCard({ app }: { app: App }) {
       </div>
       <h3 className="font-semibold text-[var(--text-primary)] mb-2 text-[15px] leading-snug">{app.name}</h3>
       <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed mb-4">{app.description}</p>
+    </>
+  );
+
+  // Dual-link card (e.g. OrionPulseNet: web app + Mac App Store)
+  if (app.appStoreHref) {
+    return (
+      <div className={cardCls} style={cardStyle}>
+        {header}
+        <div className="flex flex-col gap-2">
+          <a href={app.href} target="_blank" rel="noopener noreferrer" className="group/link flex items-center gap-1 text-[13px] font-medium" style={{ color: app.fg }}>
+            {app.storeLabel}
+            <ArrowUpRight size={13} className="opacity-60 transition-transform duration-150 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+          </a>
+          <a href={app.appStoreHref} target="_blank" rel="noopener noreferrer" className="group/mac flex items-center gap-1 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            Mac App Store
+            <ArrowUpRight size={12} className="opacity-50 transition-transform duration-150 group-hover/mac:translate-x-0.5 group-hover/mac:-translate-y-0.5" />
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  // Standard single-link card
+  return (
+    <a
+      href={app.href}
+      target={app.external ? "_blank" : undefined}
+      rel={app.external ? "noopener noreferrer" : undefined}
+      className={`group block ${cardCls}`}
+      style={cardStyle}
+    >
+      {header}
       <div className="flex items-center gap-1 text-[13px] font-medium" style={{ color: app.fg }}>
         {app.storeLabel}
         <ArrowUpRight size={13} className="opacity-60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
