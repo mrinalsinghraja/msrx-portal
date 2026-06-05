@@ -3,7 +3,6 @@ import { ExternalLink, Monitor, Smartphone, ArrowUpRight, Brain, Zap, Shield, La
 
 // ── App data ──────────────────────────────────────────────────────────────────
 const macApps = [
-  { name: "Orion Drive", description: "Cloud and local file management for seamless access across all your devices.", initials: "OD", bg: "#EFF6FF", fg: "#2563EB", href: "https://oriondrive.msrx.co.in", external: true, storeLabel: "Visit Site", highlight: false },
   { name: "OrionSeek", description: "Blazing-fast system search utility. Find anything on your Mac in an instant.", initials: "OS", bg: "#F0FDF4", fg: "#16A34A", href: "https://apps.apple.com/us/app/orionseek/id6770491595?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
   { name: "OrionPulseNet", description: "Network monitoring made elegant. Track uptime, latency, and health at a glance.", initials: "PN", bg: "#F5F3FF", fg: "#7C3AED", href: "https://pulsenet.msrx.co.in", external: true, storeLabel: "Open Web App", appStoreHref: "https://apps.apple.com/us/app/orionpulsenet/id6766838207?mt=12", highlight: true },
   { name: "OrionShield", description: "Security and privacy protection that runs quietly, keeping threats away.", initials: "OR", bg: "#FFF7ED", fg: "#EA580C", href: "https://apps.apple.com/us/app/orionshield/id6764576967?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
