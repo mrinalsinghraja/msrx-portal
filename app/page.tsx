@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { ExternalLink, Monitor, Smartphone, ArrowUpRight, Brain, Zap, Shield, LayoutGrid } from "lucide-react";
+import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shield, LayoutGrid } from "lucide-react";
 
 // ── App data ──────────────────────────────────────────────────────────────────
-const macApps = [
-  { name: "OrionSeek", description: "Blazing-fast system search utility. Find anything on your Mac in an instant.", initials: "OS", bg: "#F0FDF4", fg: "#16A34A", href: "https://apps.apple.com/us/app/orionseek/id6770491595?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
+const webApps = [
   { name: "OrionPulseNet", description: "Network monitoring made elegant. Track uptime, latency, and health at a glance.", initials: "PN", bg: "#F5F3FF", fg: "#7C3AED", href: "https://pulsenet.msrx.co.in", external: true, storeLabel: "Open Web App", appStoreHref: "https://apps.apple.com/us/app/orionpulsenet/id6766838207?mt=12", highlight: true },
   { name: "IncognitoCV", description: "AI resume optimizer that tailors your CV to any job — anonymous, free, nothing ever stored.", initials: "IC", bg: "#ECFEFF", fg: "#0E7490", href: "https://cv.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
+];
+
+const macApps = [
+  { name: "OrionSeek", description: "Blazing-fast system search utility. Find anything on your Mac in an instant.", initials: "OS", bg: "#F0FDF4", fg: "#16A34A", href: "https://apps.apple.com/us/app/orionseek/id6770491595?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
   { name: "OrionShield", description: "Security and privacy protection that runs quietly, keeping threats away.", initials: "OR", bg: "#FFF7ED", fg: "#EA580C", href: "https://apps.apple.com/us/app/orionshield/id6764576967?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
   { name: "Orion Process Explorer", description: "Comprehensive system resource monitor. See exactly what your Mac is doing.", initials: "PE", bg: "#FFF1F2", fg: "#BE123C", href: "https://apps.apple.com/us/app/orionprocessexplorer/id6762134959?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
   { name: "OrionClean", description: "Smart disk cleanup that reclaims space without removing what matters.", initials: "OC", bg: "#F0FDFA", fg: "#0F766E", href: "https://apps.apple.com/us/app/orionclean/id6761111012?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
@@ -212,6 +215,15 @@ export default function Home() {
 
         {/* ── Apps ─────────────────────────────────────────────────────────── */}
         <section id="apps" className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-20">
+          <div className="mb-16">
+            <div className="flex items-center gap-2 mb-8">
+              <Globe size={15} className="text-[var(--text-tertiary)]" />
+              <h2 className="text-[12px] font-semibold tracking-[0.14em] uppercase text-[var(--text-tertiary)]">Web Apps</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {webApps.map((app) => <AppCard key={app.name} app={app} />)}
+            </div>
+          </div>
           <div className="mb-16">
             <div className="flex items-center gap-2 mb-8">
               <Monitor size={15} className="text-[var(--text-tertiary)]" />
