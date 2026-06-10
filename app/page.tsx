@@ -5,6 +5,7 @@ import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shi
 const webApps = [
   { name: "OrionPulseNet", description: "Network monitoring made elegant. Track uptime, latency, and health at a glance.", initials: "PN", bg: "#F5F3FF", fg: "#7C3AED", href: "https://pulsenet.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "IncognitoCV", description: "AI resume optimizer that tailors your CV to any job — anonymous, free, nothing ever stored.", initials: "IC", bg: "#ECFEFF", fg: "#0E7490", href: "https://cv.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
+  { name: "Easy-Peasy Gantt", description: "Create beautiful, presentation-ready Gantt charts in seconds — 12 themes, PNG export, nothing leaves your browser.", initials: "EG", bg: "#EEF2FF", fg: "#4F46E5", href: "https://gantt.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
 ];
 
 const macApps = [
