@@ -9,6 +9,7 @@ const webApps = [
   { name: "OrionPulseNet", description: "Network monitoring made elegant. Track uptime, latency, and health at a glance.", initials: "PN", bg: "#F5F3FF", fg: "#7C3AED", href: "https://pulsenet.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "IncognitoCV", description: "AI resume optimizer that tailors your CV to any job — anonymous, free, nothing ever stored.", initials: "IC", bg: "#ECFEFF", fg: "#0E7490", href: "https://cv.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "Easy-Peasy Gantt", description: "AI-guided Gantt chart maker — beautiful, presentation-ready charts in seconds with 12 themes and PNG export.", initials: "EG", bg: "#EEF2FF", fg: "#4F46E5", href: "https://gantt.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
+  { name: "JEE HyperLab", description: "AI-powered interactive STEM lab for IIT-JEE — visualize Physics & Maths in 2D/3D, experiment with live parameters, and generate exam-grade questions with step-by-step solutions.", initials: "JH", bg: "#EFF6FF", fg: "#4338CA", href: "https://lab.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
 ];
 
 const macApps = [
