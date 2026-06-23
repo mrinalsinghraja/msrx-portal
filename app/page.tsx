@@ -3,13 +3,14 @@ import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shi
 
 // ── App data ──────────────────────────────────────────────────────────────────
 const webApps = [
+  { name: "MSRX QR Studio", description: "Premium AI-powered QR design studio — 21 QR types, gradients, logos, 30+ frames and editable templates. Real-time health scoring, an AI design assistant and one-click optimize. 100% private, no login.", initials: "QS", bg: "#ECFEFF", fg: "#0891B2", href: "https://qr.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "MSRX GraphIQ", description: "Create stunning 2D and 3D visualizations, dashboards, and AI-powered insights from spreadsheets instantly.", initials: "GQ", bg: "#FAF5FF", fg: "#9333EA", href: "https://graph.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "MSRX CanvasIQ", description: "AI-powered visual creation studio — 2D drawing, vector design, diagrams and interactive 3D modeling with an AI Copilot that turns text into graphics. 40+ templates, PNG/SVG/PDF/3D exports. No sign-up, nothing stored.", initials: "CQ", bg: "#E0F2FE", fg: "#0284C7", href: "https://canvas.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "MSRX Meeting", description: "AI-powered video meetings for up to 5 people — live transcription, smart summaries, HD quality presets up to 1080p, noise cancellation, and end-to-end encrypted peer-to-peer media. Anyone can record locally (host can turn it off). No sign-up, nothing stored.", initials: "MM", bg: "#EFF6FF", fg: "#2563EB", href: "https://meeting.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "OrionPulseNet", description: "Network monitoring made elegant. Track uptime, latency, and health at a glance.", initials: "PN", bg: "#F5F3FF", fg: "#7C3AED", href: "https://pulsenet.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "IncognitoCV", description: "AI resume optimizer that tailors your CV to any job — anonymous, free, nothing ever stored.", initials: "IC", bg: "#ECFEFF", fg: "#0E7490", href: "https://cv.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "Easy-Peasy Gantt", description: "AI-guided Gantt chart maker — beautiful, presentation-ready charts in seconds with 12 themes and PNG export.", initials: "EG", bg: "#EEF2FF", fg: "#4F46E5", href: "https://gantt.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
-  { name: "JEE HyperLab", description: "AI-powered interactive STEM lab for IIT-JEE — visualize Physics & Maths in 2D/3D, experiment with live parameters, and generate exam-grade questions with step-by-step solutions.", initials: "JH", bg: "#EFF6FF", fg: "#4338CA", href: "https://lab.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
+  { name: "JEE HyperLab", description: "AI-powered interactive STEM lab for IIT-JEE — visualize all of PCM (Physics, Chemistry & Maths) across 100+ simulations in 2D/3D, experiment with live parameters, and generate exam-grade questions with step-by-step solutions.", initials: "JH", bg: "#EFF6FF", fg: "#4338CA", href: "https://lab.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
 ];
 
 const macApps = [
@@ -140,10 +141,49 @@ function CategoryPill({ icon: Icon, label, color }: { icon: React.ElementType; l
   );
 }
 
+// ── App catalog structured data (JSON-LD) ──────────────────────────────────────
+// Each app becomes a SoftwareApplication inside an ItemList → eligible for rich results.
+function buildItemListJsonLd() {
+  const groups: { apps: App[]; os: string; category: string }[] = [
+    { apps: webApps, os: "Web", category: "WebApplication" },
+    { apps: macApps, os: "macOS", category: "UtilitiesApplication" },
+    { apps: iosApps, os: "iOS", category: "MobileApplication" },
+  ];
+  const items = groups
+    .flatMap((g) => g.apps.map((app) => ({ app, os: g.os, category: g.category })))
+    .map(({ app, os, category }, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: app.name,
+        description: app.description,
+        url: app.href,
+        applicationCategory: category,
+        operatingSystem: os,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        publisher: { "@id": "https://msrx.co.in/#organization" },
+      },
+    }));
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "MSRX Apps",
+    description: "Premium AI-powered apps for web, iOS, and macOS by MSRX.",
+    numberOfItems: items.length,
+    itemListElement: items,
+  };
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
+  const itemListJsonLd = buildItemListJsonLd();
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       {/* ── Nav ──────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-50 nav-blur border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -183,10 +223,11 @@ export default function Home() {
 
               {/* Right: Wordmark + tagline + pills + CTA */}
               <div className="flex-1 text-center lg:text-left">
-                {/* Giant MSRX wordmark */}
-                <div className="font-black tracking-[0.42em] leading-none mb-5 msrx-gradient-text select-none" style={{ fontSize: "clamp(54px, 8vw, 96px)" }}>
-                  MSRX
-                </div>
+                {/* Giant MSRX wordmark — semantic h1 for SEO; descriptive text is sr-only */}
+                <h1 className="font-black tracking-[0.42em] leading-none mb-5 msrx-gradient-text select-none" style={{ fontSize: "clamp(54px, 8vw, 96px)" }}>
+                  <span className="sr-only">MSRX — AI-Powered Web, iOS &amp; macOS Apps</span>
+                  <span aria-hidden="true">MSRX</span>
+                </h1>
 
                 {/* Tagline */}
                 <p className="font-bold tracking-[0.3em] uppercase mb-5 text-[var(--text-tertiary)]" style={{ fontSize: "11px", letterSpacing: "0.28em" }}>
