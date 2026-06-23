@@ -163,7 +163,7 @@ function buildItemListJsonLd() {
         applicationCategory: category,
         operatingSystem: os,
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        publisher: { "@id": "https://msrx.co.in/#organization" },
+        publisher: { "@id": "https://www.msrx.co.in/#organization" },
       },
     }));
   return {

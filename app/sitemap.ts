@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 // Portal sitemap — lists same-origin routes only (msrx.co.in).
 // The web apps live on their own subdomains and ship their own sitemaps.
-const BASE = "https://msrx.co.in";
+const BASE = "https://www.msrx.co.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -24,9 +24,9 @@ table at the end — copy the matching row.
 | `{{FEATURE_LIST}}` | 4–8 real features, comma list | `2D charts, 3D plots, AI insights, dashboards, CSV import, PNG export` |
 
 Fixed across all apps:
-- Parent brand entity `@id`: `https://msrx.co.in/#organization`
+- Parent brand entity `@id`: `https://www.msrx.co.in/#organization`
 - Brand: **MSRX** · tagline **Future. Intelligence. Impact.** · contact `mrinalsinghraja@gmail.com`
-- Canonical host = the app's own apex (self-canonical). Verify Vercel redirects `www.`→apex.
+- Each sub-app is self-canonical on its own host (e.g. `https://graph.msrx.co.in`). Ensure exactly ONE canonical host serves `200` — no duplicate www/non-www or http variants. (The portal itself canonicalizes to **www**: `msrx.co.in` 308→ `www.msrx.co.in`.)
 
 ---
 
@@ -38,7 +38,7 @@ Preserve all existing functionality, auth, state, business logic. Factual data o
 NEVER fabricate ratings, reviews, counts, or dates.
 
 TARGET APP: {{APP_NAME}} at {{APP_DOMAIN}}
-PARENT BRAND: MSRX (https://msrx.co.in), Organization @id = https://msrx.co.in/#organization
+PARENT BRAND: MSRX (https://www.msrx.co.in), Organization @id = https://www.msrx.co.in/#organization
 
 STEP 0 — DISCOVER (before editing):
 - Identify framework + rendering: Next App Router / Next Pages / Vite SPA / CRA / other.
@@ -86,11 +86,11 @@ STEP 5 — JSON-LD (in static HTML; only factual fields):
      "description":"{{APP_DESCRIPTION}}", "isAccessibleForFree":true,
      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
      "featureList":[{{FEATURE_LIST}}],
-     "publisher":{"@id":"https://msrx.co.in/#organization"},
-     "isPartOf":{"@id":"https://msrx.co.in/#website"} }
+     "publisher":{"@id":"https://www.msrx.co.in/#organization"},
+     "isPartOf":{"@id":"https://www.msrx.co.in/#website"} }
    ^ The publisher/isPartOf @id MUST match the portal's Organization/WebSite @id — this links the
      subdomain to the MSRX brand entity in the knowledge graph (key GEO win).
-2) BreadcrumbList: position1 = "MSRX" → https://msrx.co.in ; position2 = "{{APP_NAME}}" → {{APP_DOMAIN}}.
+2) BreadcrumbList: position1 = "MSRX" → https://www.msrx.co.in ; position2 = "{{APP_NAME}}" → {{APP_DOMAIN}}.
 3) FAQPage: 4–6 real Q&A (what is {{APP_NAME}}, is it free, is my data stored, what platforms,
    how to contact MSRX). Mirror the visible FAQ text exactly.
    DO NOT add aggregateRating/Review unless real ratings exist. DO NOT add SearchAction unless a
@@ -101,7 +101,7 @@ STEP 6 — SEMANTIC HTML + A11Y (WCAG 2.2 AA):
 - aria-label on icon-only / external links ("… (opens in a new tab)"); aria-hidden on decorative SVG/icons.
 - All <img>: descriptive alt, width, height, loading="lazy", decoding="async". Convert raster PNG/JPG→WebP.
 - Visible focus states; keyboard-operable menus/dialogs.
-- Add a footer link back to https://msrx.co.in ("Part of MSRX") — internal linking + brand association.
+- Add a footer link back to https://www.msrx.co.in ("Part of MSRX") — internal linking + brand association.
 
 STEP 7 — PERFORMANCE / CWV (LCP<2s, CLS<0.05, INP<150ms):
 - Self-host fonts or preconnect to the font CDN; preload the LCP asset; defer/async non-critical JS.

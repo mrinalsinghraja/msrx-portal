@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy — MSRX",
     description:
       "How MSRX handles your data — on-device by default, minimal collection, never sold.",
-    url: "https://msrx.co.in/privacy",
+    url: "https://www.msrx.co.in/privacy",
     type: "article",
   },
 };
@@ -22,8 +22,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://msrx.co.in" },
-    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://msrx.co.in/privacy" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.msrx.co.in" },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://www.msrx.co.in/privacy" },
   ],
 };
 

@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://msrx.co.in"),
+  metadataBase: new URL("https://www.msrx.co.in"),
   title: {
     default: "MSRX — AI-Powered Web, iOS & macOS Apps",
     template: "%s — MSRX",
@@ -48,17 +48,17 @@ export const metadata: Metadata = {
     title: "MSRX — AI-Powered Web, iOS & macOS Apps",
     description:
       "Premium AI-powered apps — data visualization, video meetings, resume tools, JEE prep, and macOS & iOS utilities. Built with care, launched with purpose.",
-    url: "https://msrx.co.in",
+    url: "https://www.msrx.co.in",
     siteName: "MSRX",
     locale: "en_US",
     type: "website",
-    images: [{ url: "https://msrx.co.in/opengraph-image", width: 1200, height: 630, alt: "MSRX — Future. Intelligence. Impact." }],
+    images: [{ url: "https://www.msrx.co.in/opengraph-image", width: 1200, height: 630, alt: "MSRX — Future. Intelligence. Impact." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "MSRX — AI-Powered Web, iOS & macOS Apps",
     description: "Premium AI-powered apps for web, iOS & macOS. Built with care, launched with purpose.",
-    images: ["https://msrx.co.in/opengraph-image"],
+    images: ["https://www.msrx.co.in/opengraph-image"],
   },
   robots: {
     index: true,
@@ -87,11 +87,11 @@ const orgJsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://msrx.co.in/#organization",
+      "@id": "https://www.msrx.co.in/#organization",
       name: "MSRX",
-      url: "https://msrx.co.in",
-      logo: "https://msrx.co.in/icon.svg",
-      image: "https://msrx.co.in/opengraph-image",
+      url: "https://www.msrx.co.in",
+      logo: "https://www.msrx.co.in/icon.svg",
+      image: "https://www.msrx.co.in/opengraph-image",
       description:
         "MSRX builds premium AI-powered apps for web, iOS, and macOS — data visualization, video meetings, resume tools, JEE prep, network monitoring, and utilities.",
       slogan: "Future. Intelligence. Impact.",
@@ -106,11 +106,11 @@ const orgJsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://msrx.co.in/#website",
-      url: "https://msrx.co.in",
+      "@id": "https://www.msrx.co.in/#website",
+      url: "https://www.msrx.co.in",
       name: "MSRX",
       description: "Premium AI-powered apps for web, iOS, and macOS.",
-      publisher: { "@id": "https://msrx.co.in/#organization" },
+      publisher: { "@id": "https://www.msrx.co.in/#organization" },
       inLanguage: "en",
     },
   ],

@@ -43,22 +43,22 @@ crawlers/LLMs receive every tag with **JavaScript disabled**.
 | Home `<meta theme-color>` | present ×1 ✅ |
 | Home aria-label "opens in a new tab" | present ✅ |
 | Privacy `<title>` | `Privacy Policy — MSRX` (single brand — bug fixed) ✅ |
-| Privacy canonical | `https://msrx.co.in/privacy` ✅ |
+| Privacy canonical | `https://www.msrx.co.in/privacy` ✅ |
 | Privacy BreadcrumbList | present ×1 ✅ |
 | Duplicate titles/canonicals | none ✅ |
 | Fabricated ratings/reviews | none (correctly omitted) ✅ |
 | Build / TS / lint | pass ✅ |
 
 **Recommended external validation (post-deploy):** Google Rich Results Test + Schema Markup Validator
-on `https://msrx.co.in/` and `/privacy`; PageSpeed Insights for field CWV; GSC + Bing Webmaster sitemap submit.
+on `https://www.msrx.co.in/` and `/privacy`; PageSpeed Insights for field CWV; GSC + Bing Webmaster sitemap submit.
 
 ---
 
 ## Structured-data inventory (entity graph)
 
 ```
-https://msrx.co.in/#organization (Organization)  ← logo, contactPoint(email), sameAs[GitHub], slogan
-https://msrx.co.in/#website      (WebSite)        ← publisher → #organization
+https://www.msrx.co.in/#organization (Organization)  ← logo, contactPoint(email), sameAs[GitHub], slogan
+https://www.msrx.co.in/#website      (WebSite)        ← publisher → #organization
 ItemList "MSRX Apps"             → 17× SoftwareApplication (each publisher → #organization, Offer price 0)
 FAQPage                          → 5× Question/Answer (home)
 BreadcrumbList                   → Home → Privacy Policy (privacy)
@@ -82,7 +82,7 @@ Architecture is CWV-favorable; **no code change needed**:
 
 ## Open items (not code — your action)
 
-1. **G7 — www→apex redirect:** confirm Vercel redirects `www.msrx.co.in` → `msrx.co.in` (301). Code declares apex canonical; this is a Vercel **dashboard** setting, not a repo change.
+1. **G7 — canonical host (resolved):** Vercel already 308-redirects apex → `www.msrx.co.in`; code is now aligned to `www` to match (was bare apex). No Vercel dashboard change required.
 2. **Deploy:** `git add -A && git commit && git push origin main` → Vercel auto-deploys. (Awaiting your go-ahead.)
 3. **Sub-apps:** apply `seo-subpage-prompt.md` per subdomain app, one by one.
 </content>

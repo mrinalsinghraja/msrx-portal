@@ -1,7 +1,7 @@
 # SEO Architecture Report — MSRX Portal
 
 **Repo:** `mrinalsinghraja/msrx-portal` · **Local:** `~/Documents/MSRX/portal`
-**Domain:** `https://msrx.co.in` (apex, non-www)
+**Domain:** `https://www.msrx.co.in` (canonical; Vercel 308-redirects apex `msrx.co.in` → www)
 **Generated:** 2026-06-23 · Phase 1 of enterprise SEO audit
 
 ---
@@ -28,7 +28,7 @@
 
 | Route | Type | Public | Indexable | Rendering | Canonical | Structured data |
 |-------|------|:------:|:---------:|-----------|-----------|-----------------|
-| `/` | `app/page.tsx` | ✅ | `index,follow` | SSG | `https://msrx.co.in/` | Organization, WebSite, ItemList → 17× SoftwareApplication |
+| `/` | `app/page.tsx` | ✅ | `index,follow` | SSG | `https://www.msrx.co.in/` | Organization, WebSite, ItemList → 17× SoftwareApplication |
 | `/privacy` | `app/privacy/page.tsx` | ✅ | inherited `index,follow` | SSG | ⚠️ **missing self-canonical** (inherits `/`) | none |
 | `/sitemap.xml` | `app/sitemap.ts` | ✅ | n/a | static | — | — |
 | `/robots.txt` | `app/robots.ts` | ✅ | n/a | static | — | — |
@@ -81,7 +81,7 @@ Ranked by SEO/GEO impact, factual-only (no fabrication):
 | **G4** | Organization schema has no `contactPoint` (email exists, factual) | 7,20 | Low–Med (knowledge panel) | XS |
 | **G5** | No `viewport.themeColor` export (Next 16 correct location); manifest has it but `<meta theme-color>` absent | 9 | Low (mobile UI polish) | XS |
 | **G6** | App-card external links lack descriptive `aria-label` ("opens in new tab"); decorative "Ideas" SVG not `aria-hidden` | 13 | Low–Med (WCAG 2.2 AA) | S |
-| **G7** | www↔apex canonical: code declares apex; **must confirm Vercel redirects `www`→apex** (or vice-versa) | 4,17,22 | Med (duplicate content) | verify-only |
+| **G7** | www↔apex mismatch: code declared apex but Vercel redirects apex→www → **fixed: all signals aligned to `www`** | 4,17,22 | Med (duplicate content) | done |
 | **G8** | `robots.ts` could name AI bots explicitly (clarity, not required since `*` allows) | 24 | Very low (optional) | XS |
 
 ### Explicitly NOT doing (and why)
@@ -96,7 +96,7 @@ Ranked by SEO/GEO impact, factual-only (no fabrication):
 
 ## 5. Canonicalization decision
 
-Code (`layout.tsx`, `robots.ts`, all JSON-LD) declares **`https://msrx.co.in`** (apex, non-www) as canonical. The audit prompt typed `www.msrx.co.in`, but the live deployment + all in-repo signals use apex. **Decision: apex is canonical.** Action item G7 = verify Vercel domain config redirects `www.msrx.co.in` → `msrx.co.in` (301). This is a Vercel dashboard setting, not a repo change.
+**Canonical host = `www` (`https://www.msrx.co.in`).** Verified live: Vercel 308-redirects apex → www (`msrx.co.in` → `www.msrx.co.in`), and the audit brief named `https://www.msrx.co.in/` as the primary domain. The code originally declared the bare apex — a mismatch (HTML canonical = apex, redirect target = www). **Resolution (G7): all in-repo signals — `metadataBase`, canonical, OpenGraph, JSON-LD `@id`s, robots `host`, sitemap — switched to `www`.** No Vercel change needed; the existing apex→www redirect now agrees with the markup.
 
 ---
 
