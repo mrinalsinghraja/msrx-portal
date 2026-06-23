@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -9,35 +9,123 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MSRX — Future. Intelligence. Impact.",
+  metadataBase: new URL("https://msrx.co.in"),
+  title: {
+    default: "MSRX — AI-Powered Web, iOS & macOS Apps",
+    template: "%s — MSRX",
+  },
   description:
-    "Premium apps for iOS and macOS. Built with care, launched with purpose. Connect, access, and work anywhere.",
-  keywords: ["MSRX", "apps", "macOS", "iOS", "productivity", "security", "utilities"],
+    "MSRX builds premium AI-powered apps — data visualization, video meetings, resume tools, JEE prep, network monitoring, and macOS & iOS utilities. Future. Intelligence. Impact.",
+  applicationName: "MSRX",
+  authors: [{ name: "MSRX" }],
+  creator: "MSRX",
+  publisher: "MSRX",
+  category: "technology",
+  keywords: [
+    "MSRX",
+    "AI apps",
+    "web apps",
+    "macOS apps",
+    "iOS apps",
+    "data visualization",
+    "AI video meetings",
+    "AI resume builder",
+    "JEE preparation",
+    "network monitoring",
+    "productivity",
+    "security",
+    "utilities",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "MSRX — Future. Intelligence. Impact.",
-    description: "Premium apps for iOS and macOS. Built with care, launched with purpose.",
+    title: "MSRX — AI-Powered Web, iOS & macOS Apps",
+    description:
+      "Premium AI-powered apps — data visualization, video meetings, resume tools, JEE prep, and macOS & iOS utilities. Built with care, launched with purpose.",
     url: "https://msrx.co.in",
     siteName: "MSRX",
+    locale: "en_US",
     type: "website",
     images: [{ url: "https://msrx.co.in/opengraph-image", width: 1200, height: 630, alt: "MSRX — Future. Intelligence. Impact." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MSRX — Future. Intelligence. Impact.",
-    description: "Premium apps for iOS and macOS. Built with care, launched with purpose.",
+    title: "MSRX — AI-Powered Web, iOS & macOS Apps",
+    description: "Premium AI-powered apps for web, iOS & macOS. Built with care, launched with purpose.",
     images: ["https://msrx.co.in/opengraph-image"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+// Next 16 places theme-color / color-scheme in the viewport export (not metadata).
+// Site is light-only (no dark mode) → declare colorScheme to stop browser auto-darkening.
+export const viewport: Viewport = {
+  themeColor: "#f8f9ff",
+  colorScheme: "light",
+};
+
+// ── Organization + WebSite structured data (JSON-LD) ────────────────────────────
+// Helps Google build a Knowledge Panel and understand the brand entity.
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://msrx.co.in/#organization",
+      name: "MSRX",
+      url: "https://msrx.co.in",
+      logo: "https://msrx.co.in/icon.svg",
+      image: "https://msrx.co.in/opengraph-image",
+      description:
+        "MSRX builds premium AI-powered apps for web, iOS, and macOS — data visualization, video meetings, resume tools, JEE prep, network monitoring, and utilities.",
+      slogan: "Future. Intelligence. Impact.",
+      email: "mrinalsinghraja@gmail.com",
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "mrinalsinghraja@gmail.com",
+        contactType: "customer support",
+        availableLanguage: ["English"],
+      },
+      sameAs: ["https://github.com/mrinalsinghraja"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://msrx.co.in/#website",
+      url: "https://msrx.co.in",
+      name: "MSRX",
+      description: "Premium AI-powered apps for web, iOS, and macOS.",
+      publisher: { "@id": "https://msrx.co.in/#organization" },
+      inLanguage: "en",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shield, LayoutGrid } from "lucide-react";
+import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shield, LayoutGrid, HelpCircle } from "lucide-react";
 
 // ── App data ──────────────────────────────────────────────────────────────────
 const webApps = [
@@ -100,13 +100,13 @@ function AppCard({ app }: { app: App }) {
       <div className={cardCls} style={cardStyle}>
         {header}
         <div className="flex flex-col gap-2">
-          <a href={app.href} target="_blank" rel="noopener noreferrer" className="group/link flex items-center gap-1 text-[13px] font-medium" style={{ color: app.fg }}>
+          <a href={app.href} target="_blank" rel="noopener noreferrer" aria-label={`${app.name} — ${app.storeLabel} (opens in a new tab)`} className="group/link flex items-center gap-1 text-[13px] font-medium" style={{ color: app.fg }}>
             {app.storeLabel}
-            <ArrowUpRight size={13} className="opacity-60 transition-transform duration-150 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+            <ArrowUpRight size={13} aria-hidden="true" className="opacity-60 transition-transform duration-150 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
           </a>
-          <a href={app.appStoreHref} target="_blank" rel="noopener noreferrer" className="group/mac flex items-center gap-1 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+          <a href={app.appStoreHref} target="_blank" rel="noopener noreferrer" aria-label={`${app.name} — Mac App Store (opens in a new tab)`} className="group/mac flex items-center gap-1 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
             Mac App Store
-            <ArrowUpRight size={12} className="opacity-50 transition-transform duration-150 group-hover/mac:translate-x-0.5 group-hover/mac:-translate-y-0.5" />
+            <ArrowUpRight size={12} aria-hidden="true" className="opacity-50 transition-transform duration-150 group-hover/mac:translate-x-0.5 group-hover/mac:-translate-y-0.5" />
           </a>
         </div>
       </div>
@@ -119,6 +119,7 @@ function AppCard({ app }: { app: App }) {
       href={app.href}
       target={app.external ? "_blank" : undefined}
       rel={app.external ? "noopener noreferrer" : undefined}
+      aria-label={app.external ? `${app.name} — ${app.storeLabel} (opens in a new tab)` : `${app.name} — ${app.storeLabel}`}
       className={`group block ${cardCls}`}
       style={cardStyle}
     >
@@ -175,14 +176,55 @@ function buildItemListJsonLd() {
   };
 }
 
+// ── FAQ data (factual — powers FAQPage schema for AI Overviews / GEO + on-page) ──
+const faqs = [
+  {
+    q: "What is MSRX?",
+    a: "MSRX builds premium AI-powered apps for web, iOS, and macOS — spanning data visualization, video meetings, resume tools, IIT-JEE exam prep, network monitoring, QR design, and everyday utilities. Its tagline is \"Future. Intelligence. Impact.\"",
+  },
+  {
+    q: "Are MSRX apps free to use?",
+    a: "All MSRX web apps are free and need no sign-up — open them directly in any browser. The iPhone, iPad, and macOS apps are distributed through the Apple App Store.",
+  },
+  {
+    q: "Do MSRX apps store my personal data?",
+    a: "MSRX is privacy-first. Most apps run entirely on-device and store nothing on our servers; where a network feature exists, only the minimum data it needs is processed. MSRX never sells your data.",
+  },
+  {
+    q: "Which platforms do MSRX apps support?",
+    a: "Three: web apps that run in any modern browser, native macOS apps on the Mac App Store, and native iPhone and iPad apps on the App Store.",
+  },
+  {
+    q: "How do I suggest an app idea or contact MSRX?",
+    a: "Email mrinalsinghraja@gmail.com with your idea or question. MSRX actively explores new productivity tools and utilities based on user suggestions.",
+  },
+];
+
+function buildFaqJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   const itemListJsonLd = buildItemListJsonLd();
+  const faqJsonLd = buildFaqJsonLd();
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       {/* ── Nav ──────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-50 nav-blur border-b border-[var(--border)]">
@@ -304,7 +346,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12 p-8 sm:p-12">
 
               {/* Illustration */}
-              <div className="flex-shrink-0 w-36 h-36 sm:w-44 sm:h-44">
+              <div className="flex-shrink-0 w-36 h-36 sm:w-44 sm:h-44" aria-hidden="true">
                 <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <defs>
                     <linearGradient id="idea-bg" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
@@ -360,6 +402,22 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* ── FAQ ──────────────────────────────────────────────────────────── */}
+        <section aria-labelledby="faq-heading" className="max-w-6xl mx-auto px-4 sm:px-6 pb-10 sm:pb-20">
+          <div className="flex items-center gap-2 mb-8">
+            <HelpCircle size={15} className="text-[var(--text-tertiary)]" aria-hidden="true" />
+            <h2 id="faq-heading" className="text-[12px] font-semibold tracking-[0.14em] uppercase text-[var(--text-tertiary)]">Frequently Asked Questions</h2>
+          </div>
+          <dl className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {faqs.map((f) => (
+              <div key={f.q} className="bg-white rounded-2xl p-6 border border-[var(--border)]" style={{ boxShadow: "var(--shadow-card)" }}>
+                <dt className="font-semibold text-[var(--text-primary)] text-[15px] leading-snug mb-2">{f.q}</dt>
+                <dd className="text-[13px] text-[var(--text-secondary)] leading-relaxed">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         {/* ── Brand Signature ──────────────────────────────────────────────── */}

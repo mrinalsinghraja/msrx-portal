@@ -2,12 +2,39 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — MSRX",
+  // Bare string → layout's "%s — MSRX" template appends brand once.
+  // (Previously "Privacy Policy — MSRX" → rendered "Privacy Policy — MSRX — MSRX".)
+  title: "Privacy Policy",
+  description:
+    "How MSRX handles your data: most apps run on-device, only minimal data is processed for network features, and we never sell your data. Read the full policy.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy Policy — MSRX",
+    description:
+      "How MSRX handles your data — on-device by default, minimal collection, never sold.",
+    url: "https://msrx.co.in/privacy",
+    type: "article",
+  },
+};
+
+// Breadcrumb trail: Home → Privacy Policy (BreadcrumbList rich result + crawl clarity)
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://msrx.co.in" },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://msrx.co.in/privacy" },
+  ],
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <div className="min-h-screen flex flex-col">
       <header className="border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center">
           <Link
@@ -85,6 +112,7 @@ export default function PrivacyPage() {
           </section>
         </div>
       </main>
-    </div>
+      </div>
+    </>
   );
 }
