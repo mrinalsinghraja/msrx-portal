@@ -4,7 +4,13 @@ import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shi
 // ── App data ──────────────────────────────────────────────────────────────────
 const webApps = [
   { name: "MSRX QR Studio", description: "Premium AI-powered QR design studio — 21 QR types, gradients, logos, 30+ frames and editable templates. Real-time health scoring, an AI design assistant and one-click optimize. 100% private, no login.", initials: "QS", bg: "#ECFEFF", fg: "#0891B2", href: "https://qr.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
-  { name: "MSRX GraphIQ", description: "Create stunning 2D and 3D visualizations, dashboards, and AI-powered insights from spreadsheets instantly.", initials: "GQ", bg: "#FAF5FF", fg: "#9333EA", href: "https://graph.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
+  { name: "MSRX GraphIQ", description: "Create stunning 2D and 3D visualizations, dashboards, and AI-powered insights from spreadsheets instantly.", initials: "GQ", bg: "#FAF5FF", fg: "#9333EA", href: "https://graph.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
+    { label: "CSV to Chart", href: "https://graph.msrx.co.in/csv-to-chart" },
+    { label: "Excel to Chart", href: "https://graph.msrx.co.in/excel-to-chart" },
+    { label: "3D Charts", href: "https://graph.msrx.co.in/3d-chart-maker" },
+    { label: "Dashboards", href: "https://graph.msrx.co.in/dashboard-maker" },
+    { label: "Graph Maker", href: "https://graph.msrx.co.in/online-graph-maker" },
+  ] },
   { name: "MSRX CanvasIQ", description: "AI-powered visual creation studio — 2D drawing, vector design, diagrams and interactive 3D modeling with an AI Copilot that turns text into graphics. 40+ templates, PNG/SVG/PDF/3D exports. No sign-up, nothing stored.", initials: "CQ", bg: "#E0F2FE", fg: "#0284C7", href: "https://canvas.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "MSRX Meeting", description: "AI-powered video meetings for up to 5 people — live transcription, smart summaries, HD quality presets up to 1080p, noise cancellation, and end-to-end encrypted peer-to-peer media. Anyone can record locally (host can turn it off). No sign-up, nothing stored.", initials: "MM", bg: "#EFF6FF", fg: "#2563EB", href: "https://meeting.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "OrionPulseNet", description: "Network monitoring made elegant. Track uptime, latency, and health at a glance.", initials: "PN", bg: "#F5F3FF", fg: "#7C3AED", href: "https://pulsenet.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
@@ -28,7 +34,7 @@ const iosApps = [
   { name: "PassportFast", description: "Generate compliant passport and visa photos from your iPhone. No studio needed.", initials: "PF", bg: "#F0FDF4", fg: "#15803D", href: "https://apps.apple.com/us/app/passportfast/id6759985939", external: true, storeLabel: "App Store", highlight: false },
 ];
 
-type App = { name: string; description: string; initials: string; bg: string; fg: string; href: string; external: boolean; storeLabel: string; highlight: boolean; appStoreHref?: string };
+type App = { name: string; description: string; initials: string; bg: string; fg: string; href: string; external: boolean; storeLabel: string; highlight: boolean; appStoreHref?: string; tools?: { label: string; href: string }[] };
 
 // ── MSRX 3D M Logo SVG ────────────────────────────────────────────────────────
 function MSRXLogo({ size = 32, glow = false }: { size?: number; glow?: boolean }) {
@@ -109,6 +115,39 @@ function AppCard({ app }: { app: App }) {
             <ArrowUpRight size={12} aria-hidden="true" className="opacity-50 transition-transform duration-150 group-hover/mac:translate-x-0.5 group-hover/mac:-translate-y-0.5" />
           </a>
         </div>
+      </div>
+    );
+  }
+
+  // Card with deep links to sub-pages (e.g. GraphIQ tool landing pages). Rendered
+  // as a <div> rather than a wrapping <a> so the sub-links aren't nested anchors.
+  if (app.tools) {
+    return (
+      <div className={cardCls} style={cardStyle}>
+        <a href={app.href} target="_blank" rel="noopener noreferrer" aria-label={`${app.name} — ${app.storeLabel} (opens in a new tab)`} className="group block">
+          {header}
+          <div className="flex items-center gap-1 text-[13px] font-medium" style={{ color: app.fg }}>
+            {app.storeLabel}
+            <ArrowUpRight size={13} className="opacity-60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </div>
+        </a>
+        <nav aria-label={`${app.name} tools`} className="mt-4 pt-4 border-t border-[var(--border)]">
+          <p className="text-[11px] font-semibold tracking-[0.08em] uppercase text-[var(--text-tertiary)] mb-2.5">Popular tools</p>
+          <div className="flex flex-wrap gap-1.5">
+            {app.tools.map((t) => (
+              <a
+                key={t.href}
+                href={t.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[12px] font-medium px-2.5 py-1 rounded-full border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-tertiary)] transition-colors"
+                style={{ background: app.bg }}
+              >
+                {t.label}
+              </a>
+            ))}
+          </div>
+        </nav>
       </div>
     );
   }
