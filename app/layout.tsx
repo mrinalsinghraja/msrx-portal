@@ -102,7 +102,12 @@ const orgJsonLd = {
         contactType: "customer support",
         availableLanguage: ["English"],
       },
-      sameAs: ["https://github.com/mrinalsinghraja"],
+      sameAs: [
+        "https://github.com/mrinalsinghraja",
+        "https://www.linkedin.com/in/mrinalsinghraja/",
+        "https://x.com/mrinalsinghraja",
+        "https://apps.apple.com/us/developer/mrinal-singh-raja/id1879524280",
+      ],
     },
     {
       "@type": "WebSite",

@@ -1,0 +1,38 @@
+# MSRX
+
+> MSRX builds premium AI-powered apps for web, iOS, and macOS — data visualization, video meetings, resume tools, IIT-JEE exam prep, network monitoring, QR design, and everyday utilities. Tagline: "Future. Intelligence. Impact." All web apps are free with no sign-up; native apps ship on the Apple App Store. Privacy-first: most apps run on-device and store nothing on MSRX servers.
+
+## Web Apps (free, no sign-up, run in any browser)
+
+- [MSRX QR Studio](https://qr.msrx.co.in): AI-powered QR design studio — 21 QR types, gradients, logos, 30+ frames, editable templates, real-time health scoring, AI design assistant, one-click optimize. 100% private, no login.
+- [MSRX GraphIQ](https://graph.msrx.co.in): Create 2D/3D visualizations, dashboards, and AI-powered insights from spreadsheets instantly. Tools: [CSV to Chart](https://graph.msrx.co.in/csv-to-chart), [Excel to Chart](https://graph.msrx.co.in/excel-to-chart), [3D Chart Maker](https://graph.msrx.co.in/3d-chart-maker), [Dashboard Maker](https://graph.msrx.co.in/dashboard-maker), [Online Graph Maker](https://graph.msrx.co.in/online-graph-maker).
+- [MSRX CanvasIQ](https://canvas.msrx.co.in): AI-powered visual creation studio — 2D drawing, vector design, diagrams, interactive 3D modeling, AI Copilot that turns text into graphics. 40+ templates, PNG/SVG/PDF/3D exports, no sign-up. Templates: [Basic Flowchart](https://canvas.msrx.co.in/templates/basic-flowchart), [Mobile App Wireframe](https://canvas.msrx.co.in/templates/mobile-app-wireframe), [UML Class Diagram](https://canvas.msrx.co.in/templates/uml-class-diagram), [Kanban Board](https://canvas.msrx.co.in/templates/kanban-board).
+- [MSRX Meeting](https://meeting.msrx.co.in): AI-powered video meetings for up to 5 people — live transcription, smart summaries, HD up to 1080p, noise cancellation, end-to-end encrypted peer-to-peer media, local recording. No sign-up, nothing stored.
+- [OrionPulseNet](https://pulsenet.msrx.co.in): Network monitoring — track uptime, latency, and health at a glance.
+- [IncognitoCV](https://cv.msrx.co.in): AI resume optimizer that tailors your CV to any job — anonymous, free, nothing stored.
+- [Easy-Peasy Gantt](https://gantt.msrx.co.in): AI-guided Gantt chart maker — presentation-ready charts in seconds, 12 themes, PNG export.
+- [JEE HyperLab](https://lab.msrx.co.in): AI-powered interactive STEM lab for IIT-JEE — 100+ Physics/Chemistry/Maths simulations in 2D/3D, live parameters, exam-grade questions with step-by-step solutions.
+
+## macOS Apps (Mac App Store)
+
+- [OrionSeek](https://apps.apple.com/us/app/orionseek/id6770491595?mt=12): Blazing-fast system search utility for Mac.
+- [OrionShield](https://apps.apple.com/us/app/orionshield/id6764576967?mt=12): Security and privacy protection that runs quietly.
+- [Orion Process Explorer](https://apps.apple.com/us/app/orionprocessexplorer/id6762134959?mt=12): System resource monitor for macOS.
+- [OrionClean](https://apps.apple.com/us/app/orionclean/id6761111012?mt=12): Smart disk cleanup that reclaims space safely.
+- [OrionPulseNet for Mac](https://apps.apple.com/us/app/orionpulsenet/id6766838207?mt=12): Network monitoring — uptime, latency, health.
+
+## iOS Apps (App Store)
+
+- [GuardTrack Pro](https://apps.apple.com/us/app/guardtrack-pro/id6774895956): Security team management for patrols, incidents, and reports.
+- [Numly — AI Calculator](https://apps.apple.com/us/app/numly-ai-smart-calculator/id6759639887): AI calculator that understands natural language and complex expressions.
+- [PDF Compressor](https://apps.apple.com/us/app/pdfcompressor-shrink-pdf/id6759563556): Compress PDFs on-device without quality loss.
+- [PassportFast](https://apps.apple.com/us/app/passportfast/id6759985939): Generate compliant passport and visa photos from iPhone.
+
+## Contact
+
+- Email: mrinalsinghraja@gmail.com
+- GitHub: https://github.com/mrinalsinghraja
+- LinkedIn: https://www.linkedin.com/in/mrinalsinghraja/
+- X (Twitter): https://x.com/mrinalsinghraja
+- Apple App Store developer: https://apps.apple.com/us/developer/mrinal-singh-raja/id1879524280
+- Privacy policy: https://www.msrx.co.in/privacy
