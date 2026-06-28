@@ -225,7 +225,7 @@ function buildItemListJsonLd() {
 const faqs = [
   {
     q: "What is MSRX?",
-    a: "MSRX builds premium AI-powered apps for web, iOS, and macOS — spanning data visualization, video meetings, resume tools, IIT-JEE exam prep, network monitoring, QR design, and everyday utilities. Its tagline is \"Future. Intelligence. Impact.\"",
+    a: "MSRX builds premium AI-powered apps for web, iOS, and macOS — including MSRX GraphIQ (AI chart & dashboard maker), MSRX CanvasIQ (AI design & diagramming studio), MSRX QR Studio (AI QR code generator), JEE HyperLab (IIT-JEE STEM simulation lab), Easy-Peasy Gantt (AI Gantt chart maker), IncognitoCV (AI resume optimizer), OrionPulseNet (network monitor), and MSRX Meeting (AI video meetings). Its tagline is \"Future. Intelligence. Impact.\"",
   },
   {
     q: "Are MSRX apps free to use?",
@@ -312,7 +312,11 @@ export default function Home() {
               <div className="flex-1 text-center lg:text-left">
                 {/* Giant MSRX wordmark — semantic h1 for SEO; descriptive text is sr-only */}
                 <h1 className="font-black tracking-[0.42em] leading-none mb-5 msrx-gradient-text select-none" style={{ fontSize: "clamp(54px, 8vw, 96px)" }}>
-                  <span className="sr-only">MSRX — AI-Powered Web, iOS &amp; macOS Apps</span>
+                  <span className="sr-only">
+                    MSRX — Home of MSRX GraphIQ, MSRX CanvasIQ, MSRX QR Studio, JEE HyperLab,
+                    Easy-Peasy Gantt, IncognitoCV, OrionPulseNet, and MSRX Meeting.
+                    AI-Powered Web, iOS &amp; macOS Apps by Mrinal Singh Raja.
+                  </span>
                   <span aria-hidden="true">MSRX</span>
                 </h1>
 
@@ -333,8 +337,12 @@ export default function Home() {
                 </div>
 
                 {/* Sub-headline */}
-                <p className="text-[16px] sm:text-[18px] font-medium text-[var(--text-primary)] leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+                <p className="text-[16px] sm:text-[18px] font-medium text-[var(--text-primary)] leading-relaxed mb-4 max-w-md mx-auto lg:mx-0">
                   Premium apps crafted for everyday people — built with care, launched with purpose.
+                </p>
+                {/* App name highlights — visible text for SEO + user orientation */}
+                <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+                  <span className="font-semibold text-[var(--text-primary)]">MSRX GraphIQ</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX CanvasIQ</span> · <span className="font-semibold text-[var(--text-primary)]">QR Studio</span> · <span className="font-semibold text-[var(--text-primary)]">JEE HyperLab</span> · <span className="font-semibold text-[var(--text-primary)]">Gantt Maker</span> · <span className="font-semibold text-[var(--text-primary)]">AI Meeting</span> and more
                 </p>
 
                 {/* CTA */}
