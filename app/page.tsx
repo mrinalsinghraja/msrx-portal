@@ -28,8 +28,13 @@ const webApps = [
   ] },
   { name: "IncognitoCV", description: "AI resume optimizer — paste any job description, upload your CV, and get instant AI feedback on ATS score, skills gaps, and rewrites. Anonymous, free, nothing ever stored.", initials: "IC", bg: "#ECFEFF", fg: "#0E7490", href: "https://cv.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
   { name: "Easy-Peasy Gantt", description: "AI-guided Gantt chart maker — beautiful, presentation-ready charts in seconds with 12 themes and PNG export.", initials: "EG", bg: "#EEF2FF", fg: "#4F46E5", href: "https://gantt.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
-  { name: "JEE HyperLab", description: "AI-powered interactive STEM lab for IIT-JEE — visualize all of PCM (Physics, Chemistry & Maths) across 100+ simulations in 2D/3D, experiment with live parameters, and generate exam-grade questions with step-by-step solutions.", initials: "JH", bg: "#EFF6FF", fg: "#4338CA", href: "https://lab.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true },
-  { name: "UIGen", description: "AI React component generator — describe any UI in plain English and UIGen writes the JSX code with Tailwind CSS, live browser preview, and Monaco editor. Multi-file projects, npm packages via esm.sh. Free, no sign-up.", initials: "UG", bg: "#F0F9FF", fg: "#0369A1", href: "https://uigen.app", external: true, storeLabel: "Open Web App", highlight: true },
+  { name: "JEE HyperLab", description: "AI-powered interactive STEM lab for IIT-JEE — visualize all of PCM (Physics, Chemistry & Maths) across 100+ simulations in 2D/3D, experiment with live parameters, and generate exam-grade questions with step-by-step solutions.", initials: "JH", bg: "#EFF6FF", fg: "#4338CA", href: "https://lab.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
+    { label: "Physics Sims", href: "https://lab.msrx.co.in/physics" },
+    { label: "Chemistry Sims", href: "https://lab.msrx.co.in/chemistry" },
+    { label: "Maths Sims", href: "https://lab.msrx.co.in/mathematics" },
+    { label: "Projectile Motion", href: "https://lab.msrx.co.in/sim/projectile-motion" },
+    { label: "All Simulations", href: "https://lab.msrx.co.in/sim/" },
+  ] },
 ];
 
 const macApps = [
@@ -232,7 +237,7 @@ function buildItemListJsonLd() {
 const faqs = [
   {
     q: "What is MSRX?",
-    a: "MSRX builds premium AI-powered apps for web, iOS, and macOS — including MSRX GraphIQ (AI chart & dashboard maker), MSRX CanvasIQ (AI design & diagramming studio), MSRX QR Studio (AI QR code generator), JEE HyperLab (IIT-JEE STEM simulation lab), Easy-Peasy Gantt (AI Gantt chart maker), UIGen (AI React component generator), IncognitoCV (AI resume optimizer), OrionPulseNet (network monitor), and MSRX Meeting (AI video meetings). Its tagline is \"Future. Intelligence. Impact.\"",
+    a: "MSRX builds premium AI-powered apps for web, iOS, and macOS — including MSRX GraphIQ (AI chart & dashboard maker), MSRX CanvasIQ (AI design & diagramming studio), MSRX QR Studio (AI QR code generator), JEE HyperLab (IIT-JEE STEM simulation lab), Easy-Peasy Gantt (AI Gantt chart maker), IncognitoCV (AI resume optimizer), OrionPulseNet (network monitor), and MSRX Meeting (AI video meetings). Its tagline is \"Future. Intelligence. Impact.\"",
   },
   {
     q: "Are MSRX apps free to use?",
@@ -321,7 +326,7 @@ export default function Home() {
                 <h1 className="font-black tracking-[0.42em] leading-none mb-5 msrx-gradient-text select-none" style={{ fontSize: "clamp(54px, 8vw, 96px)" }}>
                   <span className="sr-only">
                     MSRX — Home of MSRX GraphIQ, MSRX CanvasIQ, MSRX QR Studio, JEE HyperLab,
-                    Easy-Peasy Gantt, UIGen, IncognitoCV, OrionPulseNet, and MSRX Meeting.
+                    Easy-Peasy Gantt, IncognitoCV, OrionPulseNet, and MSRX Meeting.
                     AI-Powered Web, iOS &amp; macOS Apps by Mrinal Singh Raja.
                   </span>
                   <span aria-hidden="true">MSRX</span>
@@ -349,7 +354,7 @@ export default function Home() {
                 </p>
                 {/* App name highlights — visible text for SEO + user orientation */}
                 <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-                  <span className="font-semibold text-[var(--text-primary)]">MSRX GraphIQ</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX CanvasIQ</span> · <span className="font-semibold text-[var(--text-primary)]">QR Studio</span> · <span className="font-semibold text-[var(--text-primary)]">JEE HyperLab</span> · <span className="font-semibold text-[var(--text-primary)]">Easy-Peasy Gantt</span> · <span className="font-semibold text-[var(--text-primary)]">UIGen</span> · <span className="font-semibold text-[var(--text-primary)]">AI Meeting</span> and more
+                  <span className="font-semibold text-[var(--text-primary)]">MSRX GraphIQ</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX CanvasIQ</span> · <span className="font-semibold text-[var(--text-primary)]">QR Studio</span> · <span className="font-semibold text-[var(--text-primary)]">JEE HyperLab</span> · <span className="font-semibold text-[var(--text-primary)]">Easy-Peasy Gantt</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX Meeting</span> and more
                 </p>
 
                 {/* CTA */}

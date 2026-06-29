@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s — MSRX",
   },
   description:
-    "MSRX: AI-powered apps including MSRX GraphIQ (charts & 3D dashboards), MSRX CanvasIQ (AI design studio), QR Studio, Gantt Maker, JEE HyperLab, and iOS/macOS utilities.",
+    "MSRX: AI-powered apps including MSRX GraphIQ (charts & 3D dashboards), MSRX CanvasIQ (AI design studio), QR Studio, Easy-Peasy Gantt, JEE HyperLab, IncognitoCV, MSRX Meeting, and iOS/macOS utilities.",
   applicationName: "MSRX",
   authors: [{ name: "Mrinal Singh Raja", url: "https://www.linkedin.com/in/mrinalsinghraja/" }],
   creator: "Mrinal Singh Raja",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "IncognitoCV",
     "OrionPulseNet",
     "PulseNet",
-    "UIGen",
+    "Easy-Peasy Gantt",
     "AI graph maker",
     "AI chart maker",
     "3D chart maker",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MSRX — AI-Powered Web, iOS & macOS Apps",
     description:
-      "MSRX GraphIQ, MSRX CanvasIQ, QR Studio, Gantt Maker, JEE HyperLab and more — premium AI web apps plus iOS & macOS utilities by Mrinal Singh Raja.",
+      "MSRX GraphIQ, MSRX CanvasIQ, Easy-Peasy Gantt, JEE HyperLab, QR Studio and more — premium AI web apps plus iOS & macOS utilities by Mrinal Singh Raja.",
     url: "https://www.msrx.co.in",
     siteName: "MSRX",
     locale: "en_US",
@@ -80,8 +80,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MSRX — AI-Powered Web, iOS & macOS Apps",
     description:
-      "MSRX GraphIQ, MSRX CanvasIQ, QR Studio, Gantt Maker, JEE HyperLab — premium AI apps by @mrinalsinghraja.",
-    images: ["https://www.msrx.co.in/opengraph-image"],
+      "MSRX GraphIQ, MSRX CanvasIQ, Easy-Peasy Gantt, JEE HyperLab, QR Studio — premium AI apps by @mrinalsinghraja.",
+    images: [{ url: "https://www.msrx.co.in/opengraph-image", alt: "MSRX — MSRX GraphIQ, MSRX CanvasIQ, Easy-Peasy Gantt & more AI apps" }],
     creator: "@mrinalsinghraja",
     site: "@mrinalsinghraja",
   },
@@ -118,7 +118,7 @@ const orgJsonLd = {
       logo: "https://www.msrx.co.in/icon.svg",
       image: "https://www.msrx.co.in/opengraph-image",
       description:
-        "MSRX builds premium AI-powered apps for web, iOS, and macOS — data visualization, video meetings, resume tools, JEE prep, network monitoring, and utilities.",
+        "MSRX builds premium AI-powered apps for web, iOS, and macOS — MSRX GraphIQ (data viz), MSRX CanvasIQ (AI design), Easy-Peasy Gantt, JEE HyperLab (IIT-JEE STEM lab), MSRX Meeting (AI video), IncognitoCV (resume AI), QR Studio, and iOS/macOS utilities.",
       slogan: "Future. Intelligence. Impact.",
       email: "mrinalsinghraja@gmail.com",
       contactPoint: {
