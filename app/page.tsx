@@ -3,6 +3,13 @@ import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shi
 
 // ── App data ──────────────────────────────────────────────────────────────────
 const webApps = [
+  { name: "MSRX WeatherWatch", description: "AI-powered weather and multi-hazard early-warning platform — live conditions, 7-day forecasts, UV, air quality and 15 hazard engines (storms, floods, heat, air quality and more) with an AI weather assistant in 14 languages. Free, no sign-up, privacy-first.", initials: "WW", bg: "#F0F9FF", fg: "#0369A1", href: "https://weather.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
+    { label: "Live Weather", href: "https://weather.msrx.co.in" },
+    { label: "7-Day Forecast", href: "https://weather.msrx.co.in/#analytics" },
+    { label: "Weather Highlights", href: "https://weather.msrx.co.in/#highlights" },
+    { label: "Hazard Alerts", href: "https://weather.msrx.co.in" },
+    { label: "AI Assistant", href: "https://weather.msrx.co.in" },
+  ] },
   { name: "MSRX QR Studio", description: "Premium AI-powered QR design studio — 21 QR types, gradients, logos, 30+ frames and editable templates. Real-time health scoring, an AI design assistant and one-click optimize. 100% private, no login.", initials: "QS", bg: "#ECFEFF", fg: "#0891B2", href: "https://qr.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
     { label: "URL QR Code", href: "https://qr.msrx.co.in" },
     { label: "WiFi QR Code", href: "https://qr.msrx.co.in" },
@@ -259,7 +266,7 @@ function buildItemListJsonLd() {
 const faqs = [
   {
     q: "What is MSRX?",
-    a: "MSRX builds premium AI-powered apps for web, iOS, and macOS — including MSRX GraphIQ (AI chart & dashboard maker), MSRX CanvasIQ (AI design & diagramming studio), MSRX QR Studio (AI QR code generator), JEE HyperLab (IIT-JEE STEM simulation lab), Easy-Peasy Gantt (AI Gantt chart maker), IncognitoCV (AI resume optimizer), OrionPulseNet (network monitor), and MSRX Meeting (AI video meetings). Its tagline is \"Future. Intelligence. Impact.\"",
+    a: "MSRX builds premium AI-powered apps for web, iOS, and macOS — including MSRX WeatherWatch (AI weather & multi-hazard early-warning platform), MSRX GraphIQ (AI chart & dashboard maker), MSRX CanvasIQ (AI design & diagramming studio), MSRX QR Studio (AI QR code generator), JEE HyperLab (IIT-JEE STEM simulation lab), Easy-Peasy Gantt (AI Gantt chart maker), IncognitoCV (AI resume optimizer), OrionPulseNet (network monitor), and MSRX Meeting (AI video meetings). Its tagline is \"Future. Intelligence. Impact.\"",
   },
   {
     q: "Are MSRX apps free to use?",
@@ -347,7 +354,7 @@ export default function Home() {
                 {/* Giant MSRX wordmark — semantic h1 for SEO; descriptive text is sr-only */}
                 <h1 className="font-black tracking-[0.42em] leading-none mb-5 msrx-gradient-text select-none" style={{ fontSize: "clamp(54px, 8vw, 96px)" }}>
                   <span className="sr-only">
-                    MSRX — Home of MSRX GraphIQ, MSRX CanvasIQ, MSRX QR Studio, JEE HyperLab,
+                    MSRX — Home of MSRX WeatherWatch, MSRX GraphIQ, MSRX CanvasIQ, MSRX QR Studio, JEE HyperLab,
                     Easy-Peasy Gantt, IncognitoCV, OrionPulseNet, and MSRX Meeting.
                     AI-Powered Web, iOS &amp; macOS Apps by Mrinal Singh Raja.
                   </span>
@@ -376,7 +383,7 @@ export default function Home() {
                 </p>
                 {/* App name highlights — visible text for SEO + user orientation */}
                 <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-                  <span className="font-semibold text-[var(--text-primary)]">MSRX GraphIQ</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX CanvasIQ</span> · <span className="font-semibold text-[var(--text-primary)]">QR Studio</span> · <span className="font-semibold text-[var(--text-primary)]">JEE HyperLab</span> · <span className="font-semibold text-[var(--text-primary)]">Easy-Peasy Gantt</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX Meeting</span> and more
+                  <span className="font-semibold text-[var(--text-primary)]">MSRX WeatherWatch</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX GraphIQ</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX CanvasIQ</span> · <span className="font-semibold text-[var(--text-primary)]">QR Studio</span> · <span className="font-semibold text-[var(--text-primary)]">JEE HyperLab</span> · <span className="font-semibold text-[var(--text-primary)]">Easy-Peasy Gantt</span> · <span className="font-semibold text-[var(--text-primary)]">MSRX Meeting</span> and more
                 </p>
 
                 {/* CTA */}
