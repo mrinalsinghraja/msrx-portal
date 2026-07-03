@@ -67,6 +67,7 @@ const webApps = [
 ];
 
 const macApps = [
+  { name: "MSRX Canvas AI", description: "Premium paint and annotation studio — draw, sketch, and mark up screenshots with on-device AI. Fast, private, and fully offline.", initials: "CA", bg: "#EEF2FF", fg: "#4F46E5", href: "https://apps.apple.com/us/app/msrx-canvas-ai/id6784137969?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
   { name: "OrionSeek", description: "Blazing-fast system search utility. Find anything on your Mac in an instant.", initials: "OS", bg: "#F0FDF4", fg: "#16A34A", href: "https://apps.apple.com/us/app/orionseek/id6770491595?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
   { name: "OrionShield", description: "Security and privacy protection that runs quietly, keeping threats away.", initials: "OR", bg: "#FFF7ED", fg: "#EA580C", href: "https://apps.apple.com/us/app/orionshield/id6764576967?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
   { name: "Orion Process Explorer", description: "Comprehensive system resource monitor. See exactly what your Mac is doing.", initials: "PE", bg: "#FFF1F2", fg: "#BE123C", href: "https://apps.apple.com/us/app/orionprocessexplorer/id6762134959?mt=12", external: true, storeLabel: "Mac App Store", highlight: false },
