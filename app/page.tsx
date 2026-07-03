@@ -57,7 +57,7 @@ const webApps = [
     { label: "Milestones", href: "https://gantt.msrx.co.in" },
     { label: "Export PNG", href: "https://gantt.msrx.co.in" },
   ] },
-  { name: "JEE HyperLab", description: "AI-powered interactive STEM lab for IIT-JEE — visualize all of PCM (Physics, Chemistry & Maths) across 100+ simulations in 2D/3D, experiment with live parameters, and generate exam-grade questions with step-by-step solutions.", initials: "JH", bg: "#EFF6FF", fg: "#4338CA", href: "https://lab.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
+  { name: "JEE HyperLab", description: "AI-powered interactive STEM lab for IIT-JEE — visualize all of PCM (Physics, Chemistry & Maths) across 200+ simulations in 2D/3D, experiment with live parameters, and generate exam-grade questions with step-by-step solutions.", initials: "JH", bg: "#EFF6FF", fg: "#4338CA", href: "https://lab.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
     { label: "Physics Sims", href: "https://lab.msrx.co.in/physics" },
     { label: "Chemistry Sims", href: "https://lab.msrx.co.in/chemistry" },
     { label: "Maths Sims", href: "https://lab.msrx.co.in/mathematics" },
