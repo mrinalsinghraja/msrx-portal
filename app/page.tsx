@@ -3,6 +3,13 @@ import { ExternalLink, Monitor, Smartphone, Globe, ArrowUpRight, Brain, Zap, Shi
 
 // ── App data ──────────────────────────────────────────────────────────────────
 const webApps = [
+  { name: "MSRX Planner", description: "AI-powered academic workspace for JEE, NEET, CBSE, ICSE and college students — plan your week with a smart drag-and-drop planner, take rich notes, track assignments and exams, build flashcards with spaced-repetition revision, share in study groups and watch your knowledge health grow. Works offline, syncs across devices.", initials: "MP", bg: "#F0FDF4", fg: "#15803D", href: "https://planner.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
+    { label: "Smart Planner", href: "https://planner.msrx.co.in/planner" },
+    { label: "Rich Notes", href: "https://planner.msrx.co.in/notes" },
+    { label: "Flashcards & Revision", href: "https://planner.msrx.co.in/revision" },
+    { label: "Study Groups", href: "https://planner.msrx.co.in/groups" },
+    { label: "Knowledge Health", href: "https://planner.msrx.co.in/dashboard" },
+  ] },
   { name: "MSRX WeatherWatch", description: "AI-powered weather and multi-hazard early-warning platform — live conditions, 7-day forecasts, UV, air quality and 15 hazard engines (storms, floods, heat, air quality and more) with an AI weather assistant in 14 languages. Free, no sign-up, privacy-first.", initials: "WW", bg: "#F0F9FF", fg: "#0369A1", href: "https://weather.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
     { label: "Live Weather", href: "https://weather.msrx.co.in" },
     { label: "7-Day Forecast", href: "https://weather.msrx.co.in/#analytics" },
