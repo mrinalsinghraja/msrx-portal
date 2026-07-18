@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s — MSRX",
   },
   description:
-    "MSRX: AI-powered apps including MSRX WeatherWatch (AI weather & multi-hazard early warning), MSRX GraphIQ (charts & 3D dashboards), MSRX CanvasIQ (AI design studio), QR Studio, Easy-Peasy Gantt, JEE HyperLab, IncognitoCV, MSRX Meeting, and iOS/macOS utilities.",
+    "MSRX: AI-powered apps including MSRX WeatherWatch (AI weather & multi-hazard early warning), MSRX GraphIQ (charts & 3D dashboards), MSRX CanvasIQ (AI design studio), MSRX StoryQuest (interactive STEM missions), QR Studio, Easy-Peasy Gantt, JEE HyperLab, IncognitoCV, MSRX Meeting, and iOS/macOS utilities.",
   applicationName: "MSRX",
   authors: [{ name: "Mrinal Singh Raja", url: "https://www.linkedin.com/in/mrinalsinghraja/" }],
   creator: "Mrinal Singh Raja",
@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     "QR Studio",
     "MSRX Meeting",
     "JEE HyperLab",
+    "MSRX StoryQuest",
+    "StoryQuest",
+    "interactive STEM missions",
     "Easy-Peasy Gantt",
     "IncognitoCV",
     "OrionPulseNet",
@@ -123,7 +126,7 @@ const orgJsonLd = {
       logo: "https://www.msrx.co.in/icon.svg",
       image: "https://www.msrx.co.in/opengraph-image",
       description:
-        "MSRX builds premium AI-powered apps for web, iOS, and macOS — MSRX WeatherWatch (AI weather & multi-hazard early warning), MSRX GraphIQ (data viz), MSRX CanvasIQ (AI design), Easy-Peasy Gantt, JEE HyperLab (IIT-JEE STEM lab), MSRX Meeting (AI video), IncognitoCV (resume AI), QR Studio, and iOS/macOS utilities.",
+        "MSRX builds premium AI-powered apps for web, iOS, and macOS — MSRX WeatherWatch (AI weather & multi-hazard early warning), MSRX GraphIQ (data viz), MSRX CanvasIQ (AI design), Easy-Peasy Gantt, JEE HyperLab (IIT-JEE STEM lab), MSRX Meeting (AI video), MSRX StoryQuest (interactive STEM missions), IncognitoCV (resume AI), QR Studio, and iOS/macOS utilities.",
       slogan: "Future. Intelligence. Impact.",
       email: "mrinalsinghraja@gmail.com",
       contactPoint: {

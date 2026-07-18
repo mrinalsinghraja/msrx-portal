@@ -10,6 +10,13 @@ const webApps = [
     { label: "Study Groups", href: "https://planner.msrx.co.in/groups" },
     { label: "Knowledge Health", href: "https://planner.msrx.co.in/dashboard" },
   ] },
+  { name: "MSRX StoryQuest", description: "Interactive STEM missions for curious students \u2014 100 stories across physics, chemistry, maths and biology. Each mission drops you into a system that is going wrong, hands you one real variable, and asks you to work out what it should be. Every answer is solved from an actual equation, never guessed. Free, no sign-up, nothing stored.", initials: "SQ", bg: "#FDF4FF", fg: "#A21CAF", href: "https://story.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
+    { label: "Mission Library", href: "https://story.msrx.co.in/missions" },
+    { label: "Physics Missions", href: "https://story.msrx.co.in/missions/physics-01" },
+    { label: "Chemistry Missions", href: "https://story.msrx.co.in/missions/chemistry-01" },
+    { label: "Maths Missions", href: "https://story.msrx.co.in/missions/mathematics-01" },
+    { label: "Biology Missions", href: "https://story.msrx.co.in/missions/biology-01" },
+  ] },
   { name: "MSRX WeatherWatch", description: "AI-powered weather and multi-hazard early-warning platform — live conditions, 7-day forecasts, UV, air quality and 15 hazard engines (storms, floods, heat, air quality and more) with an AI weather assistant in 14 languages. Free, no sign-up, privacy-first.", initials: "WW", bg: "#F0F9FF", fg: "#0369A1", href: "https://weather.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
     { label: "Live Weather", href: "https://weather.msrx.co.in" },
     { label: "7-Day Forecast", href: "https://weather.msrx.co.in/#analytics" },
