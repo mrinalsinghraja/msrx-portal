@@ -10,7 +10,7 @@ const webApps = [
     { label: "Study Groups", href: "https://planner.msrx.co.in/groups" },
     { label: "Knowledge Health", href: "https://planner.msrx.co.in/dashboard" },
   ] },
-  { name: "MSRX StoryQuest", description: "Interactive STEM missions for curious students \u2014 100 stories across physics, chemistry, maths and biology. Each mission drops you into a system that is going wrong, hands you one real variable, and asks you to work out what it should be. Every answer is solved from an actual equation, never guessed. Free, no sign-up, nothing stored.", initials: "SQ", bg: "#FDF4FF", fg: "#A21CAF", href: "https://story.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
+  { name: "MSRX StoryQuest", description: "Interactive STEM missions for curious students \u2014 202 stories across physics, chemistry, maths and biology, spanning classes 1 to 10. Each mission drops you into a system that is going wrong, hands you one real variable, and asks you to work out what it should be. Every answer is solved from an actual equation, never guessed. Free, no sign-up, nothing stored.", initials: "SQ", bg: "#FDF4FF", fg: "#A21CAF", href: "https://story.msrx.co.in", external: true, storeLabel: "Open Web App", highlight: true, tools: [
     { label: "Mission Library", href: "https://story.msrx.co.in/missions" },
     { label: "Physics Missions", href: "https://story.msrx.co.in/missions/physics-01" },
     { label: "Chemistry Missions", href: "https://story.msrx.co.in/missions/chemistry-01" },
