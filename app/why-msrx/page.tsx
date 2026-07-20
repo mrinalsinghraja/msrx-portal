@@ -60,18 +60,18 @@ export default function WhyMsrx() {
     <>
       <JsonLd data={breadcrumbJsonLd(trail)} />
 
-      <div className="on-ink border-b border-[var(--border)]" style={{ background: "var(--ink)" }}>
+      <div className="border-b border-[var(--border)]" style={{ background: "var(--stage)" }}>
         <div className="max-w-4xl mx-auto px-5 sm:px-6 pt-8 pb-16 sm:pb-20">
-          <Breadcrumbs trail={trail} tone="ink" />
+          <Breadcrumbs trail={trail} tone="stage" />
           <h1
             className="display text-[clamp(34px,5.6vw,58px)] mb-6"
-            style={{ color: "var(--ink-text-primary)" }}
+            style={{ color: "var(--stage-text-primary)" }}
           >
             Twenty apps, four rules.
           </h1>
           <p
             className="text-[18px] leading-relaxed max-w-2xl"
-            style={{ color: "var(--ink-text-secondary)" }}
+            style={{ color: "var(--stage-text-secondary)" }}
           >
             MSRX is one person building software. That shapes everything about how these
             apps work — what they ask of you, where your data goes, and why each one is

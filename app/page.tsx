@@ -117,13 +117,13 @@ export default function Home() {
           The catalog is the hero. For a portal, breadth is the argument, so
           showing all twenty apps in the first screen beats describing them. */}
       <section
-        className="on-ink relative"
-        style={{ background: "var(--ink)", color: "var(--ink-text-primary)" }}
+        className="relative"
+        style={{ background: "var(--stage)", color: "var(--stage-text-primary)" }}
       >
         <div className="max-w-6xl mx-auto px-5 sm:px-6 pt-16 pb-14 sm:pt-24 sm:pb-20">
           <div className="grid lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-14 items-end mb-14 sm:mb-20">
             <div>
-              <p className="eyebrow mb-6" style={{ color: "var(--ink-text-tertiary)" }}>
+              <p className="eyebrow mb-6" style={{ color: "var(--stage-text-tertiary)" }}>
                 Future. Intelligence. Impact.
               </p>
               <h1 className="display text-[clamp(38px,5.6vw,66px)] text-balance mb-6">
@@ -133,7 +133,7 @@ export default function Home() {
               </h1>
               <p
                 className="text-[17px] sm:text-[18px] leading-relaxed max-w-lg"
-                style={{ color: "var(--ink-text-secondary)" }}
+                style={{ color: "var(--stage-text-secondary)" }}
               >
                 MSRX builds tools for the web, Mac and iPhone. The web apps are free,
                 need no sign-up, and keep your work on your device.
@@ -155,7 +155,7 @@ export default function Home() {
                       </span>
                       <span
                         className="mono text-[10.5px] tracking-[0.14em] uppercase"
-                        style={{ color: "var(--ink-text-tertiary)" }}
+                        style={{ color: "var(--stage-text-tertiary)" }}
                       >
                         {stat.l}
                       </span>
@@ -167,25 +167,25 @@ export default function Home() {
           </div>
 
           {/* Index */}
-          <div className="rule-fade-ink" />
+          <div className="rule-fade-stage" />
           <div
             className="flex items-baseline justify-between py-4"
             aria-hidden="true"
           >
             <span
               className="mono text-[10.5px] tracking-[0.18em] uppercase"
-              style={{ color: "var(--ink-text-tertiary)" }}
+              style={{ color: "var(--stage-text-tertiary)" }}
             >
               Index
             </span>
             <span
               className="mono text-[10.5px] tracking-[0.18em] uppercase"
-              style={{ color: "var(--ink-text-tertiary)" }}
+              style={{ color: "var(--stage-text-tertiary)" }}
             >
               Platform
             </span>
           </div>
-          <div className="rule-fade-ink" />
+          <div className="rule-fade-stage" />
 
           <ul>
             {apps.map((app, i) => (
@@ -195,14 +195,14 @@ export default function Home() {
                   className="index-row grid grid-cols-[2.25rem_1fr_auto] sm:grid-cols-[3rem_minmax(0,14rem)_1fr_4rem] items-center gap-x-3 sm:gap-x-5 py-3.5 px-2 -mx-2 rounded-lg border-b"
                   style={
                     {
-                      borderColor: "var(--ink-line)",
+                      borderColor: "var(--stage-line)",
                       "--row-accent": app.accent,
                     } as React.CSSProperties
                   }
                 >
                   <span
                     className="mono text-[12px]"
-                    style={{ color: "var(--ink-text-tertiary)" }}
+                    style={{ color: "var(--stage-text-tertiary)" }}
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -210,14 +210,14 @@ export default function Home() {
 
                   <span
                     className="index-name display-sm text-[16px] sm:text-[18px] truncate"
-                    style={{ color: "var(--ink-text-primary)" }}
+                    style={{ color: "var(--stage-text-primary)" }}
                   >
                     {app.name}
                   </span>
 
                   <span
                     className="hidden sm:block text-[14px] truncate"
-                    style={{ color: "var(--ink-text-secondary)" }}
+                    style={{ color: "var(--stage-text-secondary)" }}
                   >
                     {app.tagline}
                   </span>
@@ -225,7 +225,7 @@ export default function Home() {
                   <span className="flex items-center justify-end gap-2">
                     <span
                       className="mono text-[10.5px] tracking-[0.12em]"
-                      style={{ color: "var(--ink-text-tertiary)" }}
+                      style={{ color: "var(--stage-text-tertiary)" }}
                     >
                       {PLATFORM_TAG[app.platform]}
                     </span>
@@ -351,21 +351,21 @@ export default function Home() {
       {/* ── Idea CTA ────────────────────────────────────────────────────────*/}
       <section className="max-w-6xl mx-auto px-5 sm:px-6 pb-16 sm:pb-24">
         <div
-          className="on-ink ink-panel relative overflow-hidden rounded-[var(--radius-xl)] px-7 py-12 sm:px-14 sm:py-16"
-          style={{ background: "var(--ink)" }}
+          className="stage-panel relative overflow-hidden rounded-[var(--radius-xl)] px-7 py-12 sm:px-14 sm:py-16"
+          style={{ background: "var(--stage-raised)" }}
         >
           <div className="relative flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
             <MsrxLogo size={54} uid="cta" className="shrink-0" />
             <div className="flex-1">
               <h2
                 className="display text-[clamp(24px,3.4vw,34px)] mb-3"
-                style={{ color: "var(--ink-text-primary)" }}
+                style={{ color: "var(--stage-text-primary)" }}
               >
                 Wishing an app existed?
               </h2>
               <p
                 className="text-[16px] leading-relaxed max-w-xl"
-                style={{ color: "var(--ink-text-secondary)" }}
+                style={{ color: "var(--stage-text-secondary)" }}
               >
                 Most of these started as something that was missing. If there is a tool
                 you keep wanting and cannot find, describe it — the next one has to come

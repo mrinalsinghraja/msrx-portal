@@ -70,14 +70,14 @@ export function MsrxWordmark({
 }: {
   uid: string;
   size?: number;
-  tone?: "paper" | "ink";
+  tone?: "paper" | "stage";
 }) {
   return (
     <span className="flex items-center gap-2.5 select-none">
       <MsrxLogo size={size} uid={uid} />
       <span
         className="font-bold text-[17px] tracking-[0.14em]"
-        style={{ color: tone === "ink" ? "var(--ink-text-primary)" : "var(--text-primary)" }}
+        style={{ color: tone === "stage" ? "var(--stage-text-primary)" : "var(--text-primary)" }}
       >
         MSRX
       </span>

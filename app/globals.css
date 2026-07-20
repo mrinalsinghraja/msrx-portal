@@ -6,9 +6,10 @@
    prefers-color-scheme. The inline script in layout.tsx stamps
    html[data-theme] before first paint, so there is no flash.
 
-   The hero and CTA sit on --ink in BOTH themes — the ink index is the site's
-   signature, and the cyan→violet gradient needs that surface to read at full
-   saturation. Ink tokens therefore do not change with the theme.
+   The hero and CTA sit on the --stage surface: in light it matches the paper
+   so the whole page stays light; in dark it deepens to near-black ink, where
+   the cyan→violet gradient reads at full saturation. Stage text tokens flip
+   with it.
 
    Text colours are documented with their contrast ratio against the surface
    they sit on. Everything meets WCAG AA for its size. */
@@ -20,9 +21,14 @@
   --paper-tint: #f3f3f6;
   --paper-sunk: #ebebf0;
   --card: #ffffff;
-  --ink: #0b0b12;
-  --ink-raised: #14141f;
-  --ink-line: rgba(255, 255, 255, 0.09);
+
+  /* Stage — the hero and CTA surface. Light theme keeps it on paper. */
+  --stage: #fafafa;
+  --stage-raised: #ffffff;
+  --stage-line: rgba(9, 9, 20, 0.08);
+  --stage-text-primary: #16161a;   /* 16.4:1 */
+  --stage-text-secondary: #55555e; /*  7.2:1 */
+  --stage-text-tertiary: #6e6e78;  /*  5.1:1 */
 
   /* Hairlines */
   --border: rgba(9, 9, 20, 0.08);
@@ -33,16 +39,16 @@
   --text-secondary: #55555e; /*  7.2:1 */
   --text-tertiary: #6e6e78;  /*  5.1:1 */
 
-  /* Text on ink — constant across themes */
-  --ink-text-primary: #f5f5f8;   /* 16.1:1 */
-  --ink-text-secondary: #a8a8b8; /*  7.3:1 */
-  --ink-text-tertiary: #85859a;  /*  4.9:1 */
-
   /* Brand — locked. The MSRX gradient runs cyan → violet. */
   --cyan: #00c4df;
   --violet: #8b5cf6;
   --cyan-deep: #0e7490;  /* AA-safe cyan for text on paper */
   --violet-deep: #6d28d9;
+
+  /* Gradient-text stops. Deep on light paper, lifted on dark ink — the raw
+     brand colours fail as text on both. */
+  --grad-a: #0e7490;
+  --grad-b: #6d28d9;
 
   /* Per-app accents are AA against white. On dark surfaces they run too dim
      as text, so .accent-text lifts them toward white by this amount. */
@@ -72,8 +78,20 @@ html[data-theme="dark"] {
   --paper-sunk: #1c1c27;
   --card: #17171f;
 
+  /* Dark is where the stage goes to ink — slightly deeper than the paper so
+     the hero and CTA read as their own surface. */
+  --stage: #0b0b12;
+  --stage-raised: #14141f;
+  --stage-line: rgba(255, 255, 255, 0.09);
+  --stage-text-primary: #f5f5f8;   /* 16.1:1 */
+  --stage-text-secondary: #a8a8b8; /*  7.3:1 */
+  --stage-text-tertiary: #85859a;  /*  4.9:1 */
+
   --border: rgba(255, 255, 255, 0.09);
   --border-strong: rgba(255, 255, 255, 0.17);
+
+  --grad-a: #38d9f0;
+  --grad-b: #a78bfa;
 
   /* Text on dark paper */
   --text-primary: #f2f2f7;   /* 16.0:1 */
@@ -149,9 +167,9 @@ body {
   background: linear-gradient(115deg, var(--cyan) 0%, var(--violet) 100%);
 }
 
-/* Lightened stops — the raw brand gradient loses legibility as text on ink. */
+/* Stops flip with the theme — see --grad-a / --grad-b. */
 .msrx-gradient-text {
-  background: linear-gradient(115deg, #38d9f0 0%, #a78bfa 100%);
+  background: linear-gradient(115deg, var(--grad-a) 0%, var(--grad-b) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -190,25 +208,27 @@ body {
   );
 }
 
-.rule-fade-ink {
+.rule-fade-stage {
   height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    var(--ink-line) 12%,
-    var(--ink-line) 88%,
+    var(--stage-line) 12%,
+    var(--stage-line) 88%,
     transparent
   );
 }
 
-/* Ink surfaces are near-invisible against dark paper; a hairline restores the
-   edge without touching the light theme. */
-.ink-panel {
-  border: 1px solid transparent;
+/* The CTA panel: a white card in light, a raised ink slab with a hairline in
+   dark (shadows vanish against dark paper). */
+.stage-panel {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
 }
 
-html[data-theme="dark"] .ink-panel {
-  border-color: var(--ink-line);
+html[data-theme="dark"] .stage-panel {
+  border-color: var(--stage-line);
+  box-shadow: none;
 }
 
 /* ── Focus ───────────────────────────────────────────────────────────────────
@@ -221,7 +241,6 @@ html[data-theme="dark"] .ink-panel {
 }
 
 /* Violet is too dim against dark surfaces; switch the ring to cyan there. */
-.on-ink :where(a, button, summary, [tabindex]):focus-visible,
 html[data-theme="dark"] :where(a, button, summary, input, textarea, [tabindex]):focus-visible {
   outline-color: var(--cyan);
 }
@@ -329,10 +348,11 @@ html[data-theme="dark"] .nav-blur {
   z-index: 100;
   padding: 0.65rem 1.25rem;
   border-radius: 0 0 var(--radius) var(--radius);
-  border: 1px solid var(--ink-line);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-top: 0;
-  background: var(--ink);
-  color: var(--ink-text-primary);
+  /* Fixed ink-on-white overlay — a floating control, deliberately theme-proof. */
+  background: #0b0b12;
+  color: #f5f5f8;
   font-size: 14px;
   font-weight: 600;
   transition: transform 0.18s ease;

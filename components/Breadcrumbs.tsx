@@ -11,11 +11,11 @@ export function Breadcrumbs({
   tone = "paper",
 }: {
   trail: { name: string; path: string }[];
-  tone?: "paper" | "ink";
+  tone?: "paper" | "stage";
 }) {
-  const muted = tone === "ink" ? "var(--ink-text-tertiary)" : "var(--text-tertiary)";
-  const link = tone === "ink" ? "var(--ink-text-secondary)" : "var(--text-secondary)";
-  const current = tone === "ink" ? "var(--ink-text-primary)" : "var(--text-primary)";
+  const muted = tone === "stage" ? "var(--stage-text-tertiary)" : "var(--text-tertiary)";
+  const link = tone === "stage" ? "var(--stage-text-secondary)" : "var(--text-secondary)";
+  const current = tone === "stage" ? "var(--stage-text-primary)" : "var(--text-primary)";
 
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
