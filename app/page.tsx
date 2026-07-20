@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "Are MSRX apps free?",
-    a: "Every MSRX web app is free and needs no sign-up — open the link and start. The macOS and iPhone apps are distributed through the Apple App Store, where their pricing is listed.",
+    a: "Yes — all 20, everywhere in the world. There is no paid tier, no subscription, no trial that expires and nothing to upgrade to. The 11 web apps open in a browser and 10 of those need no account at all; the macOS and iPhone apps are free downloads on the Apple App Store.",
   },
   {
     q: "Do MSRX apps store my data?",
@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "Do I need to install anything?",
-    a: "Not for the web apps — they run in any modern browser on phone, tablet or desktop, with no install and no account. The macOS and iPhone apps install from the Apple App Store.",
+    a: "Not for the web apps — they run in any modern browser on phone, tablet or desktop, with no install and, for all but MSRX Planner, no account. The macOS and iPhone apps install free from the Apple App Store.",
   },
   {
     q: "How do I suggest an app or report a problem?",
@@ -135,8 +135,9 @@ export default function Home() {
                 className="text-[17px] sm:text-[18px] leading-relaxed max-w-lg"
                 style={{ color: "var(--stage-text-secondary)" }}
               >
-                MSRX builds tools for the web, Mac and iPhone. The web apps are free,
-                need no sign-up, and keep your work on your device.
+                MSRX builds tools for the web, Mac and iPhone. Every one is free,
+                everywhere — most need no sign-up, and they keep your work on your
+                device.
               </p>
             </div>
 
@@ -145,7 +146,7 @@ export default function Home() {
                 {[
                   { n: "20", l: "Apps" },
                   { n: "3", l: "Platforms" },
-                  { n: "11", l: "Free on the web" },
+                  { n: "20", l: "Free, no exceptions" },
                 ].map((stat) => (
                   <div key={stat.l}>
                     <dt className="sr-only">{stat.l}</dt>

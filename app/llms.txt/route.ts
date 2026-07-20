@@ -23,13 +23,13 @@ function section(heading: string, note: string, list: App[]): string {
 export function GET() {
   const body = `# MSRX
 
-> MSRX builds ${apps.length} apps across web, macOS and iOS — study tools, data visualisation, design, weather, networking and everyday utilities. Tagline: "Future. Intelligence. Impact." Every web app is free and needs no sign-up; the native apps ship on the Apple App Store. Most apps process entirely on your device and store nothing on MSRX servers.
+> MSRX builds ${apps.length} apps across web, macOS and iOS — study tools, data visualisation, design, weather, networking and everyday utilities. Tagline: "Future. Intelligence. Impact." All ${apps.length} are free, everywhere, with no paid tier or subscription — the web apps and the App Store downloads alike. Ten of the eleven web apps need no account at all. Most apps process entirely on your device and store nothing on MSRX servers.
 
 Built by Mrinal Singh Raja. Catalog: ${SITE_URL}/apps
 
 ${section(
   "Web apps",
-  "Free, no sign-up, run in any modern browser.",
+  "All free, run in any modern browser. Only MSRX Planner asks for an account, to sync across devices.",
   webApps
 )}
 

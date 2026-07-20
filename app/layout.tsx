@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s — MSRX",
   },
   description:
-    "20 apps across web, macOS and iOS — study tools, data visualisation, design, weather, network and everyday utilities. Web apps are free, no sign-up.",
+    "20 apps across web, macOS and iOS — study tools, data visualisation, design, weather, network and everyday utilities. Every one free, everywhere, with no paid tier.",
   applicationName: "MSRX",
   authors: [
     { name: "Mrinal Singh Raja", url: "https://www.linkedin.com/in/mrinalsinghraja/" },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MSRX — 20 free apps for web, Mac and iPhone",
     description:
-      "Study tools, data visualisation, design, weather, network and everyday utilities. Free, no sign-up, nothing stored.",
+      "Study tools, data visualisation, design, weather, network and everyday utilities. All free, nothing stored, most with no sign-up.",
     url: SITE_URL,
     siteName: "MSRX",
     locale: "en_US",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MSRX — 20 free apps for web, Mac and iPhone",
     description:
-      "Study tools, data visualisation, design, weather, network and everyday utilities. Free, no sign-up, nothing stored.",
+      "Study tools, data visualisation, design, weather, network and everyday utilities. All free, nothing stored, most with no sign-up.",
     images: [{ url: "/opengraph-image", alt: "MSRX — Future. Intelligence. Impact." }],
     creator: "@mrinalsinghraja",
     site: "@mrinalsinghraja",

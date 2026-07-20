@@ -205,22 +205,17 @@ export default async function AppPage({
               {[
                 { k: "Platform", v: platformLabel(app) },
                 { k: "Category", v: app.category },
-                // A dual-platform app answers both ways: the web build is free
-                // and open, the Mac build is priced in App Store Connect.
-                {
-                  k: "Price",
-                  v: isDualPlatform(app)
-                    ? "Free on the web"
-                    : app.platform === "web"
-                      ? "Free, no sign-up"
-                      : "See the App Store",
-                },
+                // Every app is free — verified against the App Store listings,
+                // which all report a price of 0, not assumed from the web side.
+                { k: "Price", v: "Free" },
                 {
                   k: "Account",
                   v: isDualPlatform(app)
                     ? "None on the web; Apple ID to install"
                     : app.platform === "web"
-                      ? "Not required"
+                      ? app.slug === "planner"
+                        ? "Free account, to sync devices"
+                        : "Not required"
                       : "Apple ID, to install",
                 },
               ].map((row) => (

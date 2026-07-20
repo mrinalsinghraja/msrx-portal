@@ -42,7 +42,7 @@ export const orgJsonLd = {
       logo: abs("/icon.svg"),
       image: abs("/opengraph-image"),
       description:
-        "MSRX builds 20 apps across web, macOS and iOS — study tools, data visualisation, design, weather, network and everyday utilities. Web apps are free with no sign-up.",
+        "MSRX builds 20 apps across web, macOS and iOS — study tools, data visualisation, design, weather, network and everyday utilities. All of them free, everywhere, with no paid tier.",
       slogan: "Future. Intelligence. Impact.",
       email: CONTACT_EMAIL,
       founder: {
@@ -68,7 +68,7 @@ export const orgJsonLd = {
       "@id": SITE_ID,
       url: SITE_URL,
       name: "MSRX",
-      description: "20 apps for web, Mac and iPhone. Free, no sign-up, nothing stored.",
+      description: "20 apps for web, Mac and iPhone. All free, nothing stored, most with no sign-up.",
       publisher: { "@id": ORG_ID },
       inLanguage: "en",
     },
@@ -103,12 +103,15 @@ export function softwareAppJsonLd(app: App) {
     featureList: app.features,
     installUrl: app.href,
     publisher: { "@id": ORG_ID },
-    // Price is only asserted for the web apps, where "free, no sign-up" is a
-    // property of the product itself. App Store pricing is set in App Store
-    // Connect and is not mirrored here, so claiming a figure would be guessing.
-    ...(app.platform === "web"
-      ? { offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }
-      : {}),
+    // Every app is free, and that is checkable rather than claimed: all ten
+    // App Store listings report "price":0, and no web app has a payment step.
+    //
+    // This previously asserted a price only for the web apps, on the reasoning
+    // that App Store pricing lives in App Store Connect and could not be
+    // verified from here. It can be — the public listing states it — so the
+    // caution was understating the catalog rather than protecting it. If a paid
+    // app ever ships, this has to become per-app again.
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
 }
 

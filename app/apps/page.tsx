@@ -31,19 +31,19 @@ const SECTIONS = [
   {
     id: "web",
     heading: "Web",
-    note: "Free, no sign-up. Open in any browser on any device.",
+    note: "All free. Open in any browser on any device; only Planner asks for an account.",
     list: webApps,
   },
   {
     id: "macos",
     heading: "macOS",
-    note: "Native Mac apps on the Mac App Store. One also ships on the web.",
+    note: "Native Mac apps, free on the Mac App Store. One also ships on the web.",
     list: macApps,
   },
   {
     id: "ios",
     heading: "iPhone & iPad",
-    note: "Native iOS apps on the App Store.",
+    note: "Native iPhone apps, free on the App Store.",
     list: iosApps,
   },
 ];

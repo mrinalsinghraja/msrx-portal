@@ -49,7 +49,7 @@ const PRINCIPLES = [
   {
     heading: "Free, and honest about what that means",
     body: [
-      "The web apps cost nothing and carry no ads. They are not free-with-an-asterisk: there is no upgrade prompt, no locked export, no watermark on the way out.",
+      "All 20 cost nothing and carry no ads — the web apps and the App Store downloads alike, anywhere in the world. They are not free-with-an-asterisk: no upgrade prompt, no locked export, no watermark on the way out, no trial running down.",
       "The macOS and iPhone apps are distributed through Apple, and their pricing is whatever the App Store listing says. This site does not restate it, because App Store pricing changes and a stale figure here would be worse than none.",
     ],
   },

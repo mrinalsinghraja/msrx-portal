@@ -78,7 +78,7 @@ export default async function OGImage() {
               marginTop: 6,
             }}
           >
-            Web, Mac and iPhone. The web apps are free and need no sign-up.
+            Web, Mac and iPhone. Every one free, everywhere.
           </div>
         </div>
 
