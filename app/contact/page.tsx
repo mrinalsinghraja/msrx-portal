@@ -101,7 +101,7 @@ export default function Contact() {
             <a
               key={reason.subject}
               href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(reason.subject)}`}
-              className="card-hover group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--paper)] p-6"
+              className="card-hover group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-6"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
               <h3 className="display-sm text-[17px] text-[var(--text-primary)] mb-2">

@@ -84,26 +84,25 @@ export default async function AppPage({
       />
 
       {/* ── Header ──────────────────────────────────────────────────────────*/}
-      <div className="border-b border-[var(--border)]" style={{ background: app.tint }}>
+      <div
+        className="tint-surface border-b border-[var(--border)]"
+        style={{ "--accent": app.accent } as React.CSSProperties}
+      >
         <div className="max-w-4xl mx-auto px-5 sm:px-6 pt-8 pb-14 sm:pb-16">
           <Breadcrumbs trail={trail} />
 
           <div className="flex items-center gap-4 mb-7">
             <span
-              className="mono w-14 h-14 shrink-0 rounded-2xl grid place-items-center text-[17px] font-medium bg-white"
-              style={{ color: app.accent }}
+              className="accent-text mono w-14 h-14 shrink-0 rounded-2xl grid place-items-center text-[17px] font-medium bg-[var(--card)]"
               aria-hidden="true"
             >
               {app.initials}
             </span>
             <div className="flex flex-wrap items-center gap-2">
-              <span
-                className="mono text-[10.5px] tracking-[0.14em] px-2.5 py-1 rounded-full bg-white/80"
-                style={{ color: app.accent }}
-              >
+              <span className="accent-text mono text-[10.5px] tracking-[0.14em] px-2.5 py-1 rounded-full bg-[var(--card)]">
                 {PLATFORM_TAG[app.platform]}
               </span>
-              <span className="mono text-[10.5px] tracking-[0.14em] px-2.5 py-1 rounded-full bg-white/80 text-[var(--text-secondary)]">
+              <span className="mono text-[10.5px] tracking-[0.14em] px-2.5 py-1 rounded-full bg-[var(--card)] text-[var(--text-secondary)]">
                 {app.category.toUpperCase()}
               </span>
             </div>
@@ -134,7 +133,7 @@ export default async function AppPage({
                 href={app.macAppStoreHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-2xl border border-[var(--border-strong)] bg-white px-6 py-3 text-[15px] font-semibold text-[var(--text-primary)] transition-colors hover:border-[var(--text-tertiary)]"
+                className="inline-flex items-center gap-2 rounded-2xl border border-[var(--border-strong)] bg-[var(--card)] px-6 py-3 text-[15px] font-semibold text-[var(--text-primary)] transition-colors hover:border-[var(--text-tertiary)]"
               >
                 Mac App Store
                 <ArrowUpRight size={16} aria-hidden="true" className="opacity-50" />
@@ -146,7 +145,10 @@ export default async function AppPage({
       </div>
 
       {/* ── Body ────────────────────────────────────────────────────────────*/}
-      <div className="max-w-4xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
+      <div
+        className="max-w-4xl mx-auto px-5 sm:px-6 py-14 sm:py-20"
+        style={{ "--accent": app.accent } as React.CSSProperties}
+      >
         <div className="grid lg:grid-cols-[1fr_minmax(0,15rem)] gap-12 lg:gap-16">
           <div>
             <h2 className="eyebrow text-[var(--text-tertiary)] mb-4">Overview</h2>
@@ -163,8 +165,7 @@ export default async function AppPage({
                   <Check
                     size={16}
                     aria-hidden="true"
-                    className="mt-1 shrink-0"
-                    style={{ color: app.accent }}
+                    className="accent-text mt-1 shrink-0"
                   />
                   <span className="text-[15.5px] leading-relaxed text-[var(--text-secondary)]">
                     {feature}
@@ -185,8 +186,7 @@ export default async function AppPage({
                       href={tool.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-[13px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] hover:border-[var(--text-tertiary)]"
-                      style={{ background: app.tint }}
+                      className="tint-surface inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-[13px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] hover:border-[var(--text-tertiary)]"
                     >
                       {tool.label}
                       <ArrowUpRight size={12} aria-hidden="true" className="opacity-50" />
@@ -237,11 +237,11 @@ export default async function AppPage({
                 <Link
                   key={other.slug}
                   href={`/apps/${other.slug}`}
-                  className="card-hover group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--paper)] p-5"
+                  className="card-hover group rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5"
+                  style={{ "--accent": other.accent } as React.CSSProperties}
                 >
                   <span
-                    className="mono mb-3 grid h-9 w-9 place-items-center rounded-[10px] text-[12px] font-medium"
-                    style={{ background: other.tint, color: other.accent }}
+                    className="tint-chip accent-text mono mb-3 grid h-9 w-9 place-items-center rounded-[10px] text-[12px] font-medium"
                     aria-hidden="true"
                   >
                     {other.initials}

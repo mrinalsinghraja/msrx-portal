@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { MsrxWordmark } from "./MsrxLogo";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV = [
   { href: "/apps", label: "Apps" },
@@ -53,34 +54,41 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop */}
-        <nav aria-label="Main" className="hidden md:flex items-center gap-1">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isActive(item.href) ? "page" : undefined}
-              className={`px-3 py-1.5 rounded-lg text-[14px] transition-colors ${
-                isActive(item.href)
-                  ? "text-[var(--text-primary)] font-medium bg-[var(--paper-sunk)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--paper-tint)]"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden md:flex items-center gap-2">
+          <nav aria-label="Main" className="flex items-center gap-1">
+            {NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={`px-3 py-1.5 rounded-lg text-[14px] transition-colors ${
+                  isActive(item.href)
+                    ? "text-[var(--text-primary)] font-medium bg-[var(--paper-sunk)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--paper-tint)]"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <span aria-hidden="true" className="h-4 w-px bg-[var(--border-strong)]" />
+          <ThemeToggle />
+        </div>
 
-        {/* Mobile trigger */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          className="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--paper-tint)] transition-colors"
-        >
-          {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-        </button>
+        {/* Mobile: theme toggle stays visible; menu collapses */}
+        <div className="md:hidden flex items-center gap-1 -mr-2">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="inline-flex items-center justify-center w-10 h-10 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--paper-tint)] transition-colors"
+          >
+            {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile panel */}

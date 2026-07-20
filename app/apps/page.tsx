@@ -49,12 +49,11 @@ function Row({ app }: { app: App }) {
   return (
     <Link
       href={`/apps/${app.slug}`}
-      className="card-hover group flex items-start gap-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--paper)] p-5"
-      style={{ boxShadow: "var(--shadow-card)" }}
+      className="card-hover group flex items-start gap-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5"
+      style={{ boxShadow: "var(--shadow-card)", "--accent": app.accent } as React.CSSProperties}
     >
       <span
-        className="mono grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[13px] font-medium"
-        style={{ background: app.tint, color: app.accent }}
+        className="tint-chip accent-text mono grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[13px] font-medium"
         aria-hidden="true"
       >
         {app.initials}
@@ -105,7 +104,7 @@ export default function AppsIndex() {
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="rounded-full border border-[var(--border-strong)] bg-[var(--paper)] px-4 py-1.5 text-[13.5px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+                className="rounded-full border border-[var(--border-strong)] bg-[var(--card)] px-4 py-1.5 text-[13.5px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
               >
                 {s.heading}
                 <span className="mono ml-2 text-[11px] text-[var(--text-tertiary)]">

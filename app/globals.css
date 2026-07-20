@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
 /* ── Design tokens ───────────────────────────────────────────────────────────
-   The site is light-only by deliberate choice (see viewport.colorScheme in
-   layout.tsx). The one exception is the hero, which sits on an ink surface so
-   the cyan→violet brand gradient reads at full saturation.
+   Two themes, one token set. Light is the flagship and the default; dark is
+   selected by the header toggle (persisted) or, on first visit only, by
+   prefers-color-scheme. The inline script in layout.tsx stamps
+   html[data-theme] before first paint, so there is no flash.
+
+   The hero and CTA sit on --ink in BOTH themes — the ink index is the site's
+   signature, and the cyan→violet gradient needs that surface to read at full
+   saturation. Ink tokens therefore do not change with the theme.
 
    Text colours are documented with their contrast ratio against the surface
-   they sit on. Everything meets WCAG AA for its size. The previous
-   --text-tertiary (#a1a1a6) measured 2.6:1 on white and failed. */
+   they sit on. Everything meets WCAG AA for its size. */
 :root {
-  /* Surfaces */
-  --paper: #ffffff;
-  --paper-tint: #f7f7fa;
-  --paper-sunk: #f1f1f5;
+  color-scheme: light;
+
+  /* Surfaces. Page is a warm off-white; cards are pure white on top of it. */
+  --paper: #fafafa;
+  --paper-tint: #f3f3f6;
+  --paper-sunk: #ebebf0;
+  --card: #ffffff;
   --ink: #0b0b12;
   --ink-raised: #14141f;
   --ink-line: rgba(255, 255, 255, 0.09);
@@ -26,7 +33,7 @@
   --text-secondary: #55555e; /*  7.2:1 */
   --text-tertiary: #6e6e78;  /*  5.1:1 */
 
-  /* Text on ink */
+  /* Text on ink — constant across themes */
   --ink-text-primary: #f5f5f8;   /* 16.1:1 */
   --ink-text-secondary: #a8a8b8; /*  7.3:1 */
   --ink-text-tertiary: #85859a;  /*  4.9:1 */
@@ -36,6 +43,10 @@
   --violet: #8b5cf6;
   --cyan-deep: #0e7490;  /* AA-safe cyan for text on paper */
   --violet-deep: #6d28d9;
+
+  /* Per-app accents are AA against white. On dark surfaces they run too dim
+     as text, so .accent-text lifts them toward white by this amount. */
+  --accent-lift: 0%;
 
   /* Elevation */
   --shadow-card: 0 1px 2px rgba(9, 9, 20, 0.04), 0 8px 24px rgba(9, 9, 20, 0.05);
@@ -51,6 +62,34 @@
   --font-display: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
   --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #101017;
+  --paper-tint: #15151d;
+  --paper-sunk: #1c1c27;
+  --card: #17171f;
+
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.17);
+
+  /* Text on dark paper */
+  --text-primary: #f2f2f7;   /* 16.0:1 */
+  --text-secondary: #a9a9bb; /*  7.4:1 */
+  --text-tertiary: #8d8da0;  /*  5.2:1 */
+
+  /* AA-safe brand accents flip light on dark paper */
+  --cyan-deep: #2fc8e0;
+  --violet-deep: #a78bfa;
+
+  /* 40% lifts the darkest catalog accent to 5.2:1 on --card (measured). */
+  --accent-lift: 40%;
+
+  /* On dark, borders do the lifting; shadows only ground the card. */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -119,6 +158,26 @@ body {
   color: transparent;
 }
 
+/* ── Per-app accent utilities ────────────────────────────────────────────────
+   Render sites set --accent from app data; these classes derive every accent
+   treatment from it, so one inline custom property replaces per-theme inline
+   styles. --accent-lift is 0% in light and >0 in dark, which brightens accent
+   TEXT on dark surfaces while backgrounds keep mixing against the live theme
+   tokens. */
+.accent-text {
+  color: color-mix(in srgb, white var(--accent-lift), var(--accent));
+}
+
+/* Initials squares and small chips: a wash of the accent over the card. */
+.tint-chip {
+  background: color-mix(in srgb, var(--accent) 10%, var(--card));
+}
+
+/* Full-width page headers: a fainter wash over the page itself. */
+.tint-surface {
+  background: color-mix(in srgb, var(--accent) 7%, var(--paper));
+}
+
 /* Hairline that fades at both ends. Closes a section without a hard rule. */
 .rule-fade {
   height: 1px;
@@ -142,6 +201,16 @@ body {
   );
 }
 
+/* Ink surfaces are near-invisible against dark paper; a hairline restores the
+   edge without touching the light theme. */
+.ink-panel {
+  border: 1px solid transparent;
+}
+
+html[data-theme="dark"] .ink-panel {
+  border-color: var(--ink-line);
+}
+
 /* ── Focus ───────────────────────────────────────────────────────────────────
    Every interactive element gets a visible ring, via :focus-visible so it
    appears for keyboard users without trailing the mouse. */
@@ -151,8 +220,9 @@ body {
   border-radius: 4px;
 }
 
-/* Violet is too dim against ink; switch the ring to cyan there. */
-.on-ink :where(a, button, summary, [tabindex]):focus-visible {
+/* Violet is too dim against dark surfaces; switch the ring to cyan there. */
+.on-ink :where(a, button, summary, [tabindex]):focus-visible,
+html[data-theme="dark"] :where(a, button, summary, input, textarea, [tabindex]):focus-visible {
   outline-color: var(--cyan);
 }
 
@@ -244,13 +314,11 @@ body {
 .nav-blur {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(250, 250, 250, 0.82);
 }
 
-.nav-blur-ink {
-  backdrop-filter: saturate(160%) blur(20px);
-  -webkit-backdrop-filter: saturate(160%) blur(20px);
-  background: rgba(11, 11, 18, 0.78);
+html[data-theme="dark"] .nav-blur {
+  background: rgba(16, 16, 23, 0.78);
 }
 
 .skip-link {
@@ -261,6 +329,8 @@ body {
   z-index: 100;
   padding: 0.65rem 1.25rem;
   border-radius: 0 0 var(--radius) var(--radius);
+  border: 1px solid var(--ink-line);
+  border-top: 0;
   background: var(--ink);
   color: var(--ink-text-primary);
   font-size: 14px;

@@ -48,10 +48,10 @@ export default function NotFound() {
             <Link
               href={`/apps/${app.slug}`}
               className="group flex items-center gap-4 py-3.5"
+              style={{ "--accent": app.accent } as React.CSSProperties}
             >
               <span
-                className="mono grid h-9 w-9 shrink-0 place-items-center rounded-[10px] text-[12px] font-medium"
-                style={{ background: app.tint, color: app.accent }}
+                className="tint-chip accent-text mono grid h-9 w-9 shrink-0 place-items-center rounded-[10px] text-[12px] font-medium"
                 aria-hidden="true"
               >
                 {app.initials}

@@ -77,13 +77,12 @@ function AppTile({ app }: { app: App }) {
   return (
     <Link
       href={`/apps/${app.slug}`}
-      className="card-hover group flex flex-col rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--paper)] p-5"
-      style={{ boxShadow: "var(--shadow-card)" }}
+      className="card-hover group flex flex-col rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)] p-5"
+      style={{ boxShadow: "var(--shadow-card)", "--accent": app.accent } as React.CSSProperties}
     >
       <div className="flex items-center gap-3 mb-3">
         <span
-          className="mono w-9 h-9 shrink-0 rounded-[10px] grid place-items-center text-[12px] font-medium"
-          style={{ background: app.tint, color: app.accent }}
+          className="tint-chip accent-text mono w-9 h-9 shrink-0 rounded-[10px] grid place-items-center text-[12px] font-medium"
           aria-hidden="true"
         >
           {app.initials}
@@ -96,10 +95,7 @@ function AppTile({ app }: { app: App }) {
       <p className="text-[13.5px] leading-relaxed text-[var(--text-secondary)] flex-1">
         {app.tagline}
       </p>
-      <span
-        className="mt-4 inline-flex items-center gap-1 text-[13px] font-medium"
-        style={{ color: app.accent }}
-      >
+      <span className="accent-text mt-4 inline-flex items-center gap-1 text-[13px] font-medium">
         Learn more
         <ArrowRight
           size={13}
@@ -355,7 +351,7 @@ export default function Home() {
       {/* ── Idea CTA ────────────────────────────────────────────────────────*/}
       <section className="max-w-6xl mx-auto px-5 sm:px-6 pb-16 sm:pb-24">
         <div
-          className="on-ink relative overflow-hidden rounded-[var(--radius-xl)] px-7 py-12 sm:px-14 sm:py-16"
+          className="on-ink ink-panel relative overflow-hidden rounded-[var(--radius-xl)] px-7 py-12 sm:px-14 sm:py-16"
           style={{ background: "var(--ink)" }}
         >
           <div className="relative flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">

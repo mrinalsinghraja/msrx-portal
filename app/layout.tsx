@@ -90,18 +90,31 @@ export const metadata: Metadata = {
 };
 
 // Next 16 takes theme-color / color-scheme from the viewport export, not metadata.
-// The site is light-only, so declaring colorScheme stops browsers auto-darkening it.
+// color-scheme itself is set per theme in globals.css.
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#101017" },
+  ],
 };
+
+// Runs before first paint: a saved choice wins; otherwise prefers-color-scheme
+// decides, but only until the visitor picks. Inlined so there is no flash of
+// the wrong theme while React loads. Any failure falls back to light.
+const themeInit = `(function(){try{var t=localStorage.getItem("msrx-theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable} h-full antialiased`}
+      // The theme script mutates data-theme before hydration; that mismatch is
+      // deliberate and only on this element.
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
