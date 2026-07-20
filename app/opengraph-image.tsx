@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-export const alt = "MSRX — Future. Intelligence. Impact.";
+export const alt = "MSRX — 20 apps for web, Mac and iPhone";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -13,67 +12,98 @@ export default async function OGImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(145deg, #f0f4ff 0%, #f5f0ff 100%)",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          background: "#0b0b12",
+          padding: 72,
           fontFamily: "system-ui, -apple-system, sans-serif",
-          position: "relative",
-          overflow: "hidden",
         }}
       >
-        {/* Ambient glow left */}
-        <div style={{ position: "absolute", top: -60, left: -60, width: 400, height: 400, background: "radial-gradient(ellipse, rgba(0,196,223,0.25) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(40px)" }} />
-        {/* Ambient glow right */}
-        <div style={{ position: "absolute", top: 0, right: -40, width: 320, height: 320, background: "radial-gradient(ellipse, rgba(139,92,246,0.2) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(40px)" }} />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: 10,
+            background: "linear-gradient(115deg, #00c4df 0%, #8b5cf6 100%)",
+          }}
+        />
 
-        {/* Main content row */}
-        <div style={{ display: "flex", alignItems: "center", gap: 80, position: "relative" }}>
-
-          {/* M icon */}
-          <div style={{
-            width: 180, height: 180,
-            background: "linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%)",
-            borderRadius: 40,
+        <div
+          style={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 20px 60px rgba(0,196,223,0.3), 0 20px 60px rgba(139,92,246,0.2)",
-          }}>
-            <svg width="110" height="126" viewBox="0 0 100 115" fill="none">
-              <path d="M 5 110 L 5 12 L 22 12 L 22 110 Z" fill="white" opacity="0.95"/>
-              <path d="M 22 12 L 50 58 L 50 78 L 22 46 Z" fill="white" opacity="0.8"/>
-              <path d="M 78 12 L 50 58 L 50 78 L 78 46 Z" fill="white" opacity="0.8"/>
-              <path d="M 78 12 L 95 12 L 95 110 L 78 110 Z" fill="white" opacity="0.95"/>
-              <path d="M 5 12 L 22 12 L 50 58 L 78 12 L 95 12 L 95 20 L 78 20 L 50 68 L 22 20 L 5 20 Z" fill="rgba(255,255,255,0.25)"/>
-            </svg>
+            fontSize: 20,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "#85859a",
+          }}
+        >
+          Future. Intelligence. Impact.
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 86,
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              color: "#f5f5f8",
+              lineHeight: 1.04,
+            }}
+          >
+            Twenty apps.
           </div>
-
-          {/* Vertical divider */}
-          <div style={{ width: 2, height: 180, background: "linear-gradient(to bottom, transparent, rgba(0,196,223,0.5) 40%, rgba(139,92,246,0.5) 60%, transparent)" }} />
-
-          {/* Text content */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            <div style={{
-              fontSize: 96,
-              fontWeight: 900,
-              letterSpacing: "0.35em",
-              background: "linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%)",
+          <div
+            style={{
+              display: "flex",
+              fontSize: 86,
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.04,
+              background: "linear-gradient(115deg, #38d9f0 0%, #a78bfa 100%)",
               backgroundClip: "text",
               color: "transparent",
-              lineHeight: 1,
-            }}>
-              MSRX
-            </div>
-            <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.25em", color: "#6e6e73", textTransform: "uppercase" }}>
-              Future. Intelligence. Impact.
-            </div>
-            <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
-              {["AI Apps", "Productivity", "Security", "Utilities"].map((cat) => (
-                <div key={cat} style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", color: "#8b5cf6", background: "rgba(139,92,246,0.08)", padding: "6px 14px", borderRadius: 100, border: "1px solid rgba(139,92,246,0.2)" }}>
-                  {cat}
-                </div>
-              ))}
-            </div>
+            }}
+          >
+            Open one and start.
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 30,
+              color: "#a8a8b8",
+              maxWidth: 900,
+              marginTop: 6,
+            }}
+          >
+            Web, Mac and iPhone. The web apps are free and need no sign-up.
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            borderTop: "1px solid rgba(255,255,255,0.12)",
+            paddingTop: 28,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              fontSize: 26,
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              color: "#f5f5f8",
+            }}
+          >
+            MSRX
+          </div>
+          <div style={{ display: "flex", fontSize: 22, color: "#85859a" }}>
+            www.msrx.co.in
           </div>
         </div>
       </div>

@@ -1,18 +1,56 @@
 @import "tailwindcss";
 
+/* ── Design tokens ───────────────────────────────────────────────────────────
+   The site is light-only by deliberate choice (see viewport.colorScheme in
+   layout.tsx). The one exception is the hero, which sits on an ink surface so
+   the cyan→violet brand gradient reads at full saturation.
+
+   Text colours are documented with their contrast ratio against the surface
+   they sit on. Everything meets WCAG AA for its size. The previous
+   --text-tertiary (#a1a1a6) measured 2.6:1 on white and failed. */
 :root {
-  --background: #ffffff;
-  --surface: #f5f5f7;
-  --surface-hover: #f0f0f2;
-  --border: rgba(0, 0, 0, 0.06);
-  --border-strong: rgba(0, 0, 0, 0.10);
-  --text-primary: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-tertiary: #a1a1a6;
-  --accent-cyan: #00c4df;
-  --accent-purple: #8b5cf6;
-  --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.10);
+  /* Surfaces */
+  --paper: #ffffff;
+  --paper-tint: #f7f7fa;
+  --paper-sunk: #f1f1f5;
+  --ink: #0b0b12;
+  --ink-raised: #14141f;
+  --ink-line: rgba(255, 255, 255, 0.09);
+
+  /* Hairlines */
+  --border: rgba(9, 9, 20, 0.08);
+  --border-strong: rgba(9, 9, 20, 0.14);
+
+  /* Text on paper */
+  --text-primary: #16161a;   /* 16.4:1 */
+  --text-secondary: #55555e; /*  7.2:1 */
+  --text-tertiary: #6e6e78;  /*  5.1:1 */
+
+  /* Text on ink */
+  --ink-text-primary: #f5f5f8;   /* 16.1:1 */
+  --ink-text-secondary: #a8a8b8; /*  7.3:1 */
+  --ink-text-tertiary: #85859a;  /*  4.9:1 */
+
+  /* Brand — locked. The MSRX gradient runs cyan → violet. */
+  --cyan: #00c4df;
+  --violet: #8b5cf6;
+  --cyan-deep: #0e7490;  /* AA-safe cyan for text on paper */
+  --violet-deep: #6d28d9;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(9, 9, 20, 0.04), 0 8px 24px rgba(9, 9, 20, 0.05);
+  --shadow-card-hover: 0 2px 4px rgba(9, 9, 20, 0.05), 0 16px 48px rgba(9, 9, 20, 0.09);
+
+  /* Rhythm */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Typography — next/font declarations live in layout.tsx */
+  --font-display: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 * {
@@ -21,39 +59,215 @@
 
 html {
   scroll-behavior: smooth;
+  /* Sticky header is 56px; keeps anchor targets clear of it. */
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
+  background: var(--paper);
   color: var(--text-primary);
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  text-rendering: optimizeLegibility;
 }
 
+/* ── Typography roles ────────────────────────────────────────────────────────
+   Bricolage Grotesque carries the display voice. It is set tight and heavy; at
+   these sizes its default tracking is far too loose. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.display-sm {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+}
+
+/* Column labels, index numbers, platform tags. Mono earns its place by keeping
+   the catalog index columns aligned across names of unequal length. */
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ── Brand gradient ──────────────────────────────────────────────────────────*/
 .msrx-gradient {
-  background: linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%);
+  background: linear-gradient(115deg, var(--cyan) 0%, var(--violet) 100%);
 }
 
+/* Lightened stops — the raw brand gradient loses legibility as text on ink. */
 .msrx-gradient-text {
-  background: linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%);
+  background: linear-gradient(115deg, #38d9f0 0%, #a78bfa 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
+/* Hairline that fades at both ends. Closes a section without a hard rule. */
+.rule-fade {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-strong) 15%,
+    var(--border-strong) 85%,
+    transparent
+  );
+}
+
+.rule-fade-ink {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--ink-line) 12%,
+    var(--ink-line) 88%,
+    transparent
+  );
+}
+
+/* ── Focus ───────────────────────────────────────────────────────────────────
+   Every interactive element gets a visible ring, via :focus-visible so it
+   appears for keyboard users without trailing the mouse. */
+:where(a, button, summary, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Violet is too dim against ink; switch the ring to cyan there. */
+.on-ink :where(a, button, summary, [tabindex]):focus-visible {
+  outline-color: var(--cyan);
+}
+
+/* ── Motion ──────────────────────────────────────────────────────────────────*/
 .card-hover {
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition: box-shadow 0.28s cubic-bezier(0.2, 0.8, 0.3, 1),
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1),
+    border-color 0.28s ease;
 }
 
 .card-hover:hover {
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
 }
 
+/* Index rows light up in their own app's accent. --row-accent is set per row
+   from the app data, so the interaction differs for all twenty apps. */
+.index-row {
+  transition: background-color 0.2s ease;
+}
+
+.index-row:hover,
+.index-row:focus-visible {
+  background-color: color-mix(in srgb, var(--row-accent) 18%, transparent);
+}
+
+.index-row .index-name {
+  transition: color 0.2s ease;
+}
+
+.index-row:hover .index-name,
+.index-row:focus-visible .index-name {
+  color: var(--row-accent);
+}
+
+.index-row .index-arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.index-row:hover .index-arrow,
+.index-row:focus-visible .index-arrow {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal {
+  animation: reveal 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+
+  .index-row .index-arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Chrome ──────────────────────────────────────────────────────────────────*/
 .nav-blur {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.nav-blur-ink {
+  backdrop-filter: saturate(160%) blur(20px);
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
+  background: rgba(11, 11, 18, 0.78);
+}
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -140%);
+  z-index: 100;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--ink);
+  color: var(--ink-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.18s ease;
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0);
 }

@@ -1,95 +1,78 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SITE_URL, orgJsonLd } from "@/lib/seo";
 
+// Body. Inter reads cleanly at the 13–16px the cards and prose sit at.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
+// Display. A grotesque with enough character to carry headlines without a
+// second decorative face, kept to headings only.
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  display: "swap",
+  weight: ["600", "700"],
+});
+
+// Utility. Holds the catalog index columns in alignment and tags platforms.
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.msrx.co.in"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "MSRX — AI-Powered Web, iOS & macOS Apps",
+    default: "MSRX — 20 free apps for web, Mac and iPhone",
     template: "%s — MSRX",
   },
   description:
-    "MSRX: AI-powered apps including MSRX WeatherWatch (AI weather & multi-hazard early warning), MSRX GraphIQ (charts & 3D dashboards), MSRX CanvasIQ (AI design studio), MSRX StoryQuest (interactive STEM missions), QR Studio, Easy-Peasy Gantt, JEE HyperLab, IncognitoCV, MSRX Meeting, and iOS/macOS utilities.",
+    "20 apps across web, macOS and iOS — study tools, data visualisation, design, weather, network and everyday utilities. Web apps are free, no sign-up.",
   applicationName: "MSRX",
-  authors: [{ name: "Mrinal Singh Raja", url: "https://www.linkedin.com/in/mrinalsinghraja/" }],
+  authors: [
+    { name: "Mrinal Singh Raja", url: "https://www.linkedin.com/in/mrinalsinghraja/" },
+  ],
   creator: "Mrinal Singh Raja",
   publisher: "Mrinal Singh Raja",
   category: "technology",
-  keywords: [
-    "MSRX",
-    "MSRX WeatherWatch",
-    "WeatherWatch",
-    "AI weather app",
-    "weather forecast app",
-    "multi-hazard early warning",
-    "MSRX GraphIQ",
-    "GraphIQ",
-    "MSRX CanvasIQ",
-    "CanvasIQ",
-    "MSRX QR Studio",
-    "QR Studio",
-    "MSRX Meeting",
-    "JEE HyperLab",
-    "MSRX StoryQuest",
-    "StoryQuest",
-    "interactive STEM missions",
-    "Easy-Peasy Gantt",
-    "IncognitoCV",
-    "OrionPulseNet",
-    "PulseNet",
-    "Easy-Peasy Gantt",
-    "AI graph maker",
-    "AI chart maker",
-    "3D chart maker",
-    "CSV to chart",
-    "AI design studio",
-    "AI canvas tool",
-    "AI QR code generator",
-    "AI Gantt chart maker",
-    "online Gantt chart",
-    "AI resume optimizer",
-    "JEE preparation AI",
-    "IIT-JEE STEM lab",
-    "AI video meetings",
-    "network monitoring tool",
-    "AI React component generator",
-    "AI apps",
-    "premium web apps",
-    "macOS apps",
-    "iOS apps",
-    "AI productivity tools",
-    "Mrinal Singh Raja",
-  ],
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "MSRX — AI-Powered Web, iOS & macOS Apps",
+    title: "MSRX — 20 free apps for web, Mac and iPhone",
     description:
-      "MSRX GraphIQ, MSRX CanvasIQ, Easy-Peasy Gantt, JEE HyperLab, QR Studio and more — premium AI web apps plus iOS & macOS utilities by Mrinal Singh Raja.",
-    url: "https://www.msrx.co.in",
+      "Study tools, data visualisation, design, weather, network and everyday utilities. Free, no sign-up, nothing stored.",
+    url: SITE_URL,
     siteName: "MSRX",
     locale: "en_US",
     type: "website",
-    images: [{ url: "https://www.msrx.co.in/opengraph-image", width: 1200, height: 630, alt: "MSRX — Future. Intelligence. Impact." }],
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "MSRX — Future. Intelligence. Impact.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MSRX — AI-Powered Web, iOS & macOS Apps",
+    title: "MSRX — 20 free apps for web, Mac and iPhone",
     description:
-      "MSRX GraphIQ, MSRX CanvasIQ, Easy-Peasy Gantt, JEE HyperLab, QR Studio — premium AI apps by @mrinalsinghraja.",
-    images: [{ url: "https://www.msrx.co.in/opengraph-image", alt: "MSRX — MSRX GraphIQ, MSRX CanvasIQ, Easy-Peasy Gantt & more AI apps" }],
+      "Study tools, data visualisation, design, weather, network and everyday utilities. Free, no sign-up, nothing stored.",
+    images: [{ url: "/opengraph-image", alt: "MSRX — Future. Intelligence. Impact." }],
     creator: "@mrinalsinghraja",
     site: "@mrinalsinghraja",
   },
@@ -106,63 +89,32 @@ export const metadata: Metadata = {
   },
 };
 
-// Next 16 places theme-color / color-scheme in the viewport export (not metadata).
-// Site is light-only (no dark mode) → declare colorScheme to stop browser auto-darkening.
+// Next 16 takes theme-color / color-scheme from the viewport export, not metadata.
+// The site is light-only, so declaring colorScheme stops browsers auto-darkening it.
 export const viewport: Viewport = {
-  themeColor: "#f8f9ff",
+  themeColor: "#ffffff",
   colorScheme: "light",
-};
-
-// ── Organization + WebSite structured data (JSON-LD) ────────────────────────────
-// Helps Google build a Knowledge Panel and understand the brand entity.
-const orgJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://www.msrx.co.in/#organization",
-      name: "MSRX",
-      url: "https://www.msrx.co.in",
-      logo: "https://www.msrx.co.in/icon.svg",
-      image: "https://www.msrx.co.in/opengraph-image",
-      description:
-        "MSRX builds premium AI-powered apps for web, iOS, and macOS — MSRX WeatherWatch (AI weather & multi-hazard early warning), MSRX GraphIQ (data viz), MSRX CanvasIQ (AI design), Easy-Peasy Gantt, JEE HyperLab (IIT-JEE STEM lab), MSRX Meeting (AI video), MSRX StoryQuest (interactive STEM missions), IncognitoCV (resume AI), QR Studio, and iOS/macOS utilities.",
-      slogan: "Future. Intelligence. Impact.",
-      email: "mrinalsinghraja@gmail.com",
-      contactPoint: {
-        "@type": "ContactPoint",
-        email: "mrinalsinghraja@gmail.com",
-        contactType: "customer support",
-        availableLanguage: ["English"],
-      },
-      sameAs: [
-        "https://github.com/mrinalsinghraja",
-        "https://www.linkedin.com/in/mrinalsinghraja/",
-        "https://x.com/mrinalsinghraja",
-        "https://apps.apple.com/us/developer/mrinal-singh-raja/id1879524280",
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.msrx.co.in/#website",
-      url: "https://www.msrx.co.in",
-      name: "MSRX",
-      description: "Premium AI-powered apps for web, iOS, and macOS.",
-      publisher: { "@id": "https://www.msrx.co.in/#organization" },
-      inLanguage: "en",
-    },
-  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        {children}
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );

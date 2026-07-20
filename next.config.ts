@@ -60,6 +60,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Pin the workspace root. Without this Next walks up and finds the lockfile in
+  // the home directory, then traces files against the wrong root.
+  turbopack: {
+    root: __dirname,
+  },
+
   async headers() {
     return [
       {
