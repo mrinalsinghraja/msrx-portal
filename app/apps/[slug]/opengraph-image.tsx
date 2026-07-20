@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { apps, getApp, PLATFORM_LABEL } from "@/lib/apps";
+import { apps, getApp, platformLabel } from "@/lib/apps";
 
 export const alt = "MSRX app";
 export const size = { width: 1200, height: 630 };
@@ -97,7 +97,7 @@ export default async function AppOgImage({
               color: "#85859a",
             }}
           >
-            {PLATFORM_LABEL[app.platform]}
+            {platformLabel(app)}
           </div>
         </div>
 

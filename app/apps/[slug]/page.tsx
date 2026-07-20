@@ -6,8 +6,9 @@ import {
   apps,
   getApp,
   relatedApps,
-  PLATFORM_LABEL,
-  PLATFORM_TAG,
+  platformLabel,
+  platformTag,
+  isDualPlatform,
 } from "@/lib/apps";
 import {
   breadcrumbJsonLd,
@@ -100,7 +101,7 @@ export default async function AppPage({
             </span>
             <div className="flex flex-wrap items-center gap-2">
               <span className="accent-text mono text-[10.5px] tracking-[0.14em] px-2.5 py-1 rounded-full bg-[var(--card)]">
-                {PLATFORM_TAG[app.platform]}
+                {platformTag(app)}
               </span>
               <span className="mono text-[10.5px] tracking-[0.14em] px-2.5 py-1 rounded-full bg-[var(--card)] text-[var(--text-secondary)]">
                 {app.category.toUpperCase()}
@@ -202,15 +203,25 @@ export default async function AppPage({
             <h2 className="eyebrow text-[var(--text-tertiary)] mb-4">Details</h2>
             <dl className="text-[14px] divide-y divide-[var(--border)] border-y border-[var(--border)]">
               {[
-                { k: "Platform", v: PLATFORM_LABEL[app.platform] },
+                { k: "Platform", v: platformLabel(app) },
                 { k: "Category", v: app.category },
+                // A dual-platform app answers both ways: the web build is free
+                // and open, the Mac build is priced in App Store Connect.
                 {
                   k: "Price",
-                  v: app.platform === "web" ? "Free, no sign-up" : "See the App Store",
+                  v: isDualPlatform(app)
+                    ? "Free on the web"
+                    : app.platform === "web"
+                      ? "Free, no sign-up"
+                      : "See the App Store",
                 },
                 {
                   k: "Account",
-                  v: app.platform === "web" ? "Not required" : "Apple ID, to install",
+                  v: isDualPlatform(app)
+                    ? "None on the web; Apple ID to install"
+                    : app.platform === "web"
+                      ? "Not required"
+                      : "Apple ID, to install",
                 },
               ].map((row) => (
                 <div key={row.k} className="flex justify-between gap-4 py-3">

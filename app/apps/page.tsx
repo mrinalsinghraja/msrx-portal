@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { webApps, macApps, iosApps, PLATFORM_TAG, type App } from "@/lib/apps";
+import { apps, webApps, macApps, iosApps, platformTag, type App } from "@/lib/apps";
 import { appListJsonLd, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
+// Counts come from the catalog, not from prose — they were hand-written once and
+// went stale. The three groups overlap where an app ships on two platforms, so
+// `apps.length` is the only honest total.
+const COUNTS = `${webApps.length} free web apps, ${macApps.length} macOS apps and ${iosApps.length} iPhone apps`;
+
 export const metadata: Metadata = {
   title: "All apps",
-  description:
-    "Every app MSRX makes: 11 free web apps, 5 macOS apps and 4 iPhone apps covering study, data visualisation, design, weather, networking and everyday utilities.",
+  description: `Every app MSRX makes — ${apps.length} in total: ${COUNTS}, covering study, data visualisation, design, weather, networking and everyday utilities.`,
   alternates: { canonical: "/apps" },
   openGraph: {
     title: "All MSRX apps",
-    description:
-      "11 free web apps, 5 macOS apps and 4 iPhone apps — study, data, design, weather, network and utilities.",
+    description: `${COUNTS} — study, data, design, weather, network and utilities.`,
     url: "/apps",
     type: "website",
   },
@@ -34,7 +37,7 @@ const SECTIONS = [
   {
     id: "macos",
     heading: "macOS",
-    note: "Native Mac apps on the Mac App Store.",
+    note: "Native Mac apps on the Mac App Store. One also ships on the web.",
     list: macApps,
   },
   {
@@ -64,7 +67,7 @@ function Row({ app }: { app: App }) {
             {app.name}
           </span>
           <span className="mono shrink-0 text-[10px] tracking-[0.12em] text-[var(--text-tertiary)]">
-            {PLATFORM_TAG[app.platform]}
+            {platformTag(app)}
           </span>
         </span>
         <span className="block text-[13.5px] leading-relaxed text-[var(--text-secondary)]">
@@ -93,8 +96,9 @@ export default function AppsIndex() {
             All twenty apps.
           </h1>
           <p className="text-[17px] leading-relaxed text-[var(--text-secondary)] max-w-2xl mb-8">
-            Eleven web apps that need no account, five Mac apps and four for iPhone.
-            Each one does a single job.
+            Eleven web apps that need no account, six Mac apps and four for iPhone.
+            That is twenty-one entries for twenty apps — OrionPulseNet appears twice,
+            because it ships on both. Each one does a single job.
           </p>
 
           {/* Jump links rather than a JS filter — the sections stay in the HTML,

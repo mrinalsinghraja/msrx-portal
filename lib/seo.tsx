@@ -1,4 +1,4 @@
-import { apps, type App } from "./apps";
+import { apps, platformsOf, type App } from "./apps";
 
 export const SITE_URL = "https://www.msrx.co.in";
 export const ORG_ID = `${SITE_URL}/#organization`;
@@ -95,7 +95,11 @@ export function softwareAppJsonLd(app: App) {
     url: abs(`/apps/${app.slug}`),
     description: app.description,
     applicationCategory: SCHEMA_CATEGORY[app.platform],
-    operatingSystem: SCHEMA_OS[app.platform],
+    // Every OS the app runs on. An app shipping on both web and Mac lists both,
+    // or the Mac build is invisible to anything reading the structured data.
+    operatingSystem: platformsOf(app)
+      .map((p) => SCHEMA_OS[p])
+      .join(", "),
     featureList: app.features,
     installUrl: app.href,
     publisher: { "@id": ORG_ID },

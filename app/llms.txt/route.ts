@@ -1,4 +1,4 @@
-import { webApps, macApps, iosApps, type App } from "@/lib/apps";
+import { apps, webApps, macApps, iosApps, type App } from "@/lib/apps";
 import { SITE_URL, CONTACT_EMAIL } from "@/lib/seo";
 
 // llms.txt is generated from the same catalog that renders the site, so it can
@@ -23,7 +23,7 @@ function section(heading: string, note: string, list: App[]): string {
 export function GET() {
   const body = `# MSRX
 
-> MSRX builds ${webApps.length + macApps.length + iosApps.length} apps across web, macOS and iOS — study tools, data visualisation, design, weather, networking and everyday utilities. Tagline: "Future. Intelligence. Impact." Every web app is free and needs no sign-up; the native apps ship on the Apple App Store. Most apps process entirely on your device and store nothing on MSRX servers.
+> MSRX builds ${apps.length} apps across web, macOS and iOS — study tools, data visualisation, design, weather, networking and everyday utilities. Tagline: "Future. Intelligence. Impact." Every web app is free and needs no sign-up; the native apps ship on the Apple App Store. Most apps process entirely on your device and store nothing on MSRX servers.
 
 Built by Mrinal Singh Raja. Catalog: ${SITE_URL}/apps
 
@@ -33,7 +33,11 @@ ${section(
   webApps
 )}
 
-${section("macOS apps", "Native Mac apps, distributed on the Mac App Store.", macApps)}
+${section(
+  "macOS apps",
+  "Native Mac apps, distributed on the Mac App Store. An app that ships on both the web and the Mac is listed in both sections, so these counts overlap.",
+  macApps
+)}
 
 ${section("iPhone and iPad apps", "Native iOS apps, distributed on the App Store.", iosApps)}
 

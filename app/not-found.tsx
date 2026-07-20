@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { apps, PLATFORM_TAG } from "@/lib/apps";
+import { apps, platformTag } from "@/lib/apps";
 
 // A 404 on a portal is almost always someone looking for a specific app, so the
 // page offers the catalog rather than an apology and a back button.
@@ -65,7 +65,7 @@ export default function NotFound() {
                 </span>
               </span>
               <span className="mono shrink-0 text-[10px] tracking-[0.12em] text-[var(--text-tertiary)]">
-                {PLATFORM_TAG[app.platform]}
+                {platformTag(app)}
               </span>
             </Link>
           </li>

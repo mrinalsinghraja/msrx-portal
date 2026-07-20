@@ -540,9 +540,41 @@ export const PLATFORM_TAG: Record<Platform, string> = {
   ios: "iOS",
 };
 
-export const webApps = apps.filter((a) => a.platform === "web");
-export const macApps = apps.filter((a) => a.platform === "macos");
-export const iosApps = apps.filter((a) => a.platform === "ios");
+/**
+ * Every platform an app actually ships on. `platform` names the primary one;
+ * a `macAppStoreHref` on a non-Mac app means it also ships natively on the Mac.
+ * Derived rather than stored so the two can never disagree — and so the app
+ * stays ONE catalog entry. It was listed twice once; that is what caused drift.
+ */
+export function platformsOf(app: App): Platform[] {
+  return app.macAppStoreHref && app.platform !== "macos"
+    ? [app.platform, "macos"]
+    : [app.platform];
+}
+
+export function isDualPlatform(app: App): boolean {
+  return platformsOf(app).length > 1;
+}
+
+/** "WEB" — or "WEB · MAC" for an app that ships on both. */
+export function platformTag(app: App): string {
+  return platformsOf(app)
+    .map((p) => PLATFORM_TAG[p])
+    .join(" · ");
+}
+
+/** "Web" — or "Web & macOS". */
+export function platformLabel(app: App): string {
+  return platformsOf(app)
+    .map((p) => PLATFORM_LABEL[p])
+    .join(" & ");
+}
+
+// Platform groupings. An app on two platforms appears in both — these are views
+// of the catalog, not a partition of it, so `apps.length` stays the real count.
+export const webApps = apps.filter((a) => platformsOf(a).includes("web"));
+export const macApps = apps.filter((a) => platformsOf(a).includes("macos"));
+export const iosApps = apps.filter((a) => platformsOf(a).includes("ios"));
 
 export function getApp(slug: string): App | undefined {
   return apps.find((a) => a.slug === slug);

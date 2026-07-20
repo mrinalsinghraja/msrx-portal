@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { apps, PLATFORM_TAG, type Category, type App } from "@/lib/apps";
+import { apps, platformTag, type Category, type App } from "@/lib/apps";
 import { appListJsonLd, faqJsonLd, JsonLd, CONTACT_EMAIL } from "@/lib/seo";
 import { MsrxLogo } from "@/components/MsrxLogo";
 
@@ -88,7 +88,7 @@ function AppTile({ app }: { app: App }) {
           {app.initials}
         </span>
         <span className="mono text-[10px] tracking-[0.14em] text-[var(--text-tertiary)]">
-          {PLATFORM_TAG[app.platform]}
+          {platformTag(app)}
         </span>
       </div>
       <h3 className="display-sm text-[16px] text-[var(--text-primary)] mb-1.5">{app.name}</h3>
@@ -227,7 +227,7 @@ export default function Home() {
                       className="mono text-[10.5px] tracking-[0.12em]"
                       style={{ color: "var(--stage-text-tertiary)" }}
                     >
-                      {PLATFORM_TAG[app.platform]}
+                      {platformTag(app)}
                     </span>
                     <ArrowRight
                       size={14}
