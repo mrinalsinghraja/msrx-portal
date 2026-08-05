@@ -22,6 +22,9 @@ export interface App {
   name: string;
   /** Two-letter monogram shown on cards. */
   initials: string;
+  /** Optional app icon, shown on the app's own page in place of the monogram.
+   *  Cards keep the monogram so the catalog grid stays uniform. */
+  iconSrc?: string;
   /** AA against white; as text on dark surfaces it is lifted via .accent-text. */
   accent: string;
   platform: Platform;
@@ -489,6 +492,7 @@ export const apps: App[] = [
     slug: "pdf-compressor",
     name: "MSRX PDF Compressor",
     initials: "PC",
+    iconSrc: "/apps/pdf-compressor.png",
     accent: "#7C3AED",
     platform: "ios",
     category: "Utilities",
@@ -498,11 +502,17 @@ export const apps: App[] = [
     description:
       "Most PDF compressors flatten every page to an image, so the file shrinks but the text stops being selectable, searchable or readable aloud. This one decides page by page: text pages keep their text, scans get re-encoded. Everything runs on the device.",
     features: [
-      "Keeps text selectable and searchable",
-      "Fits a file under a size you choose",
-      "Batch compression with a running total",
-      "Shows where the megabytes actually are",
-      "Files never leave your device",
+      "Decides page by page: text pages keep their text, scans are re-encoded",
+      "Fits a file under 5, 10, 20 or 25 MB by testing real pages",
+      "Shows where the megabytes are before you compress",
+      "Compares the original and the result side by side, page by page",
+      "Compresses batches, with per-file results and a combined total",
+      "History with a running total of everything saved",
+      "Greyscale conversion for scans and photographs",
+      "Compresses from any app's share sheet, and from Shortcuts",
+      "Dark Mode, Dynamic Type and VoiceOver throughout",
+      "No uploads, no accounts, no network access at all",
+      "Free, with no ads or in-app purchases",
       "iPhone and iPad",
     ],
   },

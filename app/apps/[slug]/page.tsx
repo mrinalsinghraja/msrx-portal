@@ -93,12 +93,23 @@ export default async function AppPage({
           <Breadcrumbs trail={trail} />
 
           <div className="flex items-center gap-4 mb-7">
-            <span
-              className="accent-text mono w-14 h-14 shrink-0 rounded-2xl grid place-items-center text-[17px] font-medium bg-[var(--card)]"
-              aria-hidden="true"
-            >
-              {app.initials}
-            </span>
+            {app.iconSrc ? (
+              <img
+                src={app.iconSrc}
+                alt=""
+                width={56}
+                height={56}
+                className="w-14 h-14 shrink-0 rounded-2xl"
+                aria-hidden="true"
+              />
+            ) : (
+              <span
+                className="accent-text mono w-14 h-14 shrink-0 rounded-2xl grid place-items-center text-[17px] font-medium bg-[var(--card)]"
+                aria-hidden="true"
+              >
+                {app.initials}
+              </span>
+            )}
             <div className="flex flex-wrap items-center gap-2">
               <span className="accent-text mono text-[10.5px] tracking-[0.14em] px-2.5 py-1 rounded-full bg-[var(--card)]">
                 {platformTag(app)}
