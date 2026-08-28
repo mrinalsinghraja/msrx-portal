@@ -9,6 +9,7 @@ import {
   numberWord,
   noAccountWebApps,
   webApps,
+  TOOLS_APP_COUNT,
   type Category,
   type App,
 } from "@/lib/apps";
@@ -89,10 +90,10 @@ if (ungrouped.length > 0) {
 // which looked broken; the tool names are short because they are names.
 const SPOTLIGHT_TOOLS = newest.tools ?? [];
 
-// tools.msrx.co.in states its own count on its homepage; this mirrors it, and
-// the "more" chip is derived so the two can never contradict each other.
-const NEWEST_TOOL_COUNT = 88;
-const SPOTLIGHT_REMAINDER = NEWEST_TOOL_COUNT - SPOTLIGHT_TOOLS.length;
+// The count lives in lib/apps.ts beside the app it describes, so the tagline,
+// the description and this spotlight cannot disagree. The "more" chip is
+// derived from it for the same reason.
+const SPOTLIGHT_REMAINDER = TOOLS_APP_COUNT - SPOTLIGHT_TOOLS.length;
 
 function AppTile({ app }: { app: App }) {
   return (
@@ -222,7 +223,7 @@ export default function Home() {
                   className="font-semibold"
                   style={{ color: "var(--stage-text-primary)" }}
                 >
-                  {NEWEST_TOOL_COUNT} tools
+                  {TOOLS_APP_COUNT} tools
                 </strong>{" "}
                 for files, images and text — every one of them running inside your
                 own browser, so nothing is ever uploaded.

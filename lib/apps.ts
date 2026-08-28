@@ -45,6 +45,14 @@ export interface App {
   tools?: { label: string; href: string }[];
 }
 
+/**
+ * How many tools tools.msrx.co.in ships. It states this on its own homepage and
+ * the number grows — it was 88 in July and 116 by late August — so it lives in
+ * one place and every sentence about it is built from here. Update this line
+ * only, and check the live site first: this is a claim, not an estimate.
+ */
+export const TOOLS_APP_COUNT = 116;
+
 export const apps: App[] = [
   // ── Web ─────────────────────────────────────────────────────────────────────
   {
@@ -362,14 +370,16 @@ export const apps: App[] = [
     category: "Utilities",
     href: "https://tools.msrx.co.in",
     actionLabel: "Open web app",
-    tagline: "88 file and text tools that never upload your files",
+    tagline: `${TOOLS_APP_COUNT} file, image and text tools that never upload your files`,
     description:
-      "A suite of 88 everyday utilities — merge and split PDFs, compress convert crop and watermark images, format and validate JSON, encode and decode Base64 and URLs, plus calculators and generators. Every one runs entirely inside your own browser, so your files are read on your device and never uploaded. Free, no account, and it keeps working offline.",
+      `A suite of ${TOOLS_APP_COUNT} everyday utilities across seven groups — merge and split PDFs, compress convert crop and watermark images, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, and a set of calculators and generators. Every one runs entirely inside your own browser, so your files are read on your device and never uploaded. Free, no account, and it keeps working offline.`,
     features: [
       "Merge, split, organise and extract pages from PDFs",
       "Compress, convert, resize, crop, rotate and watermark images",
+      "Zip and unzip archives without installing anything",
       "Format, validate and convert JSON and other text data",
       "Base64, URL and HTML-entity encoding and decoding",
+      "Encrypt and decrypt a file with a passphrase",
       "Calculators and generators — EMI, GST, SIP, unit conversion and more",
       "Everything runs in your browser — files are never uploaded",
       "Free, no account, works offline",
