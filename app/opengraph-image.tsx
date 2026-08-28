@@ -1,6 +1,10 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "MSRX — 20 apps for web, Mac and iPhone";
+import { apps, NumberWord } from "@/lib/apps";
+
+const HEADLINE = `${NumberWord(apps.length)} apps.`;
+
+export const alt = `MSRX — ${apps.length} apps for web, Mac and iPhone`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -53,7 +57,7 @@ export default async function OGImage() {
               lineHeight: 1.04,
             }}
           >
-            Twenty apps.
+            {HEADLINE}
           </div>
           <div
             style={{

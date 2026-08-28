@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { apps, webApps } from "@/lib/apps";
+import { apps, webApps, noAccountWebApps, numberWord, NumberWord } from "@/lib/apps";
 import { breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
@@ -28,7 +28,7 @@ const PRINCIPLES = [
   {
     heading: "You should not have to sign up to try something",
     body: [
-      `All ${webApps.length} MSRX web apps open and work immediately. There is no email gate, no password, no trial clock. If a tool can do its job without knowing who you are, it should not ask.`,
+      `${NumberWord(noAccountWebApps.length)} of the ${webApps.length} MSRX web apps open and work immediately — no email gate, no password, no trial clock. Only MSRX Planner asks for a free account, because it syncs your plan between devices. If a tool can do its job without knowing who you are, it should not ask.`,
       "This is a real constraint, not a marketing line. It rules out server-side history, cross-device sync and personalised state for most of the catalog — and the apps are designed around that rather than in spite of it.",
     ],
   },
@@ -43,13 +43,13 @@ const PRINCIPLES = [
     heading: "One app, one job",
     body: [
       "Nothing here is a suite. A Gantt chart maker makes Gantt charts. A QR studio makes QR codes. Keeping the scope narrow is why each one can be finished rather than perpetually half-built, and why you can learn any of them in a minute.",
-      "It is also why there are twenty of them. Each new problem got its own app instead of another tab inside an existing one.",
+      `It is also why there are ${numberWord(apps.length)} of them. Each new problem got its own app instead of another tab inside an existing one.`,
     ],
   },
   {
     heading: "Free, and honest about what that means",
     body: [
-      "All 20 cost nothing and carry no ads — the web apps and the App Store downloads alike, anywhere in the world. They are not free-with-an-asterisk: no upgrade prompt, no locked export, no watermark on the way out, no trial running down.",
+      `All ${apps.length} cost nothing and carry no ads — the web apps and the App Store downloads alike, anywhere in the world. They are not free-with-an-asterisk: no upgrade prompt, no locked export, no watermark on the way out, no trial running down.`,
       "The macOS and iPhone apps are distributed through Apple, and their pricing is whatever the App Store listing says. This site does not restate it, because App Store pricing changes and a stale figure here would be worse than none.",
     ],
   },
@@ -67,7 +67,7 @@ export default function WhyMsrx() {
             className="display text-[clamp(34px,5.6vw,58px)] mb-6"
             style={{ color: "var(--stage-text-primary)" }}
           >
-            Twenty apps, four rules.
+            {NumberWord(apps.length)} apps, four rules.
           </h1>
           <p
             className="text-[18px] leading-relaxed max-w-2xl"

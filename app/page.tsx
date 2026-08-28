@@ -1,6 +1,17 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { apps, platformTag, type Category, type App } from "@/lib/apps";
+import {
+  apps,
+  newest,
+  platformTag,
+  platformLabel,
+  NumberWord,
+  numberWord,
+  noAccountWebApps,
+  webApps,
+  type Category,
+  type App,
+} from "@/lib/apps";
 import { appListJsonLd, faqJsonLd, JsonLd, CONTACT_EMAIL } from "@/lib/seo";
 import { MsrxLogo } from "@/components/MsrxLogo";
 
@@ -10,11 +21,11 @@ import { MsrxLogo } from "@/components/MsrxLogo";
 const faqs = [
   {
     q: "What is MSRX?",
-    a: "MSRX is a software studio run by Mrinal Singh Raja. It builds 20 apps across three platforms: web apps that run in any browser, native macOS apps, and native iPhone and iPad apps. They span study tools, data visualisation, design, weather, networking and everyday utilities. The tagline is “Future. Intelligence. Impact.”",
+    a: `MSRX is a software studio run by Mrinal Singh Raja. It builds ${apps.length} apps across three platforms: web apps that run in any browser, native macOS apps, and native iPhone and iPad apps. They span study tools, data visualisation, design, weather, networking and everyday utilities. The tagline is “Future. Intelligence. Impact.”`,
   },
   {
     q: "Are MSRX apps free?",
-    a: "Yes — all 20, everywhere in the world. There is no paid tier, no subscription, no trial that expires and nothing to upgrade to. The 11 web apps open in a browser and 10 of those need no account at all; the macOS and iPhone apps are free downloads on the Apple App Store.",
+    a: `Yes — all ${apps.length}, everywhere in the world. There is no paid tier, no subscription, no trial that expires and nothing to upgrade to. The ${webApps.length} web apps open in a browser and ${noAccountWebApps.length} of those need no account at all; the macOS and iPhone apps are free downloads on the Apple App Store.`,
   },
   {
     q: "Do MSRX apps store my data?",
@@ -73,6 +84,16 @@ if (ungrouped.length > 0) {
   );
 }
 
+// Named tools from the newest app, with their real deep links. Its feature
+// sentences were tried here first and had to be truncated mid-word to fit,
+// which looked broken; the tool names are short because they are names.
+const SPOTLIGHT_TOOLS = newest.tools ?? [];
+
+// tools.msrx.co.in states its own count on its homepage; this mirrors it, and
+// the "more" chip is derived so the two can never contradict each other.
+const NEWEST_TOOL_COUNT = 88;
+const SPOTLIGHT_REMAINDER = NEWEST_TOOL_COUNT - SPOTLIGHT_TOOLS.length;
+
 function AppTile({ app }: { app: App }) {
   return (
     <Link
@@ -113,21 +134,23 @@ export default function Home() {
       <JsonLd data={appListJsonLd()} />
       <JsonLd data={faqJsonLd(faqs)} />
 
-      {/* ── Hero: the index ─────────────────────────────────────────────────
-          The catalog is the hero. For a portal, breadth is the argument, so
-          showing all twenty apps in the first screen beats describing them. */}
+      {/* ── Hero ─────────────────────────────────────────────────────────────
+          Breadth is still the argument, but the old hero made it by printing
+          all of the apps as a table — and then the section below printed them
+          again as tiles. The count now carries breadth, the spotlight carries
+          the newest thing, and the catalog is shown once, further down. */}
       <section
-        className="relative"
+        className="relative overflow-hidden"
         style={{ background: "var(--stage)", color: "var(--stage-text-primary)" }}
       >
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 pt-16 pb-14 sm:pt-24 sm:pb-20">
-          <div className="grid lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-14 items-end mb-14 sm:mb-20">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 pt-16 pb-14 sm:pt-24 sm:pb-18">
+          <div className="grid lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-14 items-end mb-12 sm:mb-16">
             <div>
               <p className="eyebrow mb-6" style={{ color: "var(--stage-text-tertiary)" }}>
                 Future. Intelligence. Impact.
               </p>
               <h1 className="display text-[clamp(38px,5.6vw,66px)] text-balance mb-6">
-                Twenty apps.
+                {NumberWord(apps.length)} apps.
                 <br />
                 <span className="msrx-gradient-text">Open one and start.</span>
               </h1>
@@ -144,9 +167,9 @@ export default function Home() {
             <div className="flex lg:justify-end">
               <dl className="grid grid-cols-3 gap-6 sm:gap-10 w-full lg:w-auto">
                 {[
-                  { n: "20", l: "Apps" },
+                  { n: String(apps.length), l: "Apps" },
                   { n: "3", l: "Platforms" },
-                  { n: "20", l: "Free, no exceptions" },
+                  { n: String(apps.length), l: "Free, no exceptions" },
                 ].map((stat) => (
                   <div key={stat.l}>
                     <dt className="sr-only">{stat.l}</dt>
@@ -167,92 +190,83 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Index */}
-          <div className="rule-fade-stage" />
-          <div
-            className="flex items-baseline justify-between py-4"
-            aria-hidden="true"
+          {/* Spotlight — the newest app, at a size the index rows never gave it.
+              `newest` is one constant in lib/apps.ts, so this follows the next
+              launch without touching the markup. */}
+          <Link
+            href={`/apps/${newest.slug}`}
+            className="spotlight group grid gap-8 lg:grid-cols-[1.1fr_1fr] items-center rounded-[var(--radius-xl)] p-6 sm:p-9"
+            style={{ "--accent": newest.accent } as React.CSSProperties}
           >
-            <span
-              className="mono text-[10.5px] tracking-[0.18em] uppercase"
-              style={{ color: "var(--stage-text-tertiary)" }}
-            >
-              Index
-            </span>
-            <span
-              className="mono text-[10.5px] tracking-[0.18em] uppercase"
-              style={{ color: "var(--stage-text-tertiary)" }}
-            >
-              Platform
-            </span>
-          </div>
-          <div className="rule-fade-stage" />
-
-          <ul>
-            {apps.map((app, i) => (
-              <li key={app.slug}>
-                <Link
-                  href={`/apps/${app.slug}`}
-                  className="index-row grid grid-cols-[2.25rem_1fr_auto] sm:grid-cols-[3rem_minmax(0,14rem)_1fr_4rem] items-center gap-x-3 sm:gap-x-5 py-3.5 px-2 -mx-2 rounded-lg border-b"
-                  style={
-                    {
-                      borderColor: "var(--stage-line)",
-                      "--row-accent": app.accent,
-                    } as React.CSSProperties
-                  }
+            <div>
+              <span className="inline-flex items-center gap-2 mb-5">
+                <span className="dot-new" aria-hidden="true" />
+                {/* Secondary, not tertiary: the accent tint on this panel drops
+                    tertiary ink to 4.2:1, under AA. Measured, not assumed. */}
+                <span
+                  className="mono text-[10.5px] tracking-[0.18em] uppercase"
+                  style={{ color: "var(--stage-text-secondary)" }}
                 >
-                  <span
-                    className="mono text-[12px]"
-                    style={{ color: "var(--stage-text-tertiary)" }}
-                    aria-hidden="true"
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  Newest — {platformLabel(newest)}
+                </span>
+              </span>
 
-                  <span
-                    className="index-name display-sm text-[16px] sm:text-[18px] truncate"
-                    style={{ color: "var(--stage-text-primary)" }}
-                  >
-                    {app.name}
-                  </span>
+              <h2 className="display text-[clamp(26px,3.6vw,40px)] mb-3">
+                {newest.name}
+              </h2>
+              <p
+                className="text-[16px] sm:text-[17px] leading-relaxed mb-6 max-w-md"
+                style={{ color: "var(--stage-text-secondary)" }}
+              >
+                <strong
+                  className="font-semibold"
+                  style={{ color: "var(--stage-text-primary)" }}
+                >
+                  {NEWEST_TOOL_COUNT} tools
+                </strong>{" "}
+                for files, images and text — every one of them running inside your
+                own browser, so nothing is ever uploaded.
+              </p>
 
-                  <span
-                    className="hidden sm:block text-[14px] truncate"
-                    style={{ color: "var(--stage-text-secondary)" }}
-                  >
-                    {app.tagline}
-                  </span>
+              <span className="inline-flex items-center gap-2 text-[15px] font-semibold spotlight-cta">
+                Open {newest.name}
+                <ArrowRight
+                  size={16}
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                />
+              </span>
+            </div>
 
-                  <span className="flex items-center justify-end gap-2">
-                    <span
-                      className="mono text-[10.5px] tracking-[0.12em]"
-                      style={{ color: "var(--stage-text-tertiary)" }}
-                    >
-                      {platformTag(app)}
-                    </span>
-                    <ArrowRight
-                      size={14}
-                      aria-hidden="true"
-                      className="index-arrow hidden sm:block"
-                      style={{ color: app.accent }}
-                    />
-                  </span>
-                </Link>
+            {/* Named tools rather than a screenshot: each one is a thing the
+                visitor may have come looking for. */}
+            <ul className="flex flex-wrap gap-2" aria-hidden="true">
+              {SPOTLIGHT_TOOLS.map((tool) => (
+                <li
+                  key={tool.label}
+                  className="spotlight-chip mono text-[12px] px-3.5 py-2 rounded-full"
+                >
+                  {tool.label}
+                </li>
+              ))}
+              <li className="spotlight-chip-more mono text-[12px] px-3.5 py-2 rounded-full">
+                + {SPOTLIGHT_REMAINDER} more
               </li>
-            ))}
-          </ul>
+            </ul>
+          </Link>
         </div>
       </section>
 
       {/* ── Browse by need ──────────────────────────────────────────────────*/}
       <section className="max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-24">
         <div className="max-w-2xl mb-12 sm:mb-16">
-          <p className="eyebrow text-[var(--text-tertiary)] mb-4">By what you need</p>
+          <p className="eyebrow text-[var(--text-tertiary)] mb-4">The catalog</p>
           <h2 className="display text-[clamp(28px,4.4vw,44px)] text-[var(--text-primary)] mb-4">
-            Start from the task, not the catalog.
+            Start from the task, not the list.
           </h2>
           <p className="text-[16px] leading-relaxed text-[var(--text-secondary)]">
-            The index above is ordered by platform. This is the other way in.
+            All {numberWord(apps.length)}, grouped by what you came to do. Every
+            one opens free.
           </p>
         </div>
 
@@ -293,7 +307,7 @@ export default function Home() {
               },
               {
                 h: "Built to be finished",
-                p: "Each app solves one thing and ships. Twenty of them exist because each was taken to the point of being genuinely usable, not left as a demo.",
+                p: `Each app solves one thing and ships. ${NumberWord(apps.length)} of them exist because each was taken to the point of being genuinely usable, not left as a demo.`,
               },
             ].map((item) => (
               <div key={item.h}>

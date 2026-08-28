@@ -42,7 +42,7 @@ export const orgJsonLd = {
       logo: abs("/icon.svg"),
       image: abs("/opengraph-image"),
       description:
-        "MSRX builds 20 apps across web, macOS and iOS — study tools, data visualisation, design, weather, network and everyday utilities. All of them free, everywhere, with no paid tier.",
+        `MSRX builds ${apps.length} apps across web, macOS and iOS — study tools, file and image utilities, data visualisation, design, weather and more. All of them free, everywhere, with no paid tier.`,
       slogan: "Future. Intelligence. Impact.",
       email: CONTACT_EMAIL,
       founder: {
@@ -68,7 +68,7 @@ export const orgJsonLd = {
       "@id": SITE_ID,
       url: SITE_URL,
       name: "MSRX",
-      description: "20 apps for web, Mac and iPhone. All free, nothing stored, most with no sign-up.",
+      description: `${apps.length} apps for web, Mac and iPhone. All free, nothing stored, most with no sign-up.`,
       publisher: { "@id": ORG_ID },
       inLanguage: "en",
     },

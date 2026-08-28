@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { apps, webApps, macApps, iosApps, platformTag, type App } from "@/lib/apps";
+import {
+  apps,
+  webApps,
+  macApps,
+  iosApps,
+  noAccountWebApps,
+  platformTag,
+  numberWord,
+  NumberWord,
+  type App,
+} from "@/lib/apps";
 import { appListJsonLd, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
@@ -93,12 +103,15 @@ export default function AppsIndex() {
         <div className="max-w-5xl mx-auto px-5 sm:px-6 pt-8 pb-14 sm:pb-16">
           <Breadcrumbs trail={trail} />
           <h1 className="display text-[clamp(34px,5.6vw,56px)] text-[var(--text-primary)] mb-5">
-            All twenty apps.
+            All {numberWord(apps.length)} apps.
           </h1>
           <p className="text-[17px] leading-relaxed text-[var(--text-secondary)] max-w-2xl mb-8">
-            Eleven web apps that need no account, six Mac apps and four for iPhone.
-            That is twenty-one entries for twenty apps — OrionPulseNet appears twice,
-            because it ships on both. Each one does a single job.
+            {NumberWord(webApps.length)} web apps, {numberWord(macApps.length)} Mac
+            apps and {numberWord(iosApps.length)} for iPhone — that is{" "}
+            {numberWord(webApps.length + macApps.length + iosApps.length)} entries
+            for {numberWord(apps.length)} apps, because OrionPulseNet ships on both
+            the web and the Mac. All free; {numberWord(noAccountWebApps.length)} of
+            the web apps need no account at all. Each one does a single job.
           </p>
 
           {/* Jump links rather than a JS filter — the sections stay in the HTML,

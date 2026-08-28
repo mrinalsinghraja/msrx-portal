@@ -353,6 +353,35 @@ export const apps: App[] = [
       { label: "Milestones", href: "https://gantt.msrx.co.in" },
     ],
   },
+  {
+    slug: "tools",
+    name: "MSRX Tools",
+    initials: "MT",
+    accent: "#0F766E",
+    platform: "web",
+    category: "Utilities",
+    href: "https://tools.msrx.co.in",
+    actionLabel: "Open web app",
+    tagline: "88 file and text tools that never upload your files",
+    description:
+      "A suite of 88 everyday utilities — merge and split PDFs, compress convert crop and watermark images, format and validate JSON, encode and decode Base64 and URLs, plus calculators and generators. Every one runs entirely inside your own browser, so your files are read on your device and never uploaded. Free, no account, and it keeps working offline.",
+    features: [
+      "Merge, split, organise and extract pages from PDFs",
+      "Compress, convert, resize, crop, rotate and watermark images",
+      "Format, validate and convert JSON and other text data",
+      "Base64, URL and HTML-entity encoding and decoding",
+      "Calculators and generators — EMI, GST, SIP, unit conversion and more",
+      "Everything runs in your browser — files are never uploaded",
+      "Free, no account, works offline",
+    ],
+    tools: [
+      { label: "Merge PDF", href: "https://tools.msrx.co.in/pdf/merge-pdf" },
+      { label: "Compress Image", href: "https://tools.msrx.co.in/image/compress-image" },
+      { label: "Convert Image", href: "https://tools.msrx.co.in/image/convert-image" },
+      { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
+      { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/calculator/loan-emi-calculator" },
+    ],
+  },
 
   // ── macOS ───────────────────────────────────────────────────────────────────
   {
@@ -593,6 +622,49 @@ export const iosApps = apps.filter((a) => platformsOf(a).includes("ios"));
 export function getApp(slug: string): App | undefined {
   return apps.find((a) => a.slug === slug);
 }
+
+/**
+ * The most recently launched app. Drives the homepage spotlight and its "new"
+ * label — update this one line when the next app ships, and every surface that
+ * announces it follows. Throws at build if the slug is wrong, so a typo cannot
+ * quietly leave the spotlight empty.
+ */
+export const NEWEST_SLUG = "tools";
+
+export const newest = (() => {
+  const found = apps.find((a) => a.slug === NEWEST_SLUG);
+  if (!found) throw new Error(`NEWEST_SLUG names a missing app: ${NEWEST_SLUG}`);
+  return found;
+})();
+
+/**
+ * Spelled-out counts, so prose can stay literate without hardcoding a number
+ * that goes stale the moment an app ships. Falls back to the numeral above the
+ * range a sentence would ever spell out anyway.
+ */
+const NUMBER_WORDS = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+  "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+  "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one",
+  "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six",
+  "twenty-seven", "twenty-eight", "twenty-nine", "thirty",
+];
+
+export function numberWord(n: number): string {
+  return NUMBER_WORDS[n] ?? String(n);
+}
+
+/** "Twenty-one" — capitalised, for the start of a sentence or a headline. */
+export function NumberWord(n: number): string {
+  const w = numberWord(n);
+  return w.charAt(0).toUpperCase() + w.slice(1);
+}
+
+/** Web apps that open with no account. Planner is the one that asks for one. */
+export const ACCOUNT_REQUIRED_SLUGS = ["planner"];
+export const noAccountWebApps = webApps.filter(
+  (a) => !ACCOUNT_REQUIRED_SLUGS.includes(a.slug)
+);
 
 /** Same-category apps, falling back to same-platform, capped at three. */
 export function relatedApps(app: App, limit = 3): App[] {

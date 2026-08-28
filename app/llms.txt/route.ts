@@ -1,4 +1,13 @@
-import { apps, webApps, macApps, iosApps, type App } from "@/lib/apps";
+import {
+  apps,
+  webApps,
+  macApps,
+  iosApps,
+  noAccountWebApps,
+  numberWord,
+  NumberWord,
+  type App,
+} from "@/lib/apps";
 import { SITE_URL, CONTACT_EMAIL } from "@/lib/seo";
 
 // llms.txt is generated from the same catalog that renders the site, so it can
@@ -23,7 +32,7 @@ function section(heading: string, note: string, list: App[]): string {
 export function GET() {
   const body = `# MSRX
 
-> MSRX builds ${apps.length} apps across web, macOS and iOS — study tools, data visualisation, design, weather, networking and everyday utilities. Tagline: "Future. Intelligence. Impact." All ${apps.length} are free, everywhere, with no paid tier or subscription — the web apps and the App Store downloads alike. Ten of the eleven web apps need no account at all. Most apps process entirely on your device and store nothing on MSRX servers.
+> MSRX builds ${apps.length} apps across web, macOS and iOS — study tools, file and image utilities, data visualisation, design, weather, networking and everyday tools. Tagline: "Future. Intelligence. Impact." All ${apps.length} are free, everywhere, with no paid tier or subscription — the web apps and the App Store downloads alike. ${NumberWord(noAccountWebApps.length)} of the ${numberWord(webApps.length)} web apps need no account at all. Most apps process entirely on your device and store nothing on MSRX servers.
 
 Built by Mrinal Singh Raja. Catalog: ${SITE_URL}/apps
 

@@ -9,6 +9,7 @@ import {
   platformLabel,
   platformTag,
   isDualPlatform,
+  numberWord,
 } from "@/lib/apps";
 import {
   breadcrumbJsonLd,
@@ -19,7 +20,7 @@ import {
 } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-// All twenty apps are known at build time, so every page is static HTML.
+// Every app is known at build time, so every page is static HTML.
 export function generateStaticParams() {
   return apps.map((app) => ({ slug: app.slug }));
 }
@@ -277,7 +278,7 @@ export default async function AppPage({
               href="/apps"
               className="mt-8 inline-flex items-center gap-1.5 text-[14px] font-medium text-[var(--violet-deep)] hover:underline underline-offset-4"
             >
-              See all twenty apps
+              See all {numberWord(apps.length)} apps
               <ArrowRight size={14} aria-hidden="true" />
             </Link>
           </div>

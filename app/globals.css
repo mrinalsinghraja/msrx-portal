@@ -361,3 +361,73 @@ html[data-theme="dark"] .nav-blur {
 .skip-link:focus {
   transform: translate(-50%, 0);
 }
+
+/* ── Spotlight ────────────────────────────────────────────────────────────────
+   The homepage feature for the newest app. It sits on --stage, which is paper
+   in light and ink in dark, so the panel is tinted from the app's own accent
+   against the live surface rather than being given two hardcoded backgrounds.
+
+   6% was tried first and the panel just read grey — the accent has to be felt
+   for this to announce anything. 13% tints it clearly while leaving the name the
+   loudest thing in the box. */
+.spotlight {
+  position: relative;
+  background: color-mix(in srgb, var(--accent) 13%, var(--stage-raised));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+}
+
+.spotlight:hover {
+  border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--accent) 14%, transparent);
+  transform: translateY(-2px);
+}
+
+/* The accent is chosen to pass AA on white; on the light stage it is used as
+   text here, so it keeps that contrast. In dark it is lifted by the same
+   --accent-lift the catalog tiles use. */
+.spotlight-cta {
+  color: color-mix(in srgb, white var(--accent-lift), var(--accent));
+}
+
+.spotlight-chip {
+  background: var(--stage-raised);
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  color: var(--stage-text-secondary);
+}
+
+/* A small pulsing dot marks the launch. It is the only animated element on the
+   page, which is what makes it read as "new" rather than as decoration. */
+.dot-new {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  animation: dot-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes dot-pulse {
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot-new {
+    animation: none;
+  }
+
+  .spotlight:hover {
+    transform: none;
+  }
+}
+
+/* The "+ N more" chip is a count, not a tool — outlined rather than filled so
+   it does not read as one more thing you can click. */
+.spotlight-chip-more {
+  border: 1px dashed color-mix(in srgb, var(--accent) 30%, transparent);
+  /* Secondary rather than tertiary — the tinted panel takes tertiary ink to
+     4.2:1 in light, which fails AA. Measured on the panel itself. */
+  color: var(--stage-text-secondary);
+}

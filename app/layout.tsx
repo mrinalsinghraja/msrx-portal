@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL, orgJsonLd } from "@/lib/seo";
+import { apps, webApps, noAccountWebApps } from "@/lib/apps";
 
 // Body. Inter reads cleanly at the 13–16px the cards and prose sit at.
 const inter = Inter({
@@ -32,11 +33,11 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "MSRX — 20 free apps for web, Mac and iPhone",
+    default: `MSRX — ${apps.length} free apps for web, Mac and iPhone`,
     template: "%s — MSRX",
   },
   description:
-    "20 apps across web, macOS and iOS — study tools, data visualisation, design, weather, network and everyday utilities. Every one free, everywhere, with no paid tier.",
+    `${apps.length} apps across web, macOS and iOS — study tools, file and image utilities, data visualisation, design, weather and more. Every one free, everywhere, with no paid tier.`,
   applicationName: "MSRX",
   authors: [
     { name: "Mrinal Singh Raja", url: "https://www.linkedin.com/in/mrinalsinghraja/" },
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "MSRX — 20 free apps for web, Mac and iPhone",
+    title: `MSRX — ${apps.length} free apps for web, Mac and iPhone`,
     description:
       "Study tools, data visualisation, design, weather, network and everyday utilities. All free, nothing stored, most with no sign-up.",
     url: SITE_URL,
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MSRX — 20 free apps for web, Mac and iPhone",
+    title: `MSRX — ${apps.length} free apps for web, Mac and iPhone`,
     description:
       "Study tools, data visualisation, design, weather, network and everyday utilities. All free, nothing stored, most with no sign-up.",
     images: [{ url: "/opengraph-image", alt: "MSRX — Future. Intelligence. Impact." }],
