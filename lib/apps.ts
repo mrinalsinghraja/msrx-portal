@@ -434,8 +434,9 @@ export const apps: App[] = [
   },
   {
     slug: "orionshield",
-    name: "OrionShield",
-    initials: "OR",
+    // Renamed on the App Store; the slug stays so the indexed URL survives.
+    name: "MSRX Shield",
+    initials: "MS",
     accent: "#C2410C",
     platform: "macos",
     category: "Security",
@@ -472,8 +473,9 @@ export const apps: App[] = [
   },
   {
     slug: "orionclean",
-    name: "OrionClean",
-    initials: "OC",
+    // Renamed on the App Store; the slug stays so the indexed URL survives.
+    name: "MSRX Clean",
+    initials: "MC",
     accent: "#115E59",
     platform: "macos",
     category: "Utilities",
@@ -511,8 +513,9 @@ export const apps: App[] = [
   },
   {
     slug: "numly",
-    name: "Numly — AI Calculator",
-    initials: "NM",
+    // Renamed on the App Store; the slug stays so the indexed URL survives.
+    name: "MSRX AI Calculator",
+    initials: "AC",
     accent: "#B45309",
     platform: "ios",
     category: "Utilities",
