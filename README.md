@@ -4,7 +4,7 @@
 
 All of them are free, everywhere. No paid tier, no subscription, no trial that expires. Eleven of the twelve web apps don't ask for an account either.
 
-![MSRX Portal — twenty-one apps, open one and start](docs/screenshot.png)
+![Switching the portal from its default light theme to dark and back](docs/demo.gif)
 
 ## What it is
 
