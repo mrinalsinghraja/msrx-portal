@@ -45,13 +45,29 @@ export interface App {
   tools?: { label: string; href: string }[];
 }
 
+const NUMBER_WORDS = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+  "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+  "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one",
+  "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six",
+  "twenty-seven", "twenty-eight", "twenty-nine", "thirty",
+];
+
 /**
  * How many tools tools.msrx.co.in ships. It states this on its own homepage and
- * the number grows — it was 88 in July and 116 by late August — so it lives in
- * one place and every sentence about it is built from here. Update this line
- * only, and check the live site first: this is a claim, not an estimate.
+ * the number grows — 88 in July, 116 by late August, 147 once audio and video
+ * landed — so it lives in one place and every sentence about it is built from
+ * here. Update this line only, and check the live site first: this is a claim,
+ * not an estimate.
  */
-export const TOOLS_APP_COUNT = 116;
+export const TOOLS_APP_COUNT = 147;
+
+/**
+ * How many groups those tools are filed under. Spelled out in the description
+ * rather than written as a word, because "seven groups" sat in that sentence
+ * through the arrival of both audio and video before anyone noticed.
+ */
+export const TOOLS_GROUP_COUNT = 9;
 
 export const apps: App[] = [
   // ── Web ─────────────────────────────────────────────────────────────────────
@@ -370,12 +386,15 @@ export const apps: App[] = [
     category: "Utilities",
     href: "https://tools.msrx.co.in",
     actionLabel: "Open web app",
-    tagline: `${TOOLS_APP_COUNT} file, image and text tools that never upload your files`,
+    tagline: `${TOOLS_APP_COUNT} file, image, video and text tools that never upload your files`,
     description:
-      `A suite of ${TOOLS_APP_COUNT} everyday utilities across seven groups — merge and split PDFs, compress convert crop and watermark images, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, and a set of calculators and generators. Every one runs entirely inside your own browser, so your files are read on your device and never uploaded. Free, no account, and it keeps working offline.`,
+      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, and a set of calculators and generators. Every one runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. Free, no account, and it keeps working offline.`,
     features: [
       "Merge, split, organise and extract pages from PDFs",
       "Compress, convert, resize, crop, rotate and watermark images",
+      "Trim, crop, compress, convert, merge and speed up video",
+      "Record your screen or camera — the recording never leaves the tab",
+      "Cut, level, speed and join audio, or pull the sound out of a video",
       "Zip and unzip archives without installing anything",
       "Format, validate and convert JSON and other text data",
       "Base64, URL and HTML-entity encoding and decoding",
@@ -387,7 +406,9 @@ export const apps: App[] = [
     tools: [
       { label: "Merge PDF", href: "https://tools.msrx.co.in/pdf/merge-pdf" },
       { label: "Compress Image", href: "https://tools.msrx.co.in/image/compress-image" },
-      { label: "Convert Image", href: "https://tools.msrx.co.in/image/convert-image" },
+      { label: "Compress Video", href: "https://tools.msrx.co.in/video/compress-video" },
+      { label: "Screen Recorder", href: "https://tools.msrx.co.in/video/screen-recorder" },
+      { label: "Video to MP3", href: "https://tools.msrx.co.in/video/video-to-mp3" },
       { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
       { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/calculator/loan-emi-calculator" },
     ],
@@ -655,13 +676,6 @@ export const newest = (() => {
  * that goes stale the moment an app ships. Falls back to the numeral above the
  * range a sentence would ever spell out anyway.
  */
-const NUMBER_WORDS = [
-  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
-  "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-  "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one",
-  "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six",
-  "twenty-seven", "twenty-eight", "twenty-nine", "thirty",
-];
 
 export function numberWord(n: number): string {
   return NUMBER_WORDS[n] ?? String(n);
