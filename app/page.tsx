@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: "Which apps are useful for students?",
-    a: "Four. MSRX Planner is an academic workspace with a weekly planner, notes, flashcards and study groups. JEE HyperLab has 204 interactive Physics, Chemistry and Maths simulations for IIT-JEE. MSRX StoryQuest has 202 STEM missions for classes 1 to 10. MSRX GraphIQ turns data into charts for projects and lab reports.",
+    a: "Four. MSRX Planner is an academic workspace with a weekly planner, notes, flashcards and study groups. JEE HyperLab has 204 interactive Physics, Chemistry and Maths simulations for IIT-JEE. MSRX StoryQuest has 222 STEM missions for classes 1 to 10. MSRX GraphIQ turns data into charts for projects and lab reports.",
   },
   {
     q: "Do I need to install anything?",

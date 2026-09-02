@@ -93,11 +93,11 @@ export const apps: App[] = [
     category: "Study",
     href: "https://story.msrx.co.in",
     actionLabel: "Open web app",
-    tagline: "202 STEM missions where the answer comes from a real equation",
+    tagline: "222 STEM missions where the answer comes from a real equation",
     description:
       "Over 200 hands-on STEM missions for classes 1 to 10 — free, no sign-up, works on any phone. Every mission drops you into a system that is going wrong: a crane tipping, a circuit overloading, a pond losing its fish. You get one real variable and a live lab. Move it until the actual equation balances. Physics, chemistry, maths and biology, solved from the relationship rather than guessed.",
     features: [
-      "202 missions spanning classes 1 to 10",
+      "222 missions spanning classes 1 to 10",
       "Every answer is solved from a real equation, never a made-up target",
       "Live lab with one controllable variable per mission",
       "Physics, chemistry, maths and biology",
