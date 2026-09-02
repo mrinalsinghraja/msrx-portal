@@ -4,6 +4,8 @@
 
 All of them are free, everywhere. No paid tier, no subscription, no trial that expires. Eleven of the twelve web apps don't ask for an account either.
 
+![MSRX Portal — twenty-one apps, open one and start](docs/screenshot.png)
+
 ## What it is
 
 A catalog site, not a product site. It has one job: let someone find the app that does the thing they need, and get out of the way. Each app gets its own page with what it does, where it runs, and a link straight to it.
