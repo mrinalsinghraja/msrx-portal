@@ -173,6 +173,15 @@ const CLAIMS = [
     live: /(\d+) tools/,
     why: "The app calls them tools on its own page; this portal calls them diagnostics.",
   },
+  {
+    app: "JEE HyperLab",
+    what: "simulations",
+    slug: "jee-hyperlab",
+    portal: /(\d+) interactive PCM simulations/,
+    url: "https://lab.msrx.co.in/",
+    live: /(\d+) interactive simulations/,
+    why: "Stated in the app's FAQ schema and its key-features list.",
+  },
 ];
 
 /**
@@ -180,11 +189,10 @@ const CLAIMS = [
  * next person does not spend an afternoon rediscovering why.
  */
 const UNVERIFIABLE = [
-  {
-    app: "JEE HyperLab",
-    what: "204 simulations",
-    why: "The app only ever says '200+', and one FAQ answer still says 'more than 100'. Both are true of 204 and neither pins it, so there is nothing here to compare against. The count comes from the app's own registry instead.",
-  },
+  // JEE HyperLab used to live here: it only ever said "200+", with one FAQ
+  // answer still saying "more than 100", so there was nothing exact to compare
+  // against. The lab now derives its count from its own engine registry and
+  // states 204 outright, which is what made the claim checkable.
 ];
 
 /* ------------------------------------------------------------------ */
