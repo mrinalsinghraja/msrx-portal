@@ -56,18 +56,19 @@ const NUMBER_WORDS = [
 /**
  * How many tools tools.msrx.co.in ships. It states this on its own homepage and
  * the number grows — 88 in July, 116 by late August, 147 once audio and video
- * landed, 171 with the AI category — so it lives in one place and every sentence about it is built from
+ * landed, 171 with the AI category, 211 once the financial calculators arrived —
+ * so it lives in one place and every sentence about it is built from
  * here. Update this line only, and check the live site first: this is a claim,
  * not an estimate.
  */
-export const TOOLS_APP_COUNT = 181;
+export const TOOLS_APP_COUNT = 211;
 
 /**
  * How many groups those tools are filed under. Spelled out in the description
  * rather than written as a word, because "seven groups" sat in that sentence
  * through the arrival of both audio and video before anyone noticed.
  */
-export const TOOLS_GROUP_COUNT = 10;
+export const TOOLS_GROUP_COUNT = 11;
 
 export const apps: App[] = [
   // ── Web ─────────────────────────────────────────────────────────────────────
@@ -386,9 +387,9 @@ export const apps: App[] = [
     category: "Utilities",
     href: "https://tools.msrx.co.in",
     actionLabel: "Open web app",
-    tagline: `${TOOLS_APP_COUNT} file, image, video, text and AI tools — no file ever uploaded`,
+    tagline: `${TOOLS_APP_COUNT} file, image, video, text, money and AI tools — no file ever uploaded`,
     description:
-      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, calculators and generators, and a set of AI writing tools for prompts, summaries, translation and rewriting. Every tool that touches a file runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. The AI tools are the one exception and say so on every page: they take typed text, never a file, and send it to a model. Free, no account, and everything but the AI tools keeps working offline.`,
+      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, convert units and work out numbers, run the money maths from a home loan instalment to a retirement corpus, and a set of AI writing tools for prompts, summaries, translation and rewriting. Every tool that touches a file runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. The AI tools are the one exception and say so on every page: they take typed text, never a file, and send it to a model. Free, no account, and everything but the AI tools keeps working offline.`,
     features: [
       "Merge, split, organise and extract pages from PDFs",
       "Compress, convert, resize, crop, rotate and watermark images",
@@ -400,7 +401,8 @@ export const apps: App[] = [
       "Bold, italic, cursive and bubble text for fields that strip formatting",
       "Base64, URL and HTML-entity encoding and decoding",
       "Encrypt and decrypt a file with a passphrase",
-      "Calculators and generators — EMI, GST, SIP, unit conversion and more",
+      "Financial calculators — SIP, EMI, income tax, PPF, EPF, gratuity, retirement",
+      "Calculators and generators — unit conversion, percentages, dates and more",
       "AI tools for prompts, summaries, translation, grammar and rewriting",
       "Reading scores computed on your own device, with no server involved",
       "Every file tool runs in your browser — no file is ever uploaded",
@@ -418,7 +420,9 @@ export const apps: App[] = [
       { label: "Translator", href: "https://tools.msrx.co.in/ai/translate-text" },
       { label: "Bold Text Generator", href: "https://tools.msrx.co.in/text/bold-text-generator" },
       { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
-      { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/calculator/loan-emi-calculator" },
+      { label: "Income Tax Calculator", href: "https://tools.msrx.co.in/finance/income-tax-calculator" },
+      { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/finance/loan-emi-calculator" },
+      { label: "SIP Calculator", href: "https://tools.msrx.co.in/finance/sip-calculator" },
       { label: "Text Summariser", href: "https://tools.msrx.co.in/ai/summarize-text" },
       { label: "Paraphrasing Tool", href: "https://tools.msrx.co.in/ai/paraphrase-text" },
       { label: "Readability Checker", href: "https://tools.msrx.co.in/ai/readability-checker" },
