@@ -225,8 +225,9 @@ export default function Home() {
                 >
                   {TOOLS_APP_COUNT} tools
                 </strong>{" "}
-                for files, images, video and text — every one of them running
-                inside your own browser, so nothing is ever uploaded.
+                for files, images, video, text and AI writing — every tool that
+                touches a file runs inside your own browser, so no file is ever
+                uploaded.
               </p>
 
               <span className="inline-flex items-center gap-2 text-[15px] font-semibold spotlight-cta">

@@ -60,14 +60,14 @@ const NUMBER_WORDS = [
  * here. Update this line only, and check the live site first: this is a claim,
  * not an estimate.
  */
-export const TOOLS_APP_COUNT = 147;
+export const TOOLS_APP_COUNT = 171;
 
 /**
  * How many groups those tools are filed under. Spelled out in the description
  * rather than written as a word, because "seven groups" sat in that sentence
  * through the arrival of both audio and video before anyone noticed.
  */
-export const TOOLS_GROUP_COUNT = 9;
+export const TOOLS_GROUP_COUNT = 10;
 
 export const apps: App[] = [
   // ── Web ─────────────────────────────────────────────────────────────────────
@@ -386,9 +386,9 @@ export const apps: App[] = [
     category: "Utilities",
     href: "https://tools.msrx.co.in",
     actionLabel: "Open web app",
-    tagline: `${TOOLS_APP_COUNT} file, image, video and text tools that never upload your files`,
+    tagline: `${TOOLS_APP_COUNT} file, image, video, text and AI tools — no file ever uploaded`,
     description:
-      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, and a set of calculators and generators. Every one runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. Free, no account, and it keeps working offline.`,
+      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, calculators and generators, and a set of AI writing tools for prompts, summaries, translation and rewriting. Every tool that touches a file runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. The AI tools are the one exception and say so on every page: they take typed text, never a file, and send it to a model. Free, no account, and everything but the AI tools keeps working offline.`,
     features: [
       "Merge, split, organise and extract pages from PDFs",
       "Compress, convert, resize, crop, rotate and watermark images",
@@ -400,8 +400,10 @@ export const apps: App[] = [
       "Base64, URL and HTML-entity encoding and decoding",
       "Encrypt and decrypt a file with a passphrase",
       "Calculators and generators — EMI, GST, SIP, unit conversion and more",
-      "Everything runs in your browser — files are never uploaded",
-      "Free, no account, works offline",
+      "AI tools for prompts, summaries, translation, grammar and rewriting",
+      "Reading scores computed on your own device, with no server involved",
+      "Every file tool runs in your browser — no file is ever uploaded",
+      "Free, no account, and everything but the AI tools works offline",
     ],
     tools: [
       { label: "Merge PDF", href: "https://tools.msrx.co.in/pdf/merge-pdf" },
@@ -409,6 +411,8 @@ export const apps: App[] = [
       { label: "Compress Video", href: "https://tools.msrx.co.in/video/compress-video" },
       { label: "Screen Recorder", href: "https://tools.msrx.co.in/video/screen-recorder" },
       { label: "Video to MP3", href: "https://tools.msrx.co.in/video/video-to-mp3" },
+      { label: "AI Prompt Generator", href: "https://tools.msrx.co.in/ai/ai-prompt-generator" },
+      { label: "Text Summariser", href: "https://tools.msrx.co.in/ai/summarize-text" },
       { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
       { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/calculator/loan-emi-calculator" },
     ],
