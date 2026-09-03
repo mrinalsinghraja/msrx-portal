@@ -45,6 +45,39 @@ npm run dev
 
 `npm run build` also typechecks, and is the gate to use — `tsc --noEmit` hangs in this project.
 
+## Checking the claims
+
+```bash
+npm run check:claims
+```
+
+This site describes twenty-one apps it does not build, and nothing tells it when
+one of them grows. A number written here is true the day it is written and
+quietly stops being true afterwards — QR Studio was sold as "21 QR types" after
+it had 22, and WeatherWatch as fourteen languages after it answered in nineteen.
+Neither a type nor a test could see it, because the only authority is the app.
+
+So this fetches each app and compares what it says about itself against what
+`lib/apps.ts` says about it. Both numbers are extracted; neither is written down
+twice. It reports four kinds of problem:
+
+| | |
+|---|---|
+| `STALE` | the app moved and this repository did not |
+| `BROKEN` | this repository's own copy gives two numbers for one claim |
+| `NO-MATCH` / `AMBIGUOUS` | the pattern needs attention, not the number |
+| `UNREACHABLE` | a network result, not a claim result |
+
+**It is deliberately not part of the build.** It needs the network and depends on
+twenty-one sites this repository does not control; a deploy failing because one
+of them was briefly down would be worse than the problem it catches. Run it
+before a release. `npm run check:claims:strict` also fails on an unreachable
+site, for a scheduled run where silence should not read as success.
+
+Adding an app with a number in its copy means adding a claim for it. The list is
+at the top of `scripts/check-claims.mjs`, and numbers that were considered and
+found unpinnable are recorded there too, with the reason.
+
 ## Licence
 
 No licence is granted. The source is public to read, not to redistribute.
