@@ -389,7 +389,7 @@ export const apps: App[] = [
     actionLabel: "Open web app",
     tagline: `${TOOLS_APP_COUNT} file, image, video, text, money and AI tools — no file ever uploaded`,
     description:
-      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, convert units and work out numbers, run the money maths from a home loan instalment to a retirement corpus, and a set of AI writing tools for prompts, summaries, translation and rewriting. Every tool that touches a file runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. The AI tools are the one exception and say so on every page: they take typed text, never a file, and send it to a model. Free, no account, and everything but the AI tools keeps working offline.`,
+      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, convert units and work out numbers, run the money maths from a SIP projection to a home loan instalment, income tax under either regime and what a PPF account matures at, and a set of AI writing tools for prompts, summaries, translation and rewriting. Every tool that touches a file runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. The AI tools are the one exception and say so on every page: they take typed text, never a file, and send it to a model. Free, no account, and everything but the AI tools keeps working offline.`,
     features: [
       "Merge, split, organise and extract pages from PDFs",
       "Compress, convert, resize, crop, rotate and watermark images",
@@ -412,17 +412,28 @@ export const apps: App[] = [
     // spotlight, so the leading entries have to span the categories rather than
     // cluster in one. Everything here appears on the app page.
     tools: [
+      // The first eight are the home page spotlight. They span groups on
+      // purpose: before the financial calculators landed, three of the eight
+      // were AI tools and the newest and largest group had no chip at all,
+      // which is the clustering the note above warns about.
       { label: "Merge PDF", href: "https://tools.msrx.co.in/pdf/merge-pdf" },
       { label: "Compress Image", href: "https://tools.msrx.co.in/image/compress-image" },
+      { label: "SIP Calculator", href: "https://tools.msrx.co.in/finance/sip-calculator" },
       { label: "Compress Video", href: "https://tools.msrx.co.in/video/compress-video" },
+      { label: "Income Tax Calculator", href: "https://tools.msrx.co.in/finance/income-tax-calculator" },
       { label: "AI Prompt Generator", href: "https://tools.msrx.co.in/ai/ai-prompt-generator" },
-      { label: "Grammar Checker", href: "https://tools.msrx.co.in/ai/grammar-checker" },
-      { label: "Translator", href: "https://tools.msrx.co.in/ai/translate-text" },
       { label: "Bold Text Generator", href: "https://tools.msrx.co.in/text/bold-text-generator" },
       { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
-      { label: "Income Tax Calculator", href: "https://tools.msrx.co.in/finance/income-tax-calculator" },
-      { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/finance/loan-emi-calculator" },
-      { label: "SIP Calculator", href: "https://tools.msrx.co.in/finance/sip-calculator" },
+
+      // Everything below appears on the app page only.
+      { label: "Home Loan EMI Calculator", href: "https://tools.msrx.co.in/finance/home-loan-emi-calculator" },
+      { label: "Salary Calculator", href: "https://tools.msrx.co.in/finance/salary-calculator" },
+      { label: "PPF Calculator", href: "https://tools.msrx.co.in/finance/ppf-calculator" },
+      { label: "GST Calculator", href: "https://tools.msrx.co.in/finance/gst-calculator" },
+      { label: "Gratuity Calculator", href: "https://tools.msrx.co.in/finance/gratuity-calculator" },
+      { label: "Retirement Calculator", href: "https://tools.msrx.co.in/finance/retirement-calculator" },
+      { label: "Grammar Checker", href: "https://tools.msrx.co.in/ai/grammar-checker" },
+      { label: "Translator", href: "https://tools.msrx.co.in/ai/translate-text" },
       { label: "Text Summariser", href: "https://tools.msrx.co.in/ai/summarize-text" },
       { label: "Paraphrasing Tool", href: "https://tools.msrx.co.in/ai/paraphrase-text" },
       { label: "Readability Checker", href: "https://tools.msrx.co.in/ai/readability-checker" },
