@@ -138,14 +138,16 @@ export const apps: App[] = [
     category: "Utilities",
     href: "https://weather.msrx.co.in",
     actionLabel: "Open web app",
-    tagline: "Weather and multi-hazard early warning in 14 languages",
+    // 19 languages and 15 hazard engines, both stated in weather.msrx.co.in's
+    // own hero. The language count read 14 here until a sweep compared them.
+    tagline: "Weather and multi-hazard early warning in 19 languages",
     description:
-      "An AI-powered weather and multi-hazard early-warning platform. Live conditions, 7-day forecasts, UV and air quality, and 15 hazard engines covering storms, floods, heat and more, with an AI weather assistant that answers in 14 languages. Free, no sign-up, privacy-first.",
+      "An AI-powered weather and multi-hazard early-warning platform. Live conditions, 7-day forecasts, UV and air quality, and 15 hazard engines covering storms, floods, heat and more, with an AI weather assistant that answers in 19 languages. Free, no sign-up, privacy-first.",
     features: [
       "Live conditions and 7-day forecasts",
       "15 hazard engines including storms, floods and heat",
       "UV index and air quality",
-      "AI weather assistant across 14 languages",
+      "AI weather assistant across 19 languages",
       "Works offline once loaded",
       "Free with no sign-up",
     ],
@@ -250,13 +252,16 @@ export const apps: App[] = [
     category: "Creative",
     href: "https://qr.msrx.co.in",
     actionLabel: "Open web app",
-    tagline: "21 QR types with gradients, logos and health scoring",
+    // 22 types / 33 frames / 32 templates, checked against qr.msrx.co.in's own
+    // meta description. It said 21 and "30+ frames" here for long enough that
+    // the app had added a type and the portal was quietly under-selling it.
+    tagline: "22 QR types with gradients, logos and health scoring",
     description:
-      "A QR design studio covering 21 QR types with gradients, logos, 30+ frames and editable templates. Real-time health scoring tells you whether a code will actually scan, and one-click optimise fixes it when it will not. Runs entirely in your browser with no login.",
+      "A QR design studio covering 22 QR types with gradients, logos, 33 frames and 32 editable templates. Real-time health scoring tells you whether a code will actually scan, and one-click optimise fixes it when it will not. Runs entirely in your browser with no login.",
     features: [
-      "21 QR code types including URL, WiFi and vCard",
-      "Gradient fills, embedded logos and 30+ frames",
-      "Editable templates",
+      "22 QR code types including URL, UPI, WiFi and vCard",
+      "Gradient fills, embedded logos and 33 frames",
+      "32 editable templates",
       "Real-time scan health scoring",
       "One-click optimise",
       "Runs in-browser with no login",
