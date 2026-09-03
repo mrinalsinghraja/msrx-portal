@@ -405,16 +405,23 @@ export const apps: App[] = [
       "Every file tool runs in your browser — no file is ever uploaded",
       "Free, no account, and everything but the AI tools works offline",
     ],
+    // Ordered deliberately: the home page shows only the first few as a
+    // spotlight, so the leading entries have to span the categories rather than
+    // cluster in one. Everything here appears on the app page.
     tools: [
       { label: "Merge PDF", href: "https://tools.msrx.co.in/pdf/merge-pdf" },
       { label: "Compress Image", href: "https://tools.msrx.co.in/image/compress-image" },
       { label: "Compress Video", href: "https://tools.msrx.co.in/video/compress-video" },
-      { label: "Screen Recorder", href: "https://tools.msrx.co.in/video/screen-recorder" },
-      { label: "Video to MP3", href: "https://tools.msrx.co.in/video/video-to-mp3" },
       { label: "AI Prompt Generator", href: "https://tools.msrx.co.in/ai/ai-prompt-generator" },
-      { label: "Text Summariser", href: "https://tools.msrx.co.in/ai/summarize-text" },
+      { label: "Grammar Checker", href: "https://tools.msrx.co.in/ai/grammar-checker" },
+      { label: "Translator", href: "https://tools.msrx.co.in/ai/translate-text" },
       { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
       { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/calculator/loan-emi-calculator" },
+      { label: "Text Summariser", href: "https://tools.msrx.co.in/ai/summarize-text" },
+      { label: "Paraphrasing Tool", href: "https://tools.msrx.co.in/ai/paraphrase-text" },
+      { label: "Readability Checker", href: "https://tools.msrx.co.in/ai/readability-checker" },
+      { label: "Screen Recorder", href: "https://tools.msrx.co.in/video/screen-recorder" },
+      { label: "Video to MP3", href: "https://tools.msrx.co.in/video/video-to-mp3" },
     ],
   },
 

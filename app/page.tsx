@@ -88,7 +88,10 @@ if (ungrouped.length > 0) {
 // Named tools from the newest app, with their real deep links. Its feature
 // sentences were tried here first and had to be truncated mid-word to fit,
 // which looked broken; the tool names are short because they are names.
-const SPOTLIGHT_TOOLS = newest.tools ?? [];
+// A teaser, not a directory. The app's own page lists every deep link; a row
+// of thirteen chips here stops reading as examples and starts reading as a
+// menu, and pushes the call to action below the fold.
+const SPOTLIGHT_TOOLS = (newest.tools ?? []).slice(0, 8);
 
 // The count lives in lib/apps.ts beside the app it describes, so the tagline,
 // the description and this spotlight cannot disagree. The "more" chip is
