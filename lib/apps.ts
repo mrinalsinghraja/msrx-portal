@@ -56,11 +56,11 @@ const NUMBER_WORDS = [
 /**
  * How many tools tools.msrx.co.in ships. It states this on its own homepage and
  * the number grows — 88 in July, 116 by late August, 147 once audio and video
- * landed — so it lives in one place and every sentence about it is built from
+ * landed, 171 with the AI category — so it lives in one place and every sentence about it is built from
  * here. Update this line only, and check the live site first: this is a claim,
  * not an estimate.
  */
-export const TOOLS_APP_COUNT = 171;
+export const TOOLS_APP_COUNT = 181;
 
 /**
  * How many groups those tools are filed under. Spelled out in the description
@@ -397,6 +397,7 @@ export const apps: App[] = [
       "Cut, level, speed and join audio, or pull the sound out of a video",
       "Zip and unzip archives without installing anything",
       "Format, validate and convert JSON and other text data",
+      "Bold, italic, cursive and bubble text for fields that strip formatting",
       "Base64, URL and HTML-entity encoding and decoding",
       "Encrypt and decrypt a file with a passphrase",
       "Calculators and generators — EMI, GST, SIP, unit conversion and more",
@@ -415,6 +416,7 @@ export const apps: App[] = [
       { label: "AI Prompt Generator", href: "https://tools.msrx.co.in/ai/ai-prompt-generator" },
       { label: "Grammar Checker", href: "https://tools.msrx.co.in/ai/grammar-checker" },
       { label: "Translator", href: "https://tools.msrx.co.in/ai/translate-text" },
+      { label: "Bold Text Generator", href: "https://tools.msrx.co.in/text/bold-text-generator" },
       { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
       { label: "Loan EMI Calculator", href: "https://tools.msrx.co.in/calculator/loan-emi-calculator" },
       { label: "Text Summariser", href: "https://tools.msrx.co.in/ai/summarize-text" },
