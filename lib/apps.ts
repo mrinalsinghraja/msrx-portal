@@ -56,12 +56,12 @@ const NUMBER_WORDS = [
 /**
  * How many tools tools.msrx.co.in ships. It states this on its own homepage and
  * the number grows — 88 in July, 116 by late August, 147 once audio and video
- * landed, 171 with the AI category, 211 once the financial calculators arrived —
- * so it lives in one place and every sentence about it is built from
- * here. Update this line only, and check the live site first: this is a claim,
- * not an estimate.
+ * landed, 171 with the AI category, 211 once the financial calculators arrived,
+ * 212 with the on-device background remover — so it lives in one place and every
+ * sentence about it is built from here. Update this line only, and check the
+ * live site first: this is a claim, not an estimate.
  */
-export const TOOLS_APP_COUNT = 211;
+export const TOOLS_APP_COUNT = 212;
 
 /**
  * How many groups those tools are filed under. Spelled out in the description
@@ -394,7 +394,7 @@ export const apps: App[] = [
     actionLabel: "Open web app",
     tagline: `${TOOLS_APP_COUNT} file, image, video, text, money and AI tools — no file ever uploaded`,
     description:
-      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, convert units and work out numbers, run the money maths from a SIP projection to a home loan instalment, income tax under either regime and what a PPF account matures at, and a set of AI writing tools for prompts, summaries, translation and rewriting. Every tool that touches a file runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. The AI tools are the one exception and say so on every page: they take typed text, never a file, and send it to a model. Free, no account, and everything but the AI tools keeps working offline.`,
+      `A suite of ${TOOLS_APP_COUNT} everyday utilities across ${numberWord(TOOLS_GROUP_COUNT)} groups — merge and split PDFs, compress convert crop and watermark images, trim compress and convert video, record your screen, cut and level audio, zip and unzip archives, format and validate JSON, encode and decode Base64 and URLs, encrypt a file with a passphrase, convert units and work out numbers, run the money maths from a SIP projection to a home loan instalment, income tax under either regime and what a PPF account matures at, and a set of AI writing tools for prompts, summaries, translation and rewriting. Every tool that touches a file runs entirely inside your own browser, so your files are read on your device and never uploaded — the video tools use the codecs the browser already has, so there is nothing to download first. The AI category is the one exception and says so on every page: those tools take typed text, never a file, and send it to a model. The AI Background Remover is not among them despite the name — it cuts the subject out of a photograph using a model that downloads to your browser and runs there, so the picture stays on your device like every other file tool. Free, no account, and everything but the AI tools keeps working offline.`,
     features: [
       "Merge, split, organise and extract pages from PDFs",
       "Compress, convert, resize, crop, rotate and watermark images",
@@ -428,6 +428,7 @@ export const apps: App[] = [
       { label: "Income Tax Calculator", href: "https://tools.msrx.co.in/finance/income-tax-calculator" },
       { label: "AI Prompt Generator", href: "https://tools.msrx.co.in/ai/ai-prompt-generator" },
       { label: "Bold Text Generator", href: "https://tools.msrx.co.in/text/bold-text-generator" },
+      { label: "AI Background Remover", href: "https://tools.msrx.co.in/image/remove-background-ai" },
       { label: "Base64 Encode", href: "https://tools.msrx.co.in/dev/base64-encode" },
 
       // Everything below appears on the app page only.
